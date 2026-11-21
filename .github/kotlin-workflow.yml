@@ -1,0 +1,232 @@
+#
+# Copyright 2026 Davils
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+# What the pipeline of kontinuity does. Every key overrides a default of
+# actions/plan/defaults.yml in davils-com/kotlin-workflow; a key that is not there stops the run.
+version: 1
+gradle:
+  args: ["--stacktrace"]
+
+check:
+  tasks: [check]
+  reproducible:
+    clean-tasks:
+      - ":kontinuity-core:clean"
+      - ":kontinuity-circuit-breaker:clean"
+      - ":kontinuity-retry:clean"
+      - ":kontinuity-rate-limiter:clean"
+      - ":kontinuity-bulkhead:clean"
+      - ":kontinuity-time-limiter:clean"
+      - ":kontinuity-cache:clean"
+      - ":kontinuity-hedge:clean"
+      - ":kontinuity-policy:clean"
+      - ":kontinuity-testing:clean"
+    tasks:
+      - ":kontinuity-core:jvmJar"
+      - ":kontinuity-circuit-breaker:jvmJar"
+      - ":kontinuity-retry:jvmJar"
+      - ":kontinuity-rate-limiter:jvmJar"
+      - ":kontinuity-bulkhead:jvmJar"
+      - ":kontinuity-time-limiter:jvmJar"
+      - ":kontinuity-cache:jvmJar"
+      - ":kontinuity-hedge:jvmJar"
+      - ":kontinuity-policy:jvmJar"
+      - ":kontinuity-testing:jvmJar"
+    artifacts:
+      - "kontinuity-core/build/libs/*.jar"
+      - "kontinuity-circuit-breaker/build/libs/*.jar"
+      - "kontinuity-retry/build/libs/*.jar"
+      - "kontinuity-rate-limiter/build/libs/*.jar"
+      - "kontinuity-bulkhead/build/libs/*.jar"
+      - "kontinuity-time-limiter/build/libs/*.jar"
+      - "kontinuity-cache/build/libs/*.jar"
+      - "kontinuity-hedge/build/libs/*.jar"
+      - "kontinuity-policy/build/libs/*.jar"
+      - "kontinuity-testing/build/libs/*.jar"
+
+policy:
+  # Scheduling, timers and line breaks differ on Windows, and kontinuity's race and stress tests run real threads, so
+  # develop, main and a tag run there too.
+  push-develop:
+    stages: [check, snapshot]
+    os: [ubuntu-latest, windows-latest]
+    overrides:
+      check:
+        reproducible: { enabled: true }
+  push-main:
+    os: [ubuntu-latest, windows-latest]
+    overrides:
+      check:
+        reproducible: { enabled: true }
+  tag:
+    os: [ubuntu-latest, windows-latest]
+
+security:
+  gradle:
+    tasks:
+      - "kreateAssurance"
+  dependency-submission:
+    enabled: false
+
+publish:
+  build-tasks: [assemble]
+  tasks:
+    - ":kontinuity-core:publishAllPublicationsToDavilsRepository"
+    - ":kontinuity-circuit-breaker:publishAllPublicationsToDavilsRepository"
+    - ":kontinuity-retry:publishAllPublicationsToDavilsRepository"
+    - ":kontinuity-rate-limiter:publishAllPublicationsToDavilsRepository"
+    - ":kontinuity-bulkhead:publishAllPublicationsToDavilsRepository"
+    - ":kontinuity-time-limiter:publishAllPublicationsToDavilsRepository"
+    - ":kontinuity-cache:publishAllPublicationsToDavilsRepository"
+    - ":kontinuity-hedge:publishAllPublicationsToDavilsRepository"
+    - ":kontinuity-policy:publishAllPublicationsToDavilsRepository"
+    - ":kontinuity-testing:publishAllPublicationsToDavilsRepository"
+    - ":kontinuity-bom:publishAllPublicationsToDavilsRepository"
+
+snapshot:
+  # kontinuity's own build makes every build without a release tag a snapshot.
+  kreate-snapshot: false
+
+release:
+  publications:
+    discovery: explicit
+    # In upload order: the publication of every target before the multiplatform publication that names them.
+    list:
+      - path: com/davils/kontinuity-core-jvm
+        artifact: kontinuity-core-jvm
+        task: ":kontinuity-core:publishJvmPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-core-wasm-js
+        artifact: kontinuity-core-wasm-js
+        task: ":kontinuity-core:publishWasmJsPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-core
+        artifact: kontinuity-core
+        task: ":kontinuity-core:publishKotlinMultiplatformPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-circuit-breaker-jvm
+        artifact: kontinuity-circuit-breaker-jvm
+        task: ":kontinuity-circuit-breaker:publishJvmPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-circuit-breaker-wasm-js
+        artifact: kontinuity-circuit-breaker-wasm-js
+        task: ":kontinuity-circuit-breaker:publishWasmJsPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-circuit-breaker
+        artifact: kontinuity-circuit-breaker
+        task: ":kontinuity-circuit-breaker:publishKotlinMultiplatformPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-retry-jvm
+        artifact: kontinuity-retry-jvm
+        task: ":kontinuity-retry:publishJvmPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-retry-wasm-js
+        artifact: kontinuity-retry-wasm-js
+        task: ":kontinuity-retry:publishWasmJsPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-retry
+        artifact: kontinuity-retry
+        task: ":kontinuity-retry:publishKotlinMultiplatformPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-rate-limiter-jvm
+        artifact: kontinuity-rate-limiter-jvm
+        task: ":kontinuity-rate-limiter:publishJvmPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-rate-limiter-wasm-js
+        artifact: kontinuity-rate-limiter-wasm-js
+        task: ":kontinuity-rate-limiter:publishWasmJsPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-rate-limiter
+        artifact: kontinuity-rate-limiter
+        task: ":kontinuity-rate-limiter:publishKotlinMultiplatformPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-bulkhead-jvm
+        artifact: kontinuity-bulkhead-jvm
+        task: ":kontinuity-bulkhead:publishJvmPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-bulkhead-wasm-js
+        artifact: kontinuity-bulkhead-wasm-js
+        task: ":kontinuity-bulkhead:publishWasmJsPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-bulkhead
+        artifact: kontinuity-bulkhead
+        task: ":kontinuity-bulkhead:publishKotlinMultiplatformPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-time-limiter-jvm
+        artifact: kontinuity-time-limiter-jvm
+        task: ":kontinuity-time-limiter:publishJvmPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-time-limiter-wasm-js
+        artifact: kontinuity-time-limiter-wasm-js
+        task: ":kontinuity-time-limiter:publishWasmJsPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-time-limiter
+        artifact: kontinuity-time-limiter
+        task: ":kontinuity-time-limiter:publishKotlinMultiplatformPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-cache-jvm
+        artifact: kontinuity-cache-jvm
+        task: ":kontinuity-cache:publishJvmPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-cache-wasm-js
+        artifact: kontinuity-cache-wasm-js
+        task: ":kontinuity-cache:publishWasmJsPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-cache
+        artifact: kontinuity-cache
+        task: ":kontinuity-cache:publishKotlinMultiplatformPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-hedge-jvm
+        artifact: kontinuity-hedge-jvm
+        task: ":kontinuity-hedge:publishJvmPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-hedge-wasm-js
+        artifact: kontinuity-hedge-wasm-js
+        task: ":kontinuity-hedge:publishWasmJsPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-hedge
+        artifact: kontinuity-hedge
+        task: ":kontinuity-hedge:publishKotlinMultiplatformPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-policy-jvm
+        artifact: kontinuity-policy-jvm
+        task: ":kontinuity-policy:publishJvmPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-policy-wasm-js
+        artifact: kontinuity-policy-wasm-js
+        task: ":kontinuity-policy:publishWasmJsPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-policy
+        artifact: kontinuity-policy
+        task: ":kontinuity-policy:publishKotlinMultiplatformPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-testing-jvm
+        artifact: kontinuity-testing-jvm
+        task: ":kontinuity-testing:publishJvmPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-testing-wasm-js
+        artifact: kontinuity-testing-wasm-js
+        task: ":kontinuity-testing:publishWasmJsPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-testing
+        artifact: kontinuity-testing
+        task: ":kontinuity-testing:publishKotlinMultiplatformPublicationToDavilsRepository"
+      - path: com/davils/kontinuity-bom
+        artifact: kontinuity-bom
+        task: ":kontinuity-bom:publishMavenPublicationToDavilsRepository"
+  attest:
+    subjects:
+      - "kontinuity-core/build/libs/*.jar"
+      - "kontinuity-core/build/libs/*.klib"
+      - "kontinuity-circuit-breaker/build/libs/*.jar"
+      - "kontinuity-circuit-breaker/build/libs/*.klib"
+      - "kontinuity-retry/build/libs/*.jar"
+      - "kontinuity-retry/build/libs/*.klib"
+      - "kontinuity-rate-limiter/build/libs/*.jar"
+      - "kontinuity-rate-limiter/build/libs/*.klib"
+      - "kontinuity-bulkhead/build/libs/*.jar"
+      - "kontinuity-bulkhead/build/libs/*.klib"
+      - "kontinuity-time-limiter/build/libs/*.jar"
+      - "kontinuity-time-limiter/build/libs/*.klib"
+      - "kontinuity-cache/build/libs/*.jar"
+      - "kontinuity-cache/build/libs/*.klib"
+      - "kontinuity-hedge/build/libs/*.jar"
+      - "kontinuity-hedge/build/libs/*.klib"
+      - "kontinuity-policy/build/libs/*.jar"
+      - "kontinuity-policy/build/libs/*.klib"
+      - "kontinuity-testing/build/libs/*.jar"
+      - "kontinuity-testing/build/libs/*.klib"
+  github-release:
+    enabled: false
+
+# How a pull request of Dependabot repairs itself, see CONTRIBUTING.md, "Changing a Dependency".
+dependencies:
+  lock:
+    invocations:
+      - ["kreateResolveAndLockAll", "--write-locks", "--no-configuration-cache"]
+  verification:
+    tasks: [check]
