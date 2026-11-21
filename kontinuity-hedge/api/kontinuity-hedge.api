@@ -1,0 +1,162 @@
+public final class com/davils/kontinuity/hedge/Hedge : com/davils/kontinuity/core/Stage {
+	public fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getConfig ()Lcom/davils/kontinuity/hedge/HedgeConfig;
+	public final fun getDelay-UwyO8pc ()J
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public final fun snapshot ()Lcom/davils/kontinuity/hedge/HedgeSnapshot;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeConfig : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/hedge/HedgeConfig$Companion;
+	public static final field HARD_HEDGED_ATTEMPTS I
+	public final fun getDelay ()Lcom/davils/kontinuity/hedge/HedgeDelay;
+	public final fun getFailures ()Lcom/davils/kontinuity/core/filter/FailureFilter;
+	public final fun getMaxHedgedAttempts ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/hedge/HedgeConfig$Companion {
+	public final fun getDefault ()Lcom/davils/kontinuity/hedge/HedgeConfig;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeConfigBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun failures (Lkotlin/jvm/functions/Function1;)V
+	public final fun getDelay ()Lcom/davils/kontinuity/hedge/HedgeDelay;
+	public final fun getFailures ()Lcom/davils/kontinuity/core/filter/FailureFilter;
+	public final fun getMaxHedgedAttempts ()I
+	public final fun setDelay (Lcom/davils/kontinuity/hedge/HedgeDelay;)V
+	public final fun setFailures (Lcom/davils/kontinuity/core/filter/FailureFilter;)V
+	public final fun setMaxHedgedAttempts (I)V
+}
+
+public abstract interface class com/davils/kontinuity/hedge/HedgeDelay : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/hedge/HedgeDelay$Companion;
+	public static final field HARD_WINDOW I
+	public abstract fun getInitial-UwyO8pc ()J
+}
+
+public final class com/davils/kontinuity/hedge/HedgeDelay$Companion {
+	public static final field HARD_WINDOW I
+	public final fun getHARD_DELAY-UwyO8pc ()J
+	public final fun getMINIMUM_DELAY-UwyO8pc ()J
+}
+
+public final class com/davils/kontinuity/hedge/HedgeDelay$Fixed : com/davils/kontinuity/hedge/HedgeDelay {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDuration-UwyO8pc ()J
+	public fun getInitial-UwyO8pc ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/hedge/HedgeDelay$Percentile : com/davils/kontinuity/hedge/HedgeDelay {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFallback-UwyO8pc ()J
+	public fun getInitial-UwyO8pc ()J
+	public final fun getMinimumSamples ()I
+	public final fun getPercentile ()D
+	public final fun getWindow ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public abstract interface class com/davils/kontinuity/hedge/HedgeEvent : com/davils/kontinuity/core/ResilienceEvent {
+	public static final field Companion Lcom/davils/kontinuity/hedge/HedgeEvent$Companion;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeEvent$Cancelled : com/davils/kontinuity/hedge/HedgeEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeEvent$Companion {
+	public final fun getTOPIC ()Lcom/davils/konfetti/core/TopicKey;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeEvent$Failed : com/davils/kontinuity/hedge/HedgeEvent {
+	public final fun getAttempts ()I
+	public final fun getFailureType ()Ljava/lang/String;
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeEvent$HedgeStarted : com/davils/kontinuity/hedge/HedgeEvent {
+	public final fun getAfter-UwyO8pc ()J
+	public final fun getAttempt ()I
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeEvent$HedgeSucceeded : com/davils/kontinuity/hedge/HedgeEvent {
+	public final fun getAttempt ()I
+	public final fun getDuration-UwyO8pc ()J
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeEvent$PrimarySucceeded : com/davils/kontinuity/hedge/HedgeEvent {
+	public final fun getDuration-UwyO8pc ()J
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeInteropKt {
+	public static final fun executeCompletionStage (Lcom/davils/kontinuity/hedge/Hedge;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function0;)Ljava/util/concurrent/CompletionStage;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeRegistry : com/davils/kontinuity/core/registry/Registry {
+	public synthetic fun find (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun find (Ljava/lang/String;)Lcom/davils/kontinuity/hedge/Hedge;
+	public fun getAll ()Ljava/util/List;
+	public final fun getEnvironment ()Lcom/davils/kontinuity/core/Environment;
+	public fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getSettings ()Lcom/davils/kontinuity/core/registry/RegistrySettings;
+	public final fun hedge (Ljava/lang/String;Lcom/davils/kontinuity/hedge/HedgeConfig;)Lcom/davils/kontinuity/hedge/Hedge;
+	public final fun hedge (Ljava/lang/String;Ljava/lang/String;)Lcom/davils/kontinuity/hedge/Hedge;
+	public final fun hedge (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/hedge/Hedge;
+	public static synthetic fun hedge$default (Lcom/davils/kontinuity/hedge/HedgeRegistry;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/davils/kontinuity/hedge/Hedge;
+	public static synthetic fun hedge$default (Lcom/davils/kontinuity/hedge/HedgeRegistry;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/hedge/Hedge;
+	public synthetic fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/hedge/Hedge;
+	public synthetic fun replace (Lcom/davils/kontinuity/core/Instance;)Lcom/davils/kontinuity/core/Instance;
+	public fun replace (Lcom/davils/kontinuity/hedge/Hedge;)Lcom/davils/kontinuity/hedge/Hedge;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeRegistryBuilder : com/davils/kontinuity/core/registry/RegistryBuilder {
+	public synthetic fun configBuilder (Lcom/davils/kore/core/validation/Validatable;)Lcom/davils/kore/core/dsl/ValidatingBuilder;
+}
+
+public final class com/davils/kontinuity/hedge/HedgeSnapshot {
+	public final fun getCalls ()J
+	public final fun getCancelled ()J
+	public final fun getDelay-UwyO8pc ()J
+	public final fun getFailed ()J
+	public final fun getHedgeSucceeded ()J
+	public final fun getHedgesStarted ()J
+	public final fun getPrimarySucceeded ()J
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/hedge/HedgesKt {
+	public static final fun fixedDelay-LRDsOJo (J)Lcom/davils/kontinuity/hedge/HedgeDelay;
+	public static final fun hedge (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/hedge/Hedge;
+	public static final fun hedge (Ljava/lang/String;Lcom/davils/kontinuity/hedge/HedgeConfig;Lcom/davils/kontinuity/core/Environment;)Lcom/davils/kontinuity/hedge/Hedge;
+	public static synthetic fun hedge$default (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/hedge/Hedge;
+	public static synthetic fun hedge$default (Ljava/lang/String;Lcom/davils/kontinuity/hedge/HedgeConfig;Lcom/davils/kontinuity/core/Environment;ILjava/lang/Object;)Lcom/davils/kontinuity/hedge/Hedge;
+	public static final fun hedgeConfig (Lcom/davils/kontinuity/hedge/HedgeConfig;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/hedge/HedgeConfig;
+	public static synthetic fun hedgeConfig$default (Lcom/davils/kontinuity/hedge/HedgeConfig;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/hedge/HedgeConfig;
+	public static final fun hedgeRegistry (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/hedge/HedgeRegistry;
+	public static synthetic fun hedgeRegistry$default (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/hedge/HedgeRegistry;
+	public static final fun percentileDelay-Wn2Vu4Y (DIIJ)Lcom/davils/kontinuity/hedge/HedgeDelay;
+	public static synthetic fun percentileDelay-Wn2Vu4Y$default (DIIJILjava/lang/Object;)Lcom/davils/kontinuity/hedge/HedgeDelay;
+}
+
