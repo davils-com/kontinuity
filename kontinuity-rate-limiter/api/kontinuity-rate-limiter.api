@@ -1,0 +1,197 @@
+public final class com/davils/kontinuity/ratelimiter/RateLimiter : com/davils/kontinuity/core/Stage {
+	public final fun acquire-8Mi8wO0 (IJLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun acquire-8Mi8wO0$default (Lcom/davils/kontinuity/ratelimiter/RateLimiter;IJLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun changeLimitForPeriod (I)V
+	public final fun changeTimeout-LRDsOJo (J)V
+	public final fun drain ()I
+	public final fun execute (ILkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getAvailablePermissions ()I
+	public final fun getConfig ()Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public final fun getLimitForPeriod ()I
+	public fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getTimeout-UwyO8pc ()J
+	public final fun getWaitingCallers ()I
+	public final fun reservePermission-LV8wdWc (I)Lkotlin/time/Duration;
+	public static synthetic fun reservePermission-LV8wdWc$default (Lcom/davils/kontinuity/ratelimiter/RateLimiter;IILjava/lang/Object;)Lkotlin/time/Duration;
+	public final fun snapshot ()Lcom/davils/kontinuity/ratelimiter/RateLimiterSnapshot;
+	public fun toString ()Ljava/lang/String;
+	public final fun tryAcquire (I)Z
+	public static synthetic fun tryAcquire$default (Lcom/davils/kontinuity/ratelimiter/RateLimiter;IILjava/lang/Object;)Z
+}
+
+public abstract interface class com/davils/kontinuity/ratelimiter/RateLimiterAlgorithm {
+	public static final field Companion Lcom/davils/kontinuity/ratelimiter/RateLimiterAlgorithm$Companion;
+	public static final field HARD_BURST I
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterAlgorithm$Companion {
+	public static final field HARD_BURST I
+	public final fun getHARD_REFILL-UwyO8pc ()J
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterAlgorithm$FixedWindow : com/davils/kontinuity/ratelimiter/RateLimiterAlgorithm {
+	public static final field INSTANCE Lcom/davils/kontinuity/ratelimiter/RateLimiterAlgorithm$FixedWindow;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterAlgorithm$SlidingWindow : com/davils/kontinuity/ratelimiter/RateLimiterAlgorithm {
+	public static final field INSTANCE Lcom/davils/kontinuity/ratelimiter/RateLimiterAlgorithm$SlidingWindow;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterAlgorithm$TokenBucket : com/davils/kontinuity/ratelimiter/RateLimiterAlgorithm, com/davils/kore/core/validation/Validatable {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBurst ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterConfig : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig$Companion;
+	public static final field HARD_LIMIT_FOR_PERIOD I
+	public static final field HARD_WAITING_CALLERS I
+	public final fun getAlgorithm ()Lcom/davils/kontinuity/ratelimiter/RateLimiterAlgorithm;
+	public final fun getDrainOnFailures ()Lcom/davils/kontinuity/core/filter/FailureFilter;
+	public final fun getDrainOnResults ()Lcom/davils/kontinuity/core/filter/ResultFilter;
+	public final fun getLimitForPeriod ()I
+	public final fun getLimitRefreshPeriod-UwyO8pc ()J
+	public final fun getMaxWaitingCallers ()I
+	public final fun getTimeout-UwyO8pc ()J
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterConfig$Companion {
+	public final fun getDefault ()Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig;
+	public final fun getHARD_REFRESH_PERIOD-UwyO8pc ()J
+	public final fun getHARD_TIMEOUT-UwyO8pc ()J
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterConfigBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun drainOnFailures (Lkotlin/jvm/functions/Function1;)V
+	public final fun drainOnResults (Lkotlin/jvm/functions/Function1;)V
+	public final fun getAlgorithm ()Lcom/davils/kontinuity/ratelimiter/RateLimiterAlgorithm;
+	public final fun getDrainOnFailures ()Lcom/davils/kontinuity/core/filter/FailureFilter;
+	public final fun getDrainOnResults ()Lcom/davils/kontinuity/core/filter/ResultFilter;
+	public final fun getLimitForPeriod ()I
+	public final fun getLimitRefreshPeriod-UwyO8pc ()J
+	public final fun getMaxWaitingCallers ()I
+	public final fun getTimeout-UwyO8pc ()J
+	public final fun setAlgorithm (Lcom/davils/kontinuity/ratelimiter/RateLimiterAlgorithm;)V
+	public final fun setDrainOnFailures (Lcom/davils/kontinuity/core/filter/FailureFilter;)V
+	public final fun setDrainOnResults (Lcom/davils/kontinuity/core/filter/ResultFilter;)V
+	public final fun setLimitForPeriod (I)V
+	public final fun setLimitRefreshPeriod-LRDsOJo (J)V
+	public final fun setMaxWaitingCallers (I)V
+	public final fun setTimeout-LRDsOJo (J)V
+}
+
+public abstract interface class com/davils/kontinuity/ratelimiter/RateLimiterEvent : com/davils/kontinuity/core/ResilienceEvent {
+	public static final field Companion Lcom/davils/kontinuity/ratelimiter/RateLimiterEvent$Companion;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterEvent$Acquired : com/davils/kontinuity/ratelimiter/RateLimiterEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getPermits ()I
+	public final fun getWaited-UwyO8pc ()J
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterEvent$Cancelled : com/davils/kontinuity/ratelimiter/RateLimiterEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getPermits ()I
+	public final fun isRefunded ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterEvent$Companion {
+	public final fun getTOPIC ()Lcom/davils/konfetti/core/TopicKey;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterEvent$Drained : com/davils/kontinuity/ratelimiter/RateLimiterEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getPermits ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterEvent$LimitChanged : com/davils/kontinuity/ratelimiter/RateLimiterEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getLimitForPeriod ()I
+	public final fun getTimeout-UwyO8pc ()J
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterEvent$Rejected : com/davils/kontinuity/ratelimiter/RateLimiterEvent {
+	public final fun getAvailableIn-UwyO8pc ()J
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getPermits ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterInteropKt {
+	public static final fun acquireBlocking-SxA4cEA (Lcom/davils/kontinuity/ratelimiter/RateLimiter;IJ)V
+	public static synthetic fun acquireBlocking-SxA4cEA$default (Lcom/davils/kontinuity/ratelimiter/RateLimiter;IJILjava/lang/Object;)V
+	public static final fun executeBlocking (Lcom/davils/kontinuity/ratelimiter/RateLimiter;ILkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+	public static synthetic fun executeBlocking$default (Lcom/davils/kontinuity/ratelimiter/RateLimiter;ILkotlin/jvm/functions/Function0;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterRegistry : com/davils/kontinuity/core/registry/Registry {
+	public synthetic fun find (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun find (Ljava/lang/String;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public fun getAll ()Ljava/util/List;
+	public final fun getEnvironment ()Lcom/davils/kontinuity/core/Environment;
+	public fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getSettings ()Lcom/davils/kontinuity/core/registry/RegistrySettings;
+	public final fun rateLimiter (Ljava/lang/String;Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public final fun rateLimiter (Ljava/lang/String;Ljava/lang/String;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public final fun rateLimiter (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public static synthetic fun rateLimiter$default (Lcom/davils/kontinuity/ratelimiter/RateLimiterRegistry;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public static synthetic fun rateLimiter$default (Lcom/davils/kontinuity/ratelimiter/RateLimiterRegistry;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public synthetic fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public synthetic fun replace (Lcom/davils/kontinuity/core/Instance;)Lcom/davils/kontinuity/core/Instance;
+	public fun replace (Lcom/davils/kontinuity/ratelimiter/RateLimiter;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterRegistryBuilder : com/davils/kontinuity/core/registry/RegistryBuilder {
+	public synthetic fun configBuilder (Lcom/davils/kore/core/validation/Validatable;)Lcom/davils/kore/core/dsl/ValidatingBuilder;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimiterSnapshot {
+	public final fun getAcquired ()J
+	public final fun getAvailablePermissions ()I
+	public final fun getCancelled ()J
+	public final fun getLimitForPeriod ()I
+	public final fun getPermitsGranted ()J
+	public final fun getRejected ()J
+	public final fun getTimeout-UwyO8pc ()J
+	public final fun getWaitingCallers ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RateLimitersKt {
+	public static final fun rateLimiter (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public static final fun rateLimiter (Ljava/lang/String;Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig;Lcom/davils/kontinuity/core/Environment;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public static final fun rateLimiter (Lkotlinx/coroutines/flow/Flow;Lcom/davils/kontinuity/ratelimiter/RateLimiter;I)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun rateLimiter$default (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public static synthetic fun rateLimiter$default (Ljava/lang/String;Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig;Lcom/davils/kontinuity/core/Environment;ILjava/lang/Object;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
+	public static synthetic fun rateLimiter$default (Lkotlinx/coroutines/flow/Flow;Lcom/davils/kontinuity/ratelimiter/RateLimiter;IILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun rateLimiterConfig (Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig;
+	public static synthetic fun rateLimiterConfig$default (Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig;
+	public static final fun rateLimiterRegistry (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/ratelimiter/RateLimiterRegistry;
+	public static synthetic fun rateLimiterRegistry$default (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/ratelimiter/RateLimiterRegistry;
+	public static final fun tokenBucket (I)Lcom/davils/kontinuity/ratelimiter/RateLimiterAlgorithm;
+}
+
+public final class com/davils/kontinuity/ratelimiter/RequestNotPermittedException : com/davils/kontinuity/core/CallRejectedException {
+	public final fun getAvailableIn-UwyO8pc ()J
+	public final fun getPermits ()I
+}
+
