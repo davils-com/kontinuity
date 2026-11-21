@@ -1,0 +1,500 @@
+// Klib ABI Dump
+// Targets: [wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.davils:kontinuity-core>
+final enum class com.davils.kontinuity.core.filter/FailureVerdict : kotlin/Enum<com.davils.kontinuity.core.filter/FailureVerdict> { // com.davils.kontinuity.core.filter/FailureVerdict|null[0]
+    enum entry Ignored // com.davils.kontinuity.core.filter/FailureVerdict.Ignored|null[0]
+    enum entry Passed // com.davils.kontinuity.core.filter/FailureVerdict.Passed|null[0]
+    enum entry Recorded // com.davils.kontinuity.core.filter/FailureVerdict.Recorded|null[0]
+
+    final val entries // com.davils.kontinuity.core.filter/FailureVerdict.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.davils.kontinuity.core.filter/FailureVerdict> // com.davils.kontinuity.core.filter/FailureVerdict.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.davils.kontinuity.core.filter/FailureVerdict // com.davils.kontinuity.core.filter/FailureVerdict.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.davils.kontinuity.core.filter/FailureVerdict> // com.davils.kontinuity.core.filter/FailureVerdict.values|values#static(){}[0]
+}
+
+final enum class com.davils.kontinuity.core/ResilienceKind : kotlin/Enum<com.davils.kontinuity.core/ResilienceKind> { // com.davils.kontinuity.core/ResilienceKind|null[0]
+    enum entry Bulkhead // com.davils.kontinuity.core/ResilienceKind.Bulkhead|null[0]
+    enum entry Cache // com.davils.kontinuity.core/ResilienceKind.Cache|null[0]
+    enum entry CircuitBreaker // com.davils.kontinuity.core/ResilienceKind.CircuitBreaker|null[0]
+    enum entry DispatcherBulkhead // com.davils.kontinuity.core/ResilienceKind.DispatcherBulkhead|null[0]
+    enum entry Fallback // com.davils.kontinuity.core/ResilienceKind.Fallback|null[0]
+    enum entry Hedge // com.davils.kontinuity.core/ResilienceKind.Hedge|null[0]
+    enum entry Policy // com.davils.kontinuity.core/ResilienceKind.Policy|null[0]
+    enum entry RateLimiter // com.davils.kontinuity.core/ResilienceKind.RateLimiter|null[0]
+    enum entry Retry // com.davils.kontinuity.core/ResilienceKind.Retry|null[0]
+    enum entry TimeLimiter // com.davils.kontinuity.core/ResilienceKind.TimeLimiter|null[0]
+
+    final val entries // com.davils.kontinuity.core/ResilienceKind.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.davils.kontinuity.core/ResilienceKind> // com.davils.kontinuity.core/ResilienceKind.entries.<get-entries>|<get-entries>#static(){}[0]
+    final val id // com.davils.kontinuity.core/ResilienceKind.id|{}id[0]
+        final fun <get-id>(): kotlin/String // com.davils.kontinuity.core/ResilienceKind.id.<get-id>|<get-id>(){}[0]
+
+    final fun valueOf(kotlin/String): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.core/ResilienceKind.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.davils.kontinuity.core/ResilienceKind> // com.davils.kontinuity.core/ResilienceKind.values|values#static(){}[0]
+}
+
+abstract interface <#A: kotlin/Any, #B: com.davils.kontinuity.core/Instance> com.davils.kontinuity.core.registry/Registry { // com.davils.kontinuity.core.registry/Registry|null[0]
+    abstract val all // com.davils.kontinuity.core.registry/Registry.all|{}all[0]
+        abstract fun <get-all>(): kotlin.collections/List<#B> // com.davils.kontinuity.core.registry/Registry.all.<get-all>|<get-all>(){}[0]
+    abstract val events // com.davils.kontinuity.core.registry/Registry.events|{}events[0]
+        abstract fun <get-events>(): kotlinx.coroutines.flow/Flow<com.davils.kontinuity.core.registry/RegistryEvent<#B>> // com.davils.kontinuity.core.registry/Registry.events.<get-events>|<get-events>(){}[0]
+    abstract val settings // com.davils.kontinuity.core.registry/Registry.settings|{}settings[0]
+        abstract fun <get-settings>(): com.davils.kontinuity.core.registry/RegistrySettings<#A> // com.davils.kontinuity.core.registry/Registry.settings.<get-settings>|<get-settings>(){}[0]
+
+    abstract fun find(kotlin/String): #B? // com.davils.kontinuity.core.registry/Registry.find|find(kotlin.String){}[0]
+    abstract fun remove(kotlin/String): #B? // com.davils.kontinuity.core.registry/Registry.remove|remove(kotlin.String){}[0]
+    abstract fun replace(#B): #B? // com.davils.kontinuity.core.registry/Registry.replace|replace(1:1){}[0]
+}
+
+abstract interface com.davils.kontinuity.core.telemetry/Guard { // com.davils.kontinuity.core.telemetry/Guard|null[0]
+    abstract fun <#A1: kotlin/Any?> locked(kotlin/Function0<#A1>): #A1 // com.davils.kontinuity.core.telemetry/Guard.locked|locked(kotlin.Function0<0:0>){0§<kotlin.Any?>}[0]
+}
+
+abstract interface com.davils.kontinuity.core/Instance { // com.davils.kontinuity.core/Instance|null[0]
+    abstract val kind // com.davils.kontinuity.core/Instance.kind|{}kind[0]
+        abstract fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.core/Instance.kind.<get-kind>|<get-kind>(){}[0]
+    abstract val name // com.davils.kontinuity.core/Instance.name|{}name[0]
+        abstract fun <get-name>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.core/Instance.name.<get-name>|<get-name>(){}[0]
+}
+
+abstract interface com.davils.kontinuity.core/ResilienceEvent : com.davils.konfetti.core/Event { // com.davils.kontinuity.core/ResilienceEvent|null[0]
+    abstract val instance // com.davils.kontinuity.core/ResilienceEvent.instance|{}instance[0]
+        abstract fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.core/ResilienceEvent.instance.<get-instance>|<get-instance>(){}[0]
+    abstract val kind // com.davils.kontinuity.core/ResilienceEvent.kind|{}kind[0]
+        abstract fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.core/ResilienceEvent.kind.<get-kind>|<get-kind>(){}[0]
+}
+
+abstract interface com.davils.kontinuity.core/Stage : com.davils.kontinuity.core/Instance { // com.davils.kontinuity.core/Stage|null[0]
+    abstract suspend fun <#A1: kotlin/Any?> execute(kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.core/Stage.execute|execute(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+}
+
+sealed interface <#A: out com.davils.kontinuity.core/Instance> com.davils.kontinuity.core.registry/RegistryEvent { // com.davils.kontinuity.core.registry/RegistryEvent|null[0]
+    abstract val instance // com.davils.kontinuity.core.registry/RegistryEvent.instance|{}instance[0]
+        abstract fun <get-instance>(): #A // com.davils.kontinuity.core.registry/RegistryEvent.instance.<get-instance>|<get-instance>(){}[0]
+
+    final class <#A1: out com.davils.kontinuity.core/Instance> Added : com.davils.kontinuity.core.registry/RegistryEvent<#A1> { // com.davils.kontinuity.core.registry/RegistryEvent.Added|null[0]
+        final val instance // com.davils.kontinuity.core.registry/RegistryEvent.Added.instance|{}instance[0]
+            final fun <get-instance>(): #A1 // com.davils.kontinuity.core.registry/RegistryEvent.Added.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.core.registry/RegistryEvent.Added.toString|toString(){}[0]
+    }
+
+    final class <#A1: out com.davils.kontinuity.core/Instance> Removed : com.davils.kontinuity.core.registry/RegistryEvent<#A1> { // com.davils.kontinuity.core.registry/RegistryEvent.Removed|null[0]
+        final val instance // com.davils.kontinuity.core.registry/RegistryEvent.Removed.instance|{}instance[0]
+            final fun <get-instance>(): #A1 // com.davils.kontinuity.core.registry/RegistryEvent.Removed.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.core.registry/RegistryEvent.Removed.toString|toString(){}[0]
+    }
+
+    final class <#A1: out com.davils.kontinuity.core/Instance> Replaced : com.davils.kontinuity.core.registry/RegistryEvent<#A1> { // com.davils.kontinuity.core.registry/RegistryEvent.Replaced|null[0]
+        final val instance // com.davils.kontinuity.core.registry/RegistryEvent.Replaced.instance|{}instance[0]
+            final fun <get-instance>(): #A1 // com.davils.kontinuity.core.registry/RegistryEvent.Replaced.instance.<get-instance>|<get-instance>(){}[0]
+        final val previous // com.davils.kontinuity.core.registry/RegistryEvent.Replaced.previous|{}previous[0]
+            final fun <get-previous>(): #A1 // com.davils.kontinuity.core.registry/RegistryEvent.Replaced.previous.<get-previous>|<get-previous>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.core.registry/RegistryEvent.Replaced.toString|toString(){}[0]
+    }
+}
+
+sealed interface com.davils.kontinuity.core.backoff/Backoff : com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.core.backoff/Backoff|null[0]
+    abstract val maximum // com.davils.kontinuity.core.backoff/Backoff.maximum|{}maximum[0]
+        abstract fun <get-maximum>(): kotlin.time/Duration // com.davils.kontinuity.core.backoff/Backoff.maximum.<get-maximum>|<get-maximum>(){}[0]
+
+    final class Exponential : com.davils.kontinuity.core.backoff/Backoff { // com.davils.kontinuity.core.backoff/Backoff.Exponential|null[0]
+        final val initial // com.davils.kontinuity.core.backoff/Backoff.Exponential.initial|{}initial[0]
+            final fun <get-initial>(): kotlin.time/Duration // com.davils.kontinuity.core.backoff/Backoff.Exponential.initial.<get-initial>|<get-initial>(){}[0]
+        final val maximum // com.davils.kontinuity.core.backoff/Backoff.Exponential.maximum|{}maximum[0]
+            final fun <get-maximum>(): kotlin.time/Duration // com.davils.kontinuity.core.backoff/Backoff.Exponential.maximum.<get-maximum>|<get-maximum>(){}[0]
+        final val multiplier // com.davils.kontinuity.core.backoff/Backoff.Exponential.multiplier|{}multiplier[0]
+            final fun <get-multiplier>(): kotlin/Double // com.davils.kontinuity.core.backoff/Backoff.Exponential.multiplier.<get-multiplier>|<get-multiplier>(){}[0]
+
+        final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.core.backoff/Backoff.Exponential.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.core.backoff/Backoff.Exponential.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.davils.kontinuity.core.backoff/Backoff.Exponential.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.core.backoff/Backoff.Exponential.toString|toString(){}[0]
+    }
+
+    final class Fixed : com.davils.kontinuity.core.backoff/Backoff { // com.davils.kontinuity.core.backoff/Backoff.Fixed|null[0]
+        final val delay // com.davils.kontinuity.core.backoff/Backoff.Fixed.delay|{}delay[0]
+            final fun <get-delay>(): kotlin.time/Duration // com.davils.kontinuity.core.backoff/Backoff.Fixed.delay.<get-delay>|<get-delay>(){}[0]
+        final val maximum // com.davils.kontinuity.core.backoff/Backoff.Fixed.maximum|{}maximum[0]
+            final fun <get-maximum>(): kotlin.time/Duration // com.davils.kontinuity.core.backoff/Backoff.Fixed.maximum.<get-maximum>|<get-maximum>(){}[0]
+
+        final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.core.backoff/Backoff.Fixed.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.core.backoff/Backoff.Fixed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.davils.kontinuity.core.backoff/Backoff.Fixed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.core.backoff/Backoff.Fixed.toString|toString(){}[0]
+    }
+
+    final class Jittered : com.davils.kontinuity.core.backoff/Backoff { // com.davils.kontinuity.core.backoff/Backoff.Jittered|null[0]
+        final val base // com.davils.kontinuity.core.backoff/Backoff.Jittered.base|{}base[0]
+            final fun <get-base>(): com.davils.kontinuity.core.backoff/Backoff // com.davils.kontinuity.core.backoff/Backoff.Jittered.base.<get-base>|<get-base>(){}[0]
+        final val jitter // com.davils.kontinuity.core.backoff/Backoff.Jittered.jitter|{}jitter[0]
+            final fun <get-jitter>(): com.davils.kontinuity.core.backoff/Jitter // com.davils.kontinuity.core.backoff/Backoff.Jittered.jitter.<get-jitter>|<get-jitter>(){}[0]
+        final val maximum // com.davils.kontinuity.core.backoff/Backoff.Jittered.maximum|{}maximum[0]
+            final fun <get-maximum>(): kotlin.time/Duration // com.davils.kontinuity.core.backoff/Backoff.Jittered.maximum.<get-maximum>|<get-maximum>(){}[0]
+
+        final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.core.backoff/Backoff.Jittered.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.core.backoff/Backoff.Jittered.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.davils.kontinuity.core.backoff/Backoff.Jittered.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.core.backoff/Backoff.Jittered.toString|toString(){}[0]
+    }
+
+    final object Companion { // com.davils.kontinuity.core.backoff/Backoff.Companion|null[0]
+        final const val HARD_MULTIPLIER // com.davils.kontinuity.core.backoff/Backoff.Companion.HARD_MULTIPLIER|{}HARD_MULTIPLIER[0]
+            final fun <get-HARD_MULTIPLIER>(): kotlin/Double // com.davils.kontinuity.core.backoff/Backoff.Companion.HARD_MULTIPLIER.<get-HARD_MULTIPLIER>|<get-HARD_MULTIPLIER>(){}[0]
+
+        final val HARD_MAXIMUM_DELAY // com.davils.kontinuity.core.backoff/Backoff.Companion.HARD_MAXIMUM_DELAY|{}HARD_MAXIMUM_DELAY[0]
+            final fun <get-HARD_MAXIMUM_DELAY>(): kotlin.time/Duration // com.davils.kontinuity.core.backoff/Backoff.Companion.HARD_MAXIMUM_DELAY.<get-HARD_MAXIMUM_DELAY>|<get-HARD_MAXIMUM_DELAY>(){}[0]
+    }
+}
+
+sealed interface com.davils.kontinuity.core.backoff/Jitter { // com.davils.kontinuity.core.backoff/Jitter|null[0]
+    final class Proportional : com.davils.kontinuity.core.backoff/Jitter { // com.davils.kontinuity.core.backoff/Jitter.Proportional|null[0]
+        final val factor // com.davils.kontinuity.core.backoff/Jitter.Proportional.factor|{}factor[0]
+            final fun <get-factor>(): kotlin/Double // com.davils.kontinuity.core.backoff/Jitter.Proportional.factor.<get-factor>|<get-factor>(){}[0]
+
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.core.backoff/Jitter.Proportional.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.davils.kontinuity.core.backoff/Jitter.Proportional.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.core.backoff/Jitter.Proportional.toString|toString(){}[0]
+    }
+
+    final object Decorrelated : com.davils.kontinuity.core.backoff/Jitter { // com.davils.kontinuity.core.backoff/Jitter.Decorrelated|null[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.core.backoff/Jitter.Decorrelated.toString|toString(){}[0]
+    }
+
+    final object Equal : com.davils.kontinuity.core.backoff/Jitter { // com.davils.kontinuity.core.backoff/Jitter.Equal|null[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.core.backoff/Jitter.Equal.toString|toString(){}[0]
+    }
+
+    final object Full : com.davils.kontinuity.core.backoff/Jitter { // com.davils.kontinuity.core.backoff/Jitter.Full|null[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.core.backoff/Jitter.Full.toString|toString(){}[0]
+    }
+}
+
+sealed interface com.davils.kontinuity.core/CallFailure { // com.davils.kontinuity.core/CallFailure|null[0]
+    abstract val cause // com.davils.kontinuity.core/CallFailure.cause|{}cause[0]
+        abstract fun <get-cause>(): kotlin/Throwable // com.davils.kontinuity.core/CallFailure.cause.<get-cause>|<get-cause>(){}[0]
+
+    final class Failed : com.davils.kontinuity.core/CallFailure { // com.davils.kontinuity.core/CallFailure.Failed|null[0]
+        constructor <init>(kotlin/Throwable) // com.davils.kontinuity.core/CallFailure.Failed.<init>|<init>(kotlin.Throwable){}[0]
+
+        final val cause // com.davils.kontinuity.core/CallFailure.Failed.cause|{}cause[0]
+            final fun <get-cause>(): kotlin/Throwable // com.davils.kontinuity.core/CallFailure.Failed.cause.<get-cause>|<get-cause>(){}[0]
+
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.core/CallFailure.Failed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.davils.kontinuity.core/CallFailure.Failed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.core/CallFailure.Failed.toString|toString(){}[0]
+    }
+
+    final class Rejected : com.davils.kontinuity.core/CallFailure { // com.davils.kontinuity.core/CallFailure.Rejected|null[0]
+        constructor <init>(com.davils.kontinuity.core/CallRejectedException) // com.davils.kontinuity.core/CallFailure.Rejected.<init>|<init>(com.davils.kontinuity.core.CallRejectedException){}[0]
+
+        final val cause // com.davils.kontinuity.core/CallFailure.Rejected.cause|{}cause[0]
+            final fun <get-cause>(): com.davils.kontinuity.core/CallRejectedException // com.davils.kontinuity.core/CallFailure.Rejected.cause.<get-cause>|<get-cause>(){}[0]
+
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.core/CallFailure.Rejected.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.davils.kontinuity.core/CallFailure.Rejected.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.core/CallFailure.Rejected.toString|toString(){}[0]
+    }
+}
+
+abstract class <#A: com.davils.kore.core.validation/Validatable, #B: com.davils.kore.core.dsl/ValidatingBuilder<#A>> com.davils.kontinuity.core.registry/RegistryBuilder : com.davils.kore.core.dsl/ValidatingBuilder<com.davils.kontinuity.core.registry/RegistrySettings<#A>> { // com.davils.kontinuity.core.registry/RegistryBuilder|null[0]
+    constructor <init>(#A) // com.davils.kontinuity.core.registry/RegistryBuilder.<init>|<init>(1:0){}[0]
+
+    open val subject // com.davils.kontinuity.core.registry/RegistryBuilder.subject|{}subject[0]
+        open fun <get-subject>(): kotlin/String // com.davils.kontinuity.core.registry/RegistryBuilder.subject.<get-subject>|<get-subject>(){}[0]
+
+    abstract fun configBuilder(#A): #B // com.davils.kontinuity.core.registry/RegistryBuilder.configBuilder|configBuilder(1:0){}[0]
+    final fun assemble(): com.davils.kontinuity.core.registry/RegistrySettings<#A> // com.davils.kontinuity.core.registry/RegistryBuilder.assemble|assemble(){}[0]
+    final fun config(kotlin/String, kotlin/String = ..., kotlin/Function1<#B, kotlin/Unit>) // com.davils.kontinuity.core.registry/RegistryBuilder.config|config(kotlin.String;kotlin.String;kotlin.Function1<1:1,kotlin.Unit>){}[0]
+    final fun defaults(kotlin/Function1<#B, kotlin/Unit>) // com.davils.kontinuity.core.registry/RegistryBuilder.defaults|defaults(kotlin.Function1<1:1,kotlin.Unit>){}[0]
+    final fun limits(kotlin/Function1<com.davils.kontinuity.core.registry/InstanceLimitsBuilder, kotlin/Unit>) // com.davils.kontinuity.core.registry/RegistryBuilder.limits|limits(kotlin.Function1<com.davils.kontinuity.core.registry.InstanceLimitsBuilder,kotlin.Unit>){}[0]
+}
+
+final class <#A: com.davils.kontinuity.core/ResilienceEvent> com.davils.kontinuity.core.telemetry/EventSink { // com.davils.kontinuity.core.telemetry/EventSink|null[0]
+    constructor <init>(com.davils.kontinuity.core/Environment, com.davils.konfetti.core/TopicKey<#A>) // com.davils.kontinuity.core.telemetry/EventSink.<init>|<init>(com.davils.kontinuity.core.Environment;com.davils.konfetti.core.TopicKey<1:0>){}[0]
+
+    final val events // com.davils.kontinuity.core.telemetry/EventSink.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<#A> // com.davils.kontinuity.core.telemetry/EventSink.events.<get-events>|<get-events>(){}[0]
+    final val isListened // com.davils.kontinuity.core.telemetry/EventSink.isListened|{}isListened[0]
+        final fun <get-isListened>(): kotlin/Boolean // com.davils.kontinuity.core.telemetry/EventSink.isListened.<get-isListened>|<get-isListened>(){}[0]
+    final val rejected // com.davils.kontinuity.core.telemetry/EventSink.rejected|{}rejected[0]
+        final fun <get-rejected>(): kotlin/Long // com.davils.kontinuity.core.telemetry/EventSink.rejected.<get-rejected>|<get-rejected>(){}[0]
+
+    final fun send(#A) // com.davils.kontinuity.core.telemetry/EventSink.send|send(1:0){}[0]
+    final inline fun emit(kotlin/Function0<#A>) // com.davils.kontinuity.core.telemetry/EventSink.emit|emit(kotlin.Function0<1:0>){}[0]
+}
+
+final class <#A: kotlin/Any, #B: com.davils.kontinuity.core/Instance> com.davils.kontinuity.core.registry/Instances : com.davils.kontinuity.core.registry/Registry<#A, #B> { // com.davils.kontinuity.core.registry/Instances|null[0]
+    constructor <init>(com.davils.kontinuity.core/ResilienceKind, com.davils.kontinuity.core.registry/RegistrySettings<#A>, com.davils.kontinuity.core/Environment, kotlin/Function2<com.davils.kontinuity.core/InstanceName, #A, #B>) // com.davils.kontinuity.core.registry/Instances.<init>|<init>(com.davils.kontinuity.core.ResilienceKind;com.davils.kontinuity.core.registry.RegistrySettings<1:0>;com.davils.kontinuity.core.Environment;kotlin.Function2<com.davils.kontinuity.core.InstanceName,1:0,1:1>){}[0]
+
+    final val all // com.davils.kontinuity.core.registry/Instances.all|{}all[0]
+        final fun <get-all>(): kotlin.collections/List<#B> // com.davils.kontinuity.core.registry/Instances.all.<get-all>|<get-all>(){}[0]
+    final val events // com.davils.kontinuity.core.registry/Instances.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<com.davils.kontinuity.core.registry/RegistryEvent<#B>> // com.davils.kontinuity.core.registry/Instances.events.<get-events>|<get-events>(){}[0]
+    final val settings // com.davils.kontinuity.core.registry/Instances.settings|{}settings[0]
+        final fun <get-settings>(): com.davils.kontinuity.core.registry/RegistrySettings<#A> // com.davils.kontinuity.core.registry/Instances.settings.<get-settings>|<get-settings>(){}[0]
+
+    final fun find(kotlin/String): #B? // com.davils.kontinuity.core.registry/Instances.find|find(kotlin.String){}[0]
+    final fun getOrCreate(kotlin/String, #A): #B // com.davils.kontinuity.core.registry/Instances.getOrCreate|getOrCreate(kotlin.String;1:0){}[0]
+    final fun getOrCreate(kotlin/String, kotlin/String): #B // com.davils.kontinuity.core.registry/Instances.getOrCreate|getOrCreate(kotlin.String;kotlin.String){}[0]
+    final fun remove(kotlin/String): #B? // com.davils.kontinuity.core.registry/Instances.remove|remove(kotlin.String){}[0]
+    final fun replace(#B): #B? // com.davils.kontinuity.core.registry/Instances.replace|replace(1:1){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.core.registry/Instances.toString|toString(){}[0]
+}
+
+final class <#A: kotlin/Any> com.davils.kontinuity.core.registry/RegistrySettings : com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.core.registry/RegistrySettings|null[0]
+    final val configNames // com.davils.kontinuity.core.registry/RegistrySettings.configNames|{}configNames[0]
+        final fun <get-configNames>(): kotlin.collections/List<kotlin/String> // com.davils.kontinuity.core.registry/RegistrySettings.configNames.<get-configNames>|<get-configNames>(){}[0]
+    final val configs // com.davils.kontinuity.core.registry/RegistrySettings.configs|{}configs[0]
+        final fun <get-configs>(): kotlin.collections/Map<kotlin/String, #A> // com.davils.kontinuity.core.registry/RegistrySettings.configs.<get-configs>|<get-configs>(){}[0]
+    final val defaults // com.davils.kontinuity.core.registry/RegistrySettings.defaults|{}defaults[0]
+        final fun <get-defaults>(): #A // com.davils.kontinuity.core.registry/RegistrySettings.defaults.<get-defaults>|<get-defaults>(){}[0]
+    final val limits // com.davils.kontinuity.core.registry/RegistrySettings.limits|{}limits[0]
+        final fun <get-limits>(): com.davils.kontinuity.core.registry/InstanceLimits // com.davils.kontinuity.core.registry/RegistrySettings.limits.<get-limits>|<get-limits>(){}[0]
+
+    final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.core.registry/RegistrySettings.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+    final fun config(kotlin/String): #A? // com.davils.kontinuity.core.registry/RegistrySettings.config|config(kotlin.String){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.core.registry/RegistrySettings.toString|toString(){}[0]
+
+    final object Companion { // com.davils.kontinuity.core.registry/RegistrySettings.Companion|null[0]
+        final const val DEFAULT_CONFIG // com.davils.kontinuity.core.registry/RegistrySettings.Companion.DEFAULT_CONFIG|{}DEFAULT_CONFIG[0]
+            final fun <get-DEFAULT_CONFIG>(): kotlin/String // com.davils.kontinuity.core.registry/RegistrySettings.Companion.DEFAULT_CONFIG.<get-DEFAULT_CONFIG>|<get-DEFAULT_CONFIG>(){}[0]
+    }
+}
+
+final class <#A: kotlin/Any?> com.davils.kontinuity.core.fallback/Fallback : com.davils.kontinuity.core/Instance, com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.core.fallback/Fallback|null[0]
+    final val kind // com.davils.kontinuity.core.fallback/Fallback.kind|{}kind[0]
+        final fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.core.fallback/Fallback.kind.<get-kind>|<get-kind>(){}[0]
+    final val name // com.davils.kontinuity.core.fallback/Fallback.name|{}name[0]
+        final fun <get-name>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.core.fallback/Fallback.name.<get-name>|<get-name>(){}[0]
+    final val size // com.davils.kontinuity.core.fallback/Fallback.size|{}size[0]
+        final fun <get-size>(): kotlin/Int // com.davils.kontinuity.core.fallback/Fallback.size.<get-size>|<get-size>(){}[0]
+
+    final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.core.fallback/Fallback.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.core.fallback/Fallback.toString|toString(){}[0]
+    final suspend fun execute(kotlin.coroutines/SuspendFunction0<#A>): #A // com.davils.kontinuity.core.fallback/Fallback.execute|execute(kotlin.coroutines.SuspendFunction0<1:0>){}[0]
+    final suspend fun recover(kotlin/Throwable): #A // com.davils.kontinuity.core.fallback/Fallback.recover|recover(kotlin.Throwable){}[0]
+
+    final object Companion { // com.davils.kontinuity.core.fallback/Fallback.Companion|null[0]
+        final const val HARD_HANDLERS // com.davils.kontinuity.core.fallback/Fallback.Companion.HARD_HANDLERS|{}HARD_HANDLERS[0]
+            final fun <get-HARD_HANDLERS>(): kotlin/Int // com.davils.kontinuity.core.fallback/Fallback.Companion.HARD_HANDLERS.<get-HARD_HANDLERS>|<get-HARD_HANDLERS>(){}[0]
+    }
+}
+
+final class <#A: kotlin/Any?> com.davils.kontinuity.core.fallback/FallbackBuilder : com.davils.kore.core.dsl/ValidatingBuilder<com.davils.kontinuity.core.fallback/Fallback<#A>> { // com.davils.kontinuity.core.fallback/FallbackBuilder|null[0]
+    final fun addHandler(kotlin/Function1<kotlin/Throwable, kotlin/Throwable?>, kotlin.coroutines/SuspendFunction1<kotlin/Throwable, #A>) // com.davils.kontinuity.core.fallback/FallbackBuilder.addHandler|addHandler(kotlin.Function1<kotlin.Throwable,kotlin.Throwable?>;kotlin.coroutines.SuspendFunction1<kotlin.Throwable,1:0>){}[0]
+    final fun onRejected(kotlin.coroutines/SuspendFunction1<com.davils.kontinuity.core/CallRejectedException, #A>) // com.davils.kontinuity.core.fallback/FallbackBuilder.onRejected|onRejected(kotlin.coroutines.SuspendFunction1<com.davils.kontinuity.core.CallRejectedException,1:0>){}[0]
+    final fun onTimeout(kotlin.coroutines/SuspendFunction1<com.davils.kontinuity.core/CallTimeoutException, #A>) // com.davils.kontinuity.core.fallback/FallbackBuilder.onTimeout|onTimeout(kotlin.coroutines.SuspendFunction1<com.davils.kontinuity.core.CallTimeoutException,1:0>){}[0]
+    final fun otherwise(kotlin.coroutines/SuspendFunction1<kotlin/Throwable, #A>) // com.davils.kontinuity.core.fallback/FallbackBuilder.otherwise|otherwise(kotlin.coroutines.SuspendFunction1<kotlin.Throwable,1:0>){}[0]
+    final inline fun <#A1: reified kotlin/Throwable> on(noinline kotlin.coroutines/SuspendFunction1<#A1, #A>) // com.davils.kontinuity.core.fallback/FallbackBuilder.on|on(kotlin.coroutines.SuspendFunction1<0:0,1:0>){0§<kotlin.Throwable>}[0]
+}
+
+final class com.davils.kontinuity.core.filter/FailureFilter : com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.core.filter/FailureFilter|null[0]
+    final val isCauseChainSearched // com.davils.kontinuity.core.filter/FailureFilter.isCauseChainSearched|{}isCauseChainSearched[0]
+        final fun <get-isCauseChainSearched>(): kotlin/Boolean // com.davils.kontinuity.core.filter/FailureFilter.isCauseChainSearched.<get-isCauseChainSearched>|<get-isCauseChainSearched>(){}[0]
+    final val rules // com.davils.kontinuity.core.filter/FailureFilter.rules|{}rules[0]
+        final fun <get-rules>(): kotlin/Int // com.davils.kontinuity.core.filter/FailureFilter.rules.<get-rules>|<get-rules>(){}[0]
+
+    final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.core.filter/FailureFilter.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.core.filter/FailureFilter.toString|toString(){}[0]
+    final fun verdictOf(kotlin/Throwable): com.davils.kontinuity.core.filter/FailureVerdict // com.davils.kontinuity.core.filter/FailureFilter.verdictOf|verdictOf(kotlin.Throwable){}[0]
+
+    final object Companion { // com.davils.kontinuity.core.filter/FailureFilter.Companion|null[0]
+        final const val HARD_RULES // com.davils.kontinuity.core.filter/FailureFilter.Companion.HARD_RULES|{}HARD_RULES[0]
+            final fun <get-HARD_RULES>(): kotlin/Int // com.davils.kontinuity.core.filter/FailureFilter.Companion.HARD_RULES.<get-HARD_RULES>|<get-HARD_RULES>(){}[0]
+
+        final val RecordAll // com.davils.kontinuity.core.filter/FailureFilter.Companion.RecordAll|{}RecordAll[0]
+            final fun <get-RecordAll>(): com.davils.kontinuity.core.filter/FailureFilter // com.davils.kontinuity.core.filter/FailureFilter.Companion.RecordAll.<get-RecordAll>|<get-RecordAll>(){}[0]
+    }
+}
+
+final class com.davils.kontinuity.core.filter/FailureFilterBuilder : com.davils.kore.core.dsl/ValidatingBuilder<com.davils.kontinuity.core.filter/FailureFilter> { // com.davils.kontinuity.core.filter/FailureFilterBuilder|null[0]
+    final var isCauseChainSearched // com.davils.kontinuity.core.filter/FailureFilterBuilder.isCauseChainSearched|{}isCauseChainSearched[0]
+        final fun <get-isCauseChainSearched>(): kotlin/Boolean // com.davils.kontinuity.core.filter/FailureFilterBuilder.isCauseChainSearched.<get-isCauseChainSearched>|<get-isCauseChainSearched>(){}[0]
+        final fun <set-isCauseChainSearched>(kotlin/Boolean) // com.davils.kontinuity.core.filter/FailureFilterBuilder.isCauseChainSearched.<set-isCauseChainSearched>|<set-isCauseChainSearched>(kotlin.Boolean){}[0]
+
+    final fun ignore(kotlin.reflect/KClass<out kotlin/Throwable>) // com.davils.kontinuity.core.filter/FailureFilterBuilder.ignore|ignore(kotlin.reflect.KClass<out|kotlin.Throwable>){}[0]
+    final fun ignoreIf(kotlin/Function1<kotlin/Throwable, kotlin/Boolean>) // com.davils.kontinuity.core.filter/FailureFilterBuilder.ignoreIf|ignoreIf(kotlin.Function1<kotlin.Throwable,kotlin.Boolean>){}[0]
+    final fun record(kotlin.reflect/KClass<out kotlin/Throwable>) // com.davils.kontinuity.core.filter/FailureFilterBuilder.record|record(kotlin.reflect.KClass<out|kotlin.Throwable>){}[0]
+    final fun recordIf(kotlin/Function1<kotlin/Throwable, kotlin/Boolean>) // com.davils.kontinuity.core.filter/FailureFilterBuilder.recordIf|recordIf(kotlin.Function1<kotlin.Throwable,kotlin.Boolean>){}[0]
+    final inline fun <#A1: reified kotlin/Throwable> ignore() // com.davils.kontinuity.core.filter/FailureFilterBuilder.ignore|ignore(){0§<kotlin.Throwable>}[0]
+    final inline fun <#A1: reified kotlin/Throwable> record() // com.davils.kontinuity.core.filter/FailureFilterBuilder.record|record(){0§<kotlin.Throwable>}[0]
+}
+
+final class com.davils.kontinuity.core.filter/ResultFilter : com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.core.filter/ResultFilter|null[0]
+    final val isEmpty // com.davils.kontinuity.core.filter/ResultFilter.isEmpty|{}isEmpty[0]
+        final fun <get-isEmpty>(): kotlin/Boolean // com.davils.kontinuity.core.filter/ResultFilter.isEmpty.<get-isEmpty>|<get-isEmpty>(){}[0]
+    final val rules // com.davils.kontinuity.core.filter/ResultFilter.rules|{}rules[0]
+        final fun <get-rules>(): kotlin/Int // com.davils.kontinuity.core.filter/ResultFilter.rules.<get-rules>|<get-rules>(){}[0]
+
+    final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.core.filter/ResultFilter.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+    final fun isFailure(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.core.filter/ResultFilter.isFailure|isFailure(kotlin.Any?){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.core.filter/ResultFilter.toString|toString(){}[0]
+
+    final object Companion { // com.davils.kontinuity.core.filter/ResultFilter.Companion|null[0]
+        final val None // com.davils.kontinuity.core.filter/ResultFilter.Companion.None|{}None[0]
+            final fun <get-None>(): com.davils.kontinuity.core.filter/ResultFilter // com.davils.kontinuity.core.filter/ResultFilter.Companion.None.<get-None>|<get-None>(){}[0]
+    }
+}
+
+final class com.davils.kontinuity.core.filter/ResultFilterBuilder : com.davils.kore.core.dsl/ValidatingBuilder<com.davils.kontinuity.core.filter/ResultFilter> { // com.davils.kontinuity.core.filter/ResultFilterBuilder|null[0]
+    final fun addRule(kotlin.reflect/KClass<*>, kotlin/Function1<kotlin/Any, kotlin/Boolean>) // com.davils.kontinuity.core.filter/ResultFilterBuilder.addRule|addRule(kotlin.reflect.KClass<*>;kotlin.Function1<kotlin.Any,kotlin.Boolean>){}[0]
+    final fun failIfNull() // com.davils.kontinuity.core.filter/ResultFilterBuilder.failIfNull|failIfNull(){}[0]
+    final inline fun <#A1: reified kotlin/Any> failIf(noinline kotlin/Function1<#A1, kotlin/Boolean>) // com.davils.kontinuity.core.filter/ResultFilterBuilder.failIf|failIf(kotlin.Function1<0:0,kotlin.Boolean>){0§<kotlin.Any>}[0]
+}
+
+final class com.davils.kontinuity.core.registry/InstanceLimitException : kotlin/IllegalStateException { // com.davils.kontinuity.core.registry/InstanceLimitException|null[0]
+    final val kind // com.davils.kontinuity.core.registry/InstanceLimitException.kind|{}kind[0]
+        final fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.core.registry/InstanceLimitException.kind.<get-kind>|<get-kind>(){}[0]
+    final val maximum // com.davils.kontinuity.core.registry/InstanceLimitException.maximum|{}maximum[0]
+        final fun <get-maximum>(): kotlin/Int // com.davils.kontinuity.core.registry/InstanceLimitException.maximum.<get-maximum>|<get-maximum>(){}[0]
+}
+
+final class com.davils.kontinuity.core.registry/InstanceLimits : com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.core.registry/InstanceLimits|null[0]
+    final val maximumConfigs // com.davils.kontinuity.core.registry/InstanceLimits.maximumConfigs|{}maximumConfigs[0]
+        final fun <get-maximumConfigs>(): kotlin/Int // com.davils.kontinuity.core.registry/InstanceLimits.maximumConfigs.<get-maximumConfigs>|<get-maximumConfigs>(){}[0]
+    final val maximumInstances // com.davils.kontinuity.core.registry/InstanceLimits.maximumInstances|{}maximumInstances[0]
+        final fun <get-maximumInstances>(): kotlin/Int // com.davils.kontinuity.core.registry/InstanceLimits.maximumInstances.<get-maximumInstances>|<get-maximumInstances>(){}[0]
+
+    final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.core.registry/InstanceLimits.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.core.registry/InstanceLimits.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.davils.kontinuity.core.registry/InstanceLimits.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.core.registry/InstanceLimits.toString|toString(){}[0]
+
+    final object Companion { // com.davils.kontinuity.core.registry/InstanceLimits.Companion|null[0]
+        final const val HARD_CONFIGS // com.davils.kontinuity.core.registry/InstanceLimits.Companion.HARD_CONFIGS|{}HARD_CONFIGS[0]
+            final fun <get-HARD_CONFIGS>(): kotlin/Int // com.davils.kontinuity.core.registry/InstanceLimits.Companion.HARD_CONFIGS.<get-HARD_CONFIGS>|<get-HARD_CONFIGS>(){}[0]
+        final const val HARD_INSTANCES // com.davils.kontinuity.core.registry/InstanceLimits.Companion.HARD_INSTANCES|{}HARD_INSTANCES[0]
+            final fun <get-HARD_INSTANCES>(): kotlin/Int // com.davils.kontinuity.core.registry/InstanceLimits.Companion.HARD_INSTANCES.<get-HARD_INSTANCES>|<get-HARD_INSTANCES>(){}[0]
+
+        final val Default // com.davils.kontinuity.core.registry/InstanceLimits.Companion.Default|{}Default[0]
+            final fun <get-Default>(): com.davils.kontinuity.core.registry/InstanceLimits // com.davils.kontinuity.core.registry/InstanceLimits.Companion.Default.<get-Default>|<get-Default>(){}[0]
+    }
+}
+
+final class com.davils.kontinuity.core.registry/InstanceLimitsBuilder : com.davils.kore.core.dsl/ValidatingBuilder<com.davils.kontinuity.core.registry/InstanceLimits> { // com.davils.kontinuity.core.registry/InstanceLimitsBuilder|null[0]
+    final var maximumConfigs // com.davils.kontinuity.core.registry/InstanceLimitsBuilder.maximumConfigs|{}maximumConfigs[0]
+        final fun <get-maximumConfigs>(): kotlin/Int // com.davils.kontinuity.core.registry/InstanceLimitsBuilder.maximumConfigs.<get-maximumConfigs>|<get-maximumConfigs>(){}[0]
+        final fun <set-maximumConfigs>(kotlin/Int) // com.davils.kontinuity.core.registry/InstanceLimitsBuilder.maximumConfigs.<set-maximumConfigs>|<set-maximumConfigs>(kotlin.Int){}[0]
+    final var maximumInstances // com.davils.kontinuity.core.registry/InstanceLimitsBuilder.maximumInstances|{}maximumInstances[0]
+        final fun <get-maximumInstances>(): kotlin/Int // com.davils.kontinuity.core.registry/InstanceLimitsBuilder.maximumInstances.<get-maximumInstances>|<get-maximumInstances>(){}[0]
+        final fun <set-maximumInstances>(kotlin/Int) // com.davils.kontinuity.core.registry/InstanceLimitsBuilder.maximumInstances.<set-maximumInstances>|<set-maximumInstances>(kotlin.Int){}[0]
+}
+
+final class com.davils.kontinuity.core/CallTimeoutException : kotlin/RuntimeException { // com.davils.kontinuity.core/CallTimeoutException|null[0]
+    constructor <init>(com.davils.kontinuity.core/InstanceName, kotlin.time/Duration) // com.davils.kontinuity.core/CallTimeoutException.<init>|<init>(com.davils.kontinuity.core.InstanceName;kotlin.time.Duration){}[0]
+
+    final val instance // com.davils.kontinuity.core/CallTimeoutException.instance|{}instance[0]
+        final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.core/CallTimeoutException.instance.<get-instance>|<get-instance>(){}[0]
+    final val timeout // com.davils.kontinuity.core/CallTimeoutException.timeout|{}timeout[0]
+        final fun <get-timeout>(): kotlin.time/Duration // com.davils.kontinuity.core/CallTimeoutException.timeout.<get-timeout>|<get-timeout>(){}[0]
+}
+
+final class com.davils.kontinuity.core/Environment : com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.core/Environment|null[0]
+    final val entropy // com.davils.kontinuity.core/Environment.entropy|{}entropy[0]
+        final fun <get-entropy>(): com.davils.konfetti.core.bus/Entropy // com.davils.kontinuity.core/Environment.entropy.<get-entropy>|<get-entropy>(){}[0]
+    final val eventCapacity // com.davils.kontinuity.core/Environment.eventCapacity|{}eventCapacity[0]
+        final fun <get-eventCapacity>(): kotlin/Int // com.davils.kontinuity.core/Environment.eventCapacity.<get-eventCapacity>|<get-eventCapacity>(){}[0]
+    final val events // com.davils.kontinuity.core/Environment.events|{}events[0]
+        final fun <get-events>(): com.davils.konfetti.core/EventBus? // com.davils.kontinuity.core/Environment.events.<get-events>|<get-events>(){}[0]
+    final val meters // com.davils.kontinuity.core/Environment.meters|{}meters[0]
+        final fun <get-meters>(): com.davils.kollect.core/MeterRegistry? // com.davils.kontinuity.core/Environment.meters.<get-meters>|<get-meters>(){}[0]
+    final val scope // com.davils.kontinuity.core/Environment.scope|{}scope[0]
+        final fun <get-scope>(): kotlinx.coroutines/CoroutineScope? // com.davils.kontinuity.core/Environment.scope.<get-scope>|<get-scope>(){}[0]
+    final val timeSource // com.davils.kontinuity.core/Environment.timeSource|{}timeSource[0]
+        final fun <get-timeSource>(): kotlin.time/TimeSource.WithComparableMarks // com.davils.kontinuity.core/Environment.timeSource.<get-timeSource>|<get-timeSource>(){}[0]
+    final val tracer // com.davils.kontinuity.core/Environment.tracer|{}tracer[0]
+        final fun <get-tracer>(): com.davils.kollect.core.trace/Tracer // com.davils.kontinuity.core/Environment.tracer.<get-tracer>|<get-tracer>(){}[0]
+
+    final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.core/Environment.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.core/Environment.toString|toString(){}[0]
+
+    final object Companion { // com.davils.kontinuity.core/Environment.Companion|null[0]
+        final const val HARD_EVENT_CAPACITY // com.davils.kontinuity.core/Environment.Companion.HARD_EVENT_CAPACITY|{}HARD_EVENT_CAPACITY[0]
+            final fun <get-HARD_EVENT_CAPACITY>(): kotlin/Int // com.davils.kontinuity.core/Environment.Companion.HARD_EVENT_CAPACITY.<get-HARD_EVENT_CAPACITY>|<get-HARD_EVENT_CAPACITY>(){}[0]
+
+        final val Default // com.davils.kontinuity.core/Environment.Companion.Default|{}Default[0]
+            final fun <get-Default>(): com.davils.kontinuity.core/Environment // com.davils.kontinuity.core/Environment.Companion.Default.<get-Default>|<get-Default>(){}[0]
+    }
+}
+
+final class com.davils.kontinuity.core/EnvironmentBuilder : com.davils.kore.core.dsl/ValidatingBuilder<com.davils.kontinuity.core/Environment> { // com.davils.kontinuity.core/EnvironmentBuilder|null[0]
+    final var entropy // com.davils.kontinuity.core/EnvironmentBuilder.entropy|{}entropy[0]
+        final fun <get-entropy>(): com.davils.konfetti.core.bus/Entropy // com.davils.kontinuity.core/EnvironmentBuilder.entropy.<get-entropy>|<get-entropy>(){}[0]
+        final fun <set-entropy>(com.davils.konfetti.core.bus/Entropy) // com.davils.kontinuity.core/EnvironmentBuilder.entropy.<set-entropy>|<set-entropy>(com.davils.konfetti.core.bus.Entropy){}[0]
+    final var eventCapacity // com.davils.kontinuity.core/EnvironmentBuilder.eventCapacity|{}eventCapacity[0]
+        final fun <get-eventCapacity>(): kotlin/Int // com.davils.kontinuity.core/EnvironmentBuilder.eventCapacity.<get-eventCapacity>|<get-eventCapacity>(){}[0]
+        final fun <set-eventCapacity>(kotlin/Int) // com.davils.kontinuity.core/EnvironmentBuilder.eventCapacity.<set-eventCapacity>|<set-eventCapacity>(kotlin.Int){}[0]
+    final var timeSource // com.davils.kontinuity.core/EnvironmentBuilder.timeSource|{}timeSource[0]
+        final fun <get-timeSource>(): kotlin.time/TimeSource.WithComparableMarks // com.davils.kontinuity.core/EnvironmentBuilder.timeSource.<get-timeSource>|<get-timeSource>(){}[0]
+        final fun <set-timeSource>(kotlin.time/TimeSource.WithComparableMarks) // com.davils.kontinuity.core/EnvironmentBuilder.timeSource.<set-timeSource>|<set-timeSource>(kotlin.time.TimeSource.WithComparableMarks){}[0]
+    final var tracer // com.davils.kontinuity.core/EnvironmentBuilder.tracer|{}tracer[0]
+        final fun <get-tracer>(): com.davils.kollect.core.trace/Tracer // com.davils.kontinuity.core/EnvironmentBuilder.tracer.<get-tracer>|<get-tracer>(){}[0]
+        final fun <set-tracer>(com.davils.kollect.core.trace/Tracer) // com.davils.kontinuity.core/EnvironmentBuilder.tracer.<set-tracer>|<set-tracer>(com.davils.kollect.core.trace.Tracer){}[0]
+
+    final fun events(com.davils.konfetti.core/EventBus) // com.davils.kontinuity.core/EnvironmentBuilder.events|events(com.davils.konfetti.core.EventBus){}[0]
+    final fun meters(com.davils.kollect.core/MeterRegistry) // com.davils.kontinuity.core/EnvironmentBuilder.meters|meters(com.davils.kollect.core.MeterRegistry){}[0]
+    final fun scope(kotlinx.coroutines/CoroutineScope) // com.davils.kontinuity.core/EnvironmentBuilder.scope|scope(kotlinx.coroutines.CoroutineScope){}[0]
+}
+
+final value class com.davils.kontinuity.core/InstanceName { // com.davils.kontinuity.core/InstanceName|null[0]
+    final val value // com.davils.kontinuity.core/InstanceName.value|{}value[0]
+        final fun <get-value>(): kotlin/String // com.davils.kontinuity.core/InstanceName.value.<get-value>|<get-value>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.core/InstanceName.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.davils.kontinuity.core/InstanceName.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.core/InstanceName.toString|toString(){}[0]
+
+    final object Companion { // com.davils.kontinuity.core/InstanceName.Companion|null[0]
+        final const val MAXIMUM_LENGTH // com.davils.kontinuity.core/InstanceName.Companion.MAXIMUM_LENGTH|{}MAXIMUM_LENGTH[0]
+            final fun <get-MAXIMUM_LENGTH>(): kotlin/Int // com.davils.kontinuity.core/InstanceName.Companion.MAXIMUM_LENGTH.<get-MAXIMUM_LENGTH>|<get-MAXIMUM_LENGTH>(){}[0]
+
+        final val RULE // com.davils.kontinuity.core/InstanceName.Companion.RULE|{}RULE[0]
+            final fun <get-RULE>(): com.davils.kore.core.naming/NameRule // com.davils.kontinuity.core/InstanceName.Companion.RULE.<get-RULE>|<get-RULE>(){}[0]
+
+        final fun isValid(kotlin/CharSequence): kotlin/Boolean // com.davils.kontinuity.core/InstanceName.Companion.isValid|isValid(kotlin.CharSequence){}[0]
+        final fun of(kotlin/String): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.core/InstanceName.Companion.of|of(kotlin.String){}[0]
+        final fun ofOrNull(kotlin/String): com.davils.kontinuity.core/InstanceName? // com.davils.kontinuity.core/InstanceName.Companion.ofOrNull|ofOrNull(kotlin.String){}[0]
+    }
+}
+
+open class com.davils.kontinuity.core/CallRejectedException : kotlin/RuntimeException { // com.davils.kontinuity.core/CallRejectedException|null[0]
+    constructor <init>(com.davils.kontinuity.core/InstanceName, com.davils.kontinuity.core/ResilienceKind, kotlin/String) // com.davils.kontinuity.core/CallRejectedException.<init>|<init>(com.davils.kontinuity.core.InstanceName;com.davils.kontinuity.core.ResilienceKind;kotlin.String){}[0]
+
+    final val instance // com.davils.kontinuity.core/CallRejectedException.instance|{}instance[0]
+        final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.core/CallRejectedException.instance.<get-instance>|<get-instance>(){}[0]
+    final val kind // com.davils.kontinuity.core/CallRejectedException.kind|{}kind[0]
+        final fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.core/CallRejectedException.kind.<get-kind>|<get-kind>(){}[0]
+}
+
+final object com.davils.kontinuity.core.telemetry/SecureEntropy : com.davils.konfetti.core.bus/Entropy { // com.davils.kontinuity.core.telemetry/SecureEntropy|null[0]
+    final fun nextLong(): kotlin/Long // com.davils.kontinuity.core.telemetry/SecureEntropy.nextLong|nextLong(){}[0]
+}
+
+final fun (com.davils.konfetti.core.bus/Entropy).com.davils.kontinuity.core.telemetry/nextFraction(): kotlin/Double // com.davils.kontinuity.core.telemetry/nextFraction|nextFraction@com.davils.konfetti.core.bus.Entropy(){}[0]
+final fun (com.davils.kontinuity.core.backoff/Backoff).com.davils.kontinuity.core.backoff/delayBefore(kotlin/Int, kotlin.time/Duration, com.davils.konfetti.core.bus/Entropy): kotlin.time/Duration // com.davils.kontinuity.core.backoff/delayBefore|delayBefore@com.davils.kontinuity.core.backoff.Backoff(kotlin.Int;kotlin.time.Duration;com.davils.konfetti.core.bus.Entropy){}[0]
+final fun (com.davils.kontinuity.core.backoff/Backoff).com.davils.kontinuity.core.backoff/jittered(com.davils.kontinuity.core.backoff/Jitter): com.davils.kontinuity.core.backoff/Backoff // com.davils.kontinuity.core.backoff/jittered|jittered@com.davils.kontinuity.core.backoff.Backoff(com.davils.kontinuity.core.backoff.Jitter){}[0]
+final fun (kotlin/Throwable).com.davils.kontinuity.core/causeChain(): kotlin.collections/List<kotlin/Throwable> // com.davils.kontinuity.core/causeChain|causeChain@kotlin.Throwable(){}[0]
+final fun (kotlin/Throwable).com.davils.kontinuity.core/rejectionOrNull(): com.davils.kontinuity.core/CallRejectedException? // com.davils.kontinuity.core/rejectionOrNull|rejectionOrNull@kotlin.Throwable(){}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?> (com.davils.kontinuity.core/Stage).com.davils.kontinuity.core/decorateFunction(kotlin.coroutines/SuspendFunction2<#A, #B, #C>): kotlin.coroutines/SuspendFunction2<#A, #B, #C> // com.davils.kontinuity.core/decorateFunction|decorateFunction@com.davils.kontinuity.core.Stage(kotlin.coroutines.SuspendFunction2<0:0,0:1,0:2>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.davils.kontinuity.core/Stage).com.davils.kontinuity.core/decorateFunction(kotlin.coroutines/SuspendFunction1<#A, #B>): kotlin.coroutines/SuspendFunction1<#A, #B> // com.davils.kontinuity.core/decorateFunction|decorateFunction@com.davils.kontinuity.core.Stage(kotlin.coroutines.SuspendFunction1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.davils.kontinuity.core/Stage).com.davils.kontinuity.core/decorate(kotlin.coroutines/SuspendFunction0<#A>): kotlin.coroutines/SuspendFunction0<#A> // com.davils.kontinuity.core/decorate|decorate@com.davils.kontinuity.core.Stage(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (kotlinx.coroutines.flow/Flow<#A>).com.davils.kontinuity.core/through(com.davils.kontinuity.core/Stage): kotlinx.coroutines.flow/Flow<#A> // com.davils.kontinuity.core/through|through@kotlinx.coroutines.flow.Flow<0:0>(com.davils.kontinuity.core.Stage){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> com.davils.kontinuity.core.fallback/fallback(kotlin/String, kotlin/Function1<com.davils.kontinuity.core.fallback/FallbackBuilder<#A>, kotlin/Unit>): com.davils.kontinuity.core.fallback/Fallback<#A> // com.davils.kontinuity.core.fallback/fallback|fallback(kotlin.String;kotlin.Function1<com.davils.kontinuity.core.fallback.FallbackBuilder<0:0>,kotlin.Unit>){0§<kotlin.Any?>}[0]
+final fun com.davils.kontinuity.core.backoff/exponential(kotlin.time/Duration, kotlin/Double = ..., kotlin.time/Duration = ...): com.davils.kontinuity.core.backoff/Backoff // com.davils.kontinuity.core.backoff/exponential|exponential(kotlin.time.Duration;kotlin.Double;kotlin.time.Duration){}[0]
+final fun com.davils.kontinuity.core.backoff/fixed(kotlin.time/Duration): com.davils.kontinuity.core.backoff/Backoff // com.davils.kontinuity.core.backoff/fixed|fixed(kotlin.time.Duration){}[0]
+final fun com.davils.kontinuity.core.backoff/proportional(kotlin/Double = ...): com.davils.kontinuity.core.backoff/Jitter // com.davils.kontinuity.core.backoff/proportional|proportional(kotlin.Double){}[0]
+final fun com.davils.kontinuity.core.filter/failures(kotlin/Function1<com.davils.kontinuity.core.filter/FailureFilterBuilder, kotlin/Unit>): com.davils.kontinuity.core.filter/FailureFilter // com.davils.kontinuity.core.filter/failures|failures(kotlin.Function1<com.davils.kontinuity.core.filter.FailureFilterBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.core.filter/results(kotlin/Function1<com.davils.kontinuity.core.filter/ResultFilterBuilder, kotlin/Unit>): com.davils.kontinuity.core.filter/ResultFilter // com.davils.kontinuity.core.filter/results|results(kotlin.Function1<com.davils.kontinuity.core.filter.ResultFilterBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.core.telemetry/guard(): com.davils.kontinuity.core.telemetry/Guard // com.davils.kontinuity.core.telemetry/guard|guard(){}[0]
+final fun com.davils.kontinuity.core/environment(com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.core/EnvironmentBuilder, kotlin/Unit>): com.davils.kontinuity.core/Environment // com.davils.kontinuity.core/environment|environment(com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.core.EnvironmentBuilder,kotlin.Unit>){}[0]
+final suspend fun <#A: kotlin/Any?> (com.davils.kontinuity.core/Stage).com.davils.kontinuity.core/attempt(kotlin.coroutines/SuspendFunction0<#A>): com.davils.kore.core.outcome/Outcome<#A, com.davils.kontinuity.core/CallFailure> // com.davils.kontinuity.core/attempt|attempt@com.davils.kontinuity.core.Stage(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> (com.davils.kontinuity.core/Stage).com.davils.kontinuity.core/invoke(kotlin.coroutines/SuspendFunction0<#A>): #A // com.davils.kontinuity.core/invoke|invoke@com.davils.kontinuity.core.Stage(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]

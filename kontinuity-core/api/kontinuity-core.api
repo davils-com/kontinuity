@@ -1,0 +1,421 @@
+public abstract interface class com/davils/kontinuity/core/CallFailure {
+	public abstract fun getCause ()Ljava/lang/Throwable;
+}
+
+public final class com/davils/kontinuity/core/CallFailure$Failed : com/davils/kontinuity/core/CallFailure {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/core/CallFailure$Rejected : com/davils/kontinuity/core/CallFailure {
+	public fun <init> (Lcom/davils/kontinuity/core/CallRejectedException;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Lcom/davils/kontinuity/core/CallRejectedException;
+	public synthetic fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public class com/davils/kontinuity/core/CallRejectedException : java/lang/RuntimeException {
+	public synthetic fun <init> (Ljava/lang/String;Lcom/davils/kontinuity/core/ResilienceKind;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+}
+
+public final class com/davils/kontinuity/core/CallTimeoutException : java/lang/RuntimeException {
+	public synthetic fun <init> (Ljava/lang/String;JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getTimeout-UwyO8pc ()J
+}
+
+public final class com/davils/kontinuity/core/Environment : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/core/Environment$Companion;
+	public static final field HARD_EVENT_CAPACITY I
+	public final fun getEntropy ()Lcom/davils/konfetti/core/bus/Entropy;
+	public final fun getEventCapacity ()I
+	public final fun getEvents ()Lcom/davils/konfetti/core/EventBus;
+	public final fun getMeters ()Lcom/davils/kollect/core/MeterRegistry;
+	public final fun getScope ()Lkotlinx/coroutines/CoroutineScope;
+	public final fun getTimeSource ()Lkotlin/time/TimeSource$WithComparableMarks;
+	public final fun getTracer ()Lcom/davils/kollect/core/trace/Tracer;
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/core/Environment$Companion {
+	public final fun getDefault ()Lcom/davils/kontinuity/core/Environment;
+}
+
+public final class com/davils/kontinuity/core/EnvironmentBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun events (Lcom/davils/konfetti/core/EventBus;)V
+	public final fun getEntropy ()Lcom/davils/konfetti/core/bus/Entropy;
+	public final fun getEventCapacity ()I
+	public final fun getTimeSource ()Lkotlin/time/TimeSource$WithComparableMarks;
+	public final fun getTracer ()Lcom/davils/kollect/core/trace/Tracer;
+	public final fun meters (Lcom/davils/kollect/core/MeterRegistry;)V
+	public final fun scope (Lkotlinx/coroutines/CoroutineScope;)V
+	public final fun setEntropy (Lcom/davils/konfetti/core/bus/Entropy;)V
+	public final fun setEventCapacity (I)V
+	public final fun setTimeSource (Lkotlin/time/TimeSource$WithComparableMarks;)V
+	public final fun setTracer (Lcom/davils/kollect/core/trace/Tracer;)V
+}
+
+public final class com/davils/kontinuity/core/EnvironmentsKt {
+	public static final fun environment (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/core/Environment;
+	public static synthetic fun environment$default (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/core/Environment;
+}
+
+public abstract interface class com/davils/kontinuity/core/Instance {
+	public abstract fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public abstract fun getName-KZg1Yg0 ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/core/InstanceName {
+	public static final field Companion Lcom/davils/kontinuity/core/InstanceName$Companion;
+	public static final field MAXIMUM_LENGTH I
+	public static final synthetic fun box-impl (Ljava/lang/String;)Lcom/davils/kontinuity/core/InstanceName;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/core/InstanceName$Companion {
+	public final fun getRULE ()Lcom/davils/kore/core/naming/NameRule;
+	public final fun isValid (Ljava/lang/CharSequence;)Z
+	public final fun of-bAj7mkM (Ljava/lang/String;)Ljava/lang/String;
+	public final fun ofOrNull-UbwjdFI (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/core/RejectionsKt {
+	public static final fun causeChain (Ljava/lang/Throwable;)Ljava/util/List;
+	public static final fun rejectionOrNull (Ljava/lang/Throwable;)Lcom/davils/kontinuity/core/CallRejectedException;
+}
+
+public abstract interface class com/davils/kontinuity/core/ResilienceEvent : com/davils/konfetti/core/Event {
+	public abstract fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public abstract fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+}
+
+public final class com/davils/kontinuity/core/ResilienceKind : java/lang/Enum {
+	public static final field Bulkhead Lcom/davils/kontinuity/core/ResilienceKind;
+	public static final field Cache Lcom/davils/kontinuity/core/ResilienceKind;
+	public static final field CircuitBreaker Lcom/davils/kontinuity/core/ResilienceKind;
+	public static final field DispatcherBulkhead Lcom/davils/kontinuity/core/ResilienceKind;
+	public static final field Fallback Lcom/davils/kontinuity/core/ResilienceKind;
+	public static final field Hedge Lcom/davils/kontinuity/core/ResilienceKind;
+	public static final field Policy Lcom/davils/kontinuity/core/ResilienceKind;
+	public static final field RateLimiter Lcom/davils/kontinuity/core/ResilienceKind;
+	public static final field Retry Lcom/davils/kontinuity/core/ResilienceKind;
+	public static final field TimeLimiter Lcom/davils/kontinuity/core/ResilienceKind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getId ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/davils/kontinuity/core/ResilienceKind;
+	public static fun values ()[Lcom/davils/kontinuity/core/ResilienceKind;
+}
+
+public abstract interface class com/davils/kontinuity/core/Stage : com/davils/kontinuity/core/Instance {
+	public abstract fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/davils/kontinuity/core/StagesKt {
+	public static final fun attempt (Lcom/davils/kontinuity/core/Stage;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun decorate (Lcom/davils/kontinuity/core/Stage;Lkotlin/jvm/functions/Function1;)Lkotlin/jvm/functions/Function1;
+	public static final fun decorateFunction (Lcom/davils/kontinuity/core/Stage;Lkotlin/jvm/functions/Function2;)Lkotlin/jvm/functions/Function2;
+	public static final fun decorateFunction (Lcom/davils/kontinuity/core/Stage;Lkotlin/jvm/functions/Function3;)Lkotlin/jvm/functions/Function3;
+	public static final fun invoke (Lcom/davils/kontinuity/core/Stage;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun through (Lkotlinx/coroutines/flow/Flow;Lcom/davils/kontinuity/core/Stage;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public abstract interface class com/davils/kontinuity/core/backoff/Backoff : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/core/backoff/Backoff$Companion;
+	public static final field HARD_MULTIPLIER D
+	public abstract fun getMaximum-UwyO8pc ()J
+}
+
+public final class com/davils/kontinuity/core/backoff/Backoff$Companion {
+	public static final field HARD_MULTIPLIER D
+	public final fun getHARD_MAXIMUM_DELAY-UwyO8pc ()J
+}
+
+public final class com/davils/kontinuity/core/backoff/Backoff$Exponential : com/davils/kontinuity/core/backoff/Backoff {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInitial-UwyO8pc ()J
+	public fun getMaximum-UwyO8pc ()J
+	public final fun getMultiplier ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/core/backoff/Backoff$Fixed : com/davils/kontinuity/core/backoff/Backoff {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDelay-UwyO8pc ()J
+	public fun getMaximum-UwyO8pc ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/core/backoff/Backoff$Jittered : com/davils/kontinuity/core/backoff/Backoff {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBase ()Lcom/davils/kontinuity/core/backoff/Backoff;
+	public final fun getJitter ()Lcom/davils/kontinuity/core/backoff/Jitter;
+	public fun getMaximum-UwyO8pc ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/core/backoff/BackoffsKt {
+	public static final fun delayBefore-exY8QGI (Lcom/davils/kontinuity/core/backoff/Backoff;IJLcom/davils/konfetti/core/bus/Entropy;)J
+	public static final fun exponential-GfyngbY (JDJ)Lcom/davils/kontinuity/core/backoff/Backoff;
+	public static synthetic fun exponential-GfyngbY$default (JDJILjava/lang/Object;)Lcom/davils/kontinuity/core/backoff/Backoff;
+	public static final fun fixed-LRDsOJo (J)Lcom/davils/kontinuity/core/backoff/Backoff;
+	public static final fun jittered (Lcom/davils/kontinuity/core/backoff/Backoff;Lcom/davils/kontinuity/core/backoff/Jitter;)Lcom/davils/kontinuity/core/backoff/Backoff;
+	public static final fun proportional (D)Lcom/davils/kontinuity/core/backoff/Jitter;
+	public static synthetic fun proportional$default (DILjava/lang/Object;)Lcom/davils/kontinuity/core/backoff/Jitter;
+}
+
+public abstract interface class com/davils/kontinuity/core/backoff/Jitter {
+}
+
+public final class com/davils/kontinuity/core/backoff/Jitter$Decorrelated : com/davils/kontinuity/core/backoff/Jitter {
+	public static final field INSTANCE Lcom/davils/kontinuity/core/backoff/Jitter$Decorrelated;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/core/backoff/Jitter$Equal : com/davils/kontinuity/core/backoff/Jitter {
+	public static final field INSTANCE Lcom/davils/kontinuity/core/backoff/Jitter$Equal;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/core/backoff/Jitter$Full : com/davils/kontinuity/core/backoff/Jitter {
+	public static final field INSTANCE Lcom/davils/kontinuity/core/backoff/Jitter$Full;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/core/backoff/Jitter$Proportional : com/davils/kontinuity/core/backoff/Jitter {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFactor ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/core/fallback/Fallback : com/davils/kontinuity/core/Instance, com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/core/fallback/Fallback$Companion;
+	public static final field HARD_HANDLERS I
+	public final fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getSize ()I
+	public final fun recover (Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/core/fallback/Fallback$Companion {
+}
+
+public final class com/davils/kontinuity/core/fallback/FallbackBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public final fun addHandler (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)V
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun onRejected (Lkotlin/jvm/functions/Function2;)V
+	public final fun onTimeout (Lkotlin/jvm/functions/Function2;)V
+	public final fun otherwise (Lkotlin/jvm/functions/Function2;)V
+}
+
+public final class com/davils/kontinuity/core/fallback/FallbacksKt {
+	public static final fun fallback (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/core/fallback/Fallback;
+}
+
+public final class com/davils/kontinuity/core/filter/FailureFilter : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/core/filter/FailureFilter$Companion;
+	public static final field HARD_RULES I
+	public final fun getRules ()I
+	public final fun isCauseChainSearched ()Z
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+	public final fun verdictOf (Ljava/lang/Throwable;)Lcom/davils/kontinuity/core/filter/FailureVerdict;
+}
+
+public final class com/davils/kontinuity/core/filter/FailureFilter$Companion {
+	public final fun getRecordAll ()Lcom/davils/kontinuity/core/filter/FailureFilter;
+}
+
+public final class com/davils/kontinuity/core/filter/FailureFilterBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun ignore (Lkotlin/reflect/KClass;)V
+	public final fun ignoreIf (Lkotlin/jvm/functions/Function1;)V
+	public final fun isCauseChainSearched ()Z
+	public final fun record (Lkotlin/reflect/KClass;)V
+	public final fun recordIf (Lkotlin/jvm/functions/Function1;)V
+	public final fun setCauseChainSearched (Z)V
+}
+
+public final class com/davils/kontinuity/core/filter/FailureVerdict : java/lang/Enum {
+	public static final field Ignored Lcom/davils/kontinuity/core/filter/FailureVerdict;
+	public static final field Passed Lcom/davils/kontinuity/core/filter/FailureVerdict;
+	public static final field Recorded Lcom/davils/kontinuity/core/filter/FailureVerdict;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/davils/kontinuity/core/filter/FailureVerdict;
+	public static fun values ()[Lcom/davils/kontinuity/core/filter/FailureVerdict;
+}
+
+public final class com/davils/kontinuity/core/filter/FiltersKt {
+	public static final fun failures (Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/core/filter/FailureFilter;
+	public static final fun results (Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/core/filter/ResultFilter;
+}
+
+public final class com/davils/kontinuity/core/filter/ResultFilter : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/core/filter/ResultFilter$Companion;
+	public final fun getRules ()I
+	public final fun isEmpty ()Z
+	public final fun isFailure (Ljava/lang/Object;)Z
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/core/filter/ResultFilter$Companion {
+	public final fun getNone ()Lcom/davils/kontinuity/core/filter/ResultFilter;
+}
+
+public final class com/davils/kontinuity/core/filter/ResultFilterBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public final fun addRule (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)V
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun failIfNull ()V
+}
+
+public final class com/davils/kontinuity/core/registry/InstanceLimitException : java/lang/IllegalStateException {
+	public final fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public final fun getMaximum ()I
+}
+
+public final class com/davils/kontinuity/core/registry/InstanceLimits : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/core/registry/InstanceLimits$Companion;
+	public static final field HARD_CONFIGS I
+	public static final field HARD_INSTANCES I
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMaximumConfigs ()I
+	public final fun getMaximumInstances ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/core/registry/InstanceLimits$Companion {
+	public final fun getDefault ()Lcom/davils/kontinuity/core/registry/InstanceLimits;
+}
+
+public final class com/davils/kontinuity/core/registry/InstanceLimitsBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun getMaximumConfigs ()I
+	public final fun getMaximumInstances ()I
+	public final fun setMaximumConfigs (I)V
+	public final fun setMaximumInstances (I)V
+}
+
+public final class com/davils/kontinuity/core/registry/Instances : com/davils/kontinuity/core/registry/Registry {
+	public fun <init> (Lcom/davils/kontinuity/core/ResilienceKind;Lcom/davils/kontinuity/core/registry/RegistrySettings;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function2;)V
+	public fun find (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun getAll ()Ljava/util/List;
+	public fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getOrCreate (Ljava/lang/String;Ljava/lang/Object;)Lcom/davils/kontinuity/core/Instance;
+	public final fun getOrCreate (Ljava/lang/String;Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun getSettings ()Lcom/davils/kontinuity/core/registry/RegistrySettings;
+	public fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun replace (Lcom/davils/kontinuity/core/Instance;)Lcom/davils/kontinuity/core/Instance;
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/davils/kontinuity/core/registry/Registry {
+	public abstract fun find (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public abstract fun getAll ()Ljava/util/List;
+	public abstract fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public abstract fun getSettings ()Lcom/davils/kontinuity/core/registry/RegistrySettings;
+	public abstract fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public abstract fun replace (Lcom/davils/kontinuity/core/Instance;)Lcom/davils/kontinuity/core/Instance;
+}
+
+public abstract class com/davils/kontinuity/core/registry/RegistryBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	protected fun <init> (Lcom/davils/kore/core/validation/Validatable;)V
+	protected final fun assemble ()Lcom/davils/kontinuity/core/registry/RegistrySettings;
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun config (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun config$default (Lcom/davils/kontinuity/core/registry/RegistryBuilder;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	protected abstract fun configBuilder (Lcom/davils/kore/core/validation/Validatable;)Lcom/davils/kore/core/dsl/ValidatingBuilder;
+	public final fun defaults (Lkotlin/jvm/functions/Function1;)V
+	protected fun getSubject ()Ljava/lang/String;
+	public final fun limits (Lkotlin/jvm/functions/Function1;)V
+}
+
+public abstract interface class com/davils/kontinuity/core/registry/RegistryEvent {
+	public abstract fun getInstance ()Lcom/davils/kontinuity/core/Instance;
+}
+
+public final class com/davils/kontinuity/core/registry/RegistryEvent$Added : com/davils/kontinuity/core/registry/RegistryEvent {
+	public fun getInstance ()Lcom/davils/kontinuity/core/Instance;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/core/registry/RegistryEvent$Removed : com/davils/kontinuity/core/registry/RegistryEvent {
+	public fun getInstance ()Lcom/davils/kontinuity/core/Instance;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/core/registry/RegistryEvent$Replaced : com/davils/kontinuity/core/registry/RegistryEvent {
+	public fun getInstance ()Lcom/davils/kontinuity/core/Instance;
+	public final fun getPrevious ()Lcom/davils/kontinuity/core/Instance;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/core/registry/RegistrySettings : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/core/registry/RegistrySettings$Companion;
+	public static final field DEFAULT_CONFIG Ljava/lang/String;
+	public final fun config (Ljava/lang/String;)Ljava/lang/Object;
+	public final fun getConfigNames ()Ljava/util/List;
+	public final fun getConfigs ()Ljava/util/Map;
+	public final fun getDefaults ()Ljava/lang/Object;
+	public final fun getLimits ()Lcom/davils/kontinuity/core/registry/InstanceLimits;
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/core/registry/RegistrySettings$Companion {
+}
+
+public final class com/davils/kontinuity/core/telemetry/EventSink {
+	public fun <init> (Lcom/davils/kontinuity/core/Environment;Lcom/davils/konfetti/core/TopicKey;)V
+	public final fun emit (Lkotlin/jvm/functions/Function0;)V
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getRejected ()J
+	public final fun isListened ()Z
+	public final fun send (Lcom/davils/kontinuity/core/ResilienceEvent;)V
+}
+
+public final class com/davils/kontinuity/core/telemetry/FractionsKt {
+	public static final fun nextFraction (Lcom/davils/konfetti/core/bus/Entropy;)D
+}
+
+public abstract interface class com/davils/kontinuity/core/telemetry/Guard {
+	public abstract fun locked (Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+}
+
+public final class com/davils/kontinuity/core/telemetry/GuardsKt {
+	public static final fun guard ()Lcom/davils/kontinuity/core/telemetry/Guard;
+}
+
+public final class com/davils/kontinuity/core/telemetry/SecureEntropy : com/davils/konfetti/core/bus/Entropy {
+	public static final field INSTANCE Lcom/davils/kontinuity/core/telemetry/SecureEntropy;
+	public fun nextLong ()J
+}
+
