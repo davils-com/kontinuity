@@ -1,0 +1,155 @@
+public final class com/davils/kontinuity/timelimiter/DetachedLimitExceededException : com/davils/kontinuity/core/CallRejectedException {
+	public final fun getMaxDetached ()I
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiter : com/davils/kontinuity/core/Stage {
+	public fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun execute (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getConfig ()Lcom/davils/kontinuity/timelimiter/TimeLimiterConfig;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public final fun snapshot ()Lcom/davils/kontinuity/timelimiter/TimeLimiterSnapshot;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterConfig : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/timelimiter/TimeLimiterConfig$Companion;
+	public final fun getStrategy ()Lcom/davils/kontinuity/timelimiter/TimeoutStrategy;
+	public final fun getTimeout-UwyO8pc ()J
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterConfig$Companion {
+	public final fun getDefault ()Lcom/davils/kontinuity/timelimiter/TimeLimiterConfig;
+	public final fun getHARD_TIMEOUT-UwyO8pc ()J
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterConfigBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun getStrategy ()Lcom/davils/kontinuity/timelimiter/TimeoutStrategy;
+	public final fun getTimeout-UwyO8pc ()J
+	public final fun setStrategy (Lcom/davils/kontinuity/timelimiter/TimeoutStrategy;)V
+	public final fun setTimeout-LRDsOJo (J)V
+}
+
+public abstract interface class com/davils/kontinuity/timelimiter/TimeLimiterEvent : com/davils/kontinuity/core/ResilienceEvent {
+	public static final field Companion Lcom/davils/kontinuity/timelimiter/TimeLimiterEvent$Companion;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterEvent$Companion {
+	public final fun getTOPIC ()Lcom/davils/konfetti/core/TopicKey;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterEvent$DetachedFailed : com/davils/kontinuity/timelimiter/TimeLimiterEvent {
+	public final fun getFailureType ()Ljava/lang/String;
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterEvent$DetachedRejected : com/davils/kontinuity/timelimiter/TimeLimiterEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getMaxDetached ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterEvent$Failed : com/davils/kontinuity/timelimiter/TimeLimiterEvent {
+	public final fun getDuration-UwyO8pc ()J
+	public final fun getFailureType ()Ljava/lang/String;
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterEvent$Succeeded : com/davils/kontinuity/timelimiter/TimeLimiterEvent {
+	public final fun getDuration-UwyO8pc ()J
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterEvent$TimedOut : com/davils/kontinuity/timelimiter/TimeLimiterEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getTimeout-UwyO8pc ()J
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterInteropKt {
+	public static final fun executeBlocking (Lcom/davils/kontinuity/timelimiter/TimeLimiter;Lkotlinx/coroutines/CoroutineDispatcher;Lkotlin/jvm/functions/Function0;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun executeFuture (Lcom/davils/kontinuity/timelimiter/TimeLimiter;Lkotlin/jvm/functions/Function0;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterRegistry : com/davils/kontinuity/core/registry/Registry {
+	public synthetic fun find (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun find (Ljava/lang/String;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public fun getAll ()Ljava/util/List;
+	public final fun getEnvironment ()Lcom/davils/kontinuity/core/Environment;
+	public fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getSettings ()Lcom/davils/kontinuity/core/registry/RegistrySettings;
+	public synthetic fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public synthetic fun replace (Lcom/davils/kontinuity/core/Instance;)Lcom/davils/kontinuity/core/Instance;
+	public fun replace (Lcom/davils/kontinuity/timelimiter/TimeLimiter;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public final fun timeLimiter (Ljava/lang/String;Lcom/davils/kontinuity/timelimiter/TimeLimiterConfig;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public final fun timeLimiter (Ljava/lang/String;Ljava/lang/String;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public final fun timeLimiter (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public static synthetic fun timeLimiter$default (Lcom/davils/kontinuity/timelimiter/TimeLimiterRegistry;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public static synthetic fun timeLimiter$default (Lcom/davils/kontinuity/timelimiter/TimeLimiterRegistry;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterRegistryBuilder : com/davils/kontinuity/core/registry/RegistryBuilder {
+	public synthetic fun configBuilder (Lcom/davils/kore/core/validation/Validatable;)Lcom/davils/kore/core/dsl/ValidatingBuilder;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimiterSnapshot {
+	public final fun getCancelled ()J
+	public final fun getDetachedFailed ()J
+	public final fun getDetachedInFlight ()I
+	public final fun getFailed ()J
+	public final fun getRejected ()J
+	public final fun getSuccessful ()J
+	public final fun getTimedOut ()J
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeLimitersKt {
+	public static final fun timeLimiter (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public static final fun timeLimiter (Ljava/lang/String;Lcom/davils/kontinuity/timelimiter/TimeLimiterConfig;Lcom/davils/kontinuity/core/Environment;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public static final fun timeLimiter (Lkotlinx/coroutines/flow/Flow;Lcom/davils/kontinuity/timelimiter/TimeLimiter;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun timeLimiter$default (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public static synthetic fun timeLimiter$default (Ljava/lang/String;Lcom/davils/kontinuity/timelimiter/TimeLimiterConfig;Lcom/davils/kontinuity/core/Environment;ILjava/lang/Object;)Lcom/davils/kontinuity/timelimiter/TimeLimiter;
+	public static final fun timeLimiterConfig (Lcom/davils/kontinuity/timelimiter/TimeLimiterConfig;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/timelimiter/TimeLimiterConfig;
+	public static synthetic fun timeLimiterConfig$default (Lcom/davils/kontinuity/timelimiter/TimeLimiterConfig;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/timelimiter/TimeLimiterConfig;
+	public static final fun timeLimiterRegistry (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/timelimiter/TimeLimiterRegistry;
+	public static synthetic fun timeLimiterRegistry$default (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/timelimiter/TimeLimiterRegistry;
+}
+
+public abstract interface class com/davils/kontinuity/timelimiter/TimeoutStrategy {
+	public static final field Companion Lcom/davils/kontinuity/timelimiter/TimeoutStrategy$Companion;
+	public static final field DEFAULT_MAX_DETACHED I
+	public static final field HARD_MAX_DETACHED I
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeoutStrategy$Companion {
+	public static final field DEFAULT_MAX_DETACHED I
+	public static final field HARD_MAX_DETACHED I
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeoutStrategy$Hard : com/davils/kontinuity/timelimiter/TimeoutStrategy {
+	public static final field INSTANCE Lcom/davils/kontinuity/timelimiter/TimeoutStrategy$Hard;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/timelimiter/TimeoutStrategy$Soft : com/davils/kontinuity/timelimiter/TimeoutStrategy, com/davils/kore/core/validation/Validatable {
+	public fun <init> ()V
+	public fun <init> (ZI)V
+	public synthetic fun <init> (ZIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMaxDetached ()I
+	public fun hashCode ()I
+	public final fun isCancellingOnTimeout ()Z
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+

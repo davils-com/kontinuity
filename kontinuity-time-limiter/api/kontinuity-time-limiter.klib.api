@@ -1,0 +1,184 @@
+// Klib ABI Dump
+// Targets: [wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.davils:kontinuity-time-limiter>
+sealed interface com.davils.kontinuity.timelimiter/TimeLimiterEvent : com.davils.kontinuity.core/ResilienceEvent { // com.davils.kontinuity.timelimiter/TimeLimiterEvent|null[0]
+    open val kind // com.davils.kontinuity.timelimiter/TimeLimiterEvent.kind|{}kind[0]
+        open fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.timelimiter/TimeLimiterEvent.kind.<get-kind>|<get-kind>(){}[0]
+
+    final class DetachedFailed : com.davils.kontinuity.timelimiter/TimeLimiterEvent { // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedFailed|null[0]
+        final val failureType // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedFailed.failureType|{}failureType[0]
+            final fun <get-failureType>(): kotlin/String // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedFailed.failureType.<get-failureType>|<get-failureType>(){}[0]
+        final val instance // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedFailed.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedFailed.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedFailed.toString|toString(){}[0]
+    }
+
+    final class DetachedRejected : com.davils.kontinuity.timelimiter/TimeLimiterEvent { // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedRejected|null[0]
+        final val instance // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedRejected.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedRejected.instance.<get-instance>|<get-instance>(){}[0]
+        final val maxDetached // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedRejected.maxDetached|{}maxDetached[0]
+            final fun <get-maxDetached>(): kotlin/Int // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedRejected.maxDetached.<get-maxDetached>|<get-maxDetached>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.timelimiter/TimeLimiterEvent.DetachedRejected.toString|toString(){}[0]
+    }
+
+    final class Failed : com.davils.kontinuity.timelimiter/TimeLimiterEvent { // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Failed|null[0]
+        final val duration // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Failed.duration|{}duration[0]
+            final fun <get-duration>(): kotlin.time/Duration // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Failed.duration.<get-duration>|<get-duration>(){}[0]
+        final val failureType // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Failed.failureType|{}failureType[0]
+            final fun <get-failureType>(): kotlin/String // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Failed.failureType.<get-failureType>|<get-failureType>(){}[0]
+        final val instance // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Failed.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Failed.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Failed.toString|toString(){}[0]
+    }
+
+    final class Succeeded : com.davils.kontinuity.timelimiter/TimeLimiterEvent { // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Succeeded|null[0]
+        final val duration // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Succeeded.duration|{}duration[0]
+            final fun <get-duration>(): kotlin.time/Duration // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Succeeded.duration.<get-duration>|<get-duration>(){}[0]
+        final val instance // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Succeeded.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Succeeded.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Succeeded.toString|toString(){}[0]
+    }
+
+    final class TimedOut : com.davils.kontinuity.timelimiter/TimeLimiterEvent { // com.davils.kontinuity.timelimiter/TimeLimiterEvent.TimedOut|null[0]
+        final val instance // com.davils.kontinuity.timelimiter/TimeLimiterEvent.TimedOut.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.timelimiter/TimeLimiterEvent.TimedOut.instance.<get-instance>|<get-instance>(){}[0]
+        final val timeout // com.davils.kontinuity.timelimiter/TimeLimiterEvent.TimedOut.timeout|{}timeout[0]
+            final fun <get-timeout>(): kotlin.time/Duration // com.davils.kontinuity.timelimiter/TimeLimiterEvent.TimedOut.timeout.<get-timeout>|<get-timeout>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.timelimiter/TimeLimiterEvent.TimedOut.toString|toString(){}[0]
+    }
+
+    final object Companion { // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Companion|null[0]
+        final val TOPIC // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Companion.TOPIC|{}TOPIC[0]
+            final fun <get-TOPIC>(): com.davils.konfetti.core/TopicKey<com.davils.kontinuity.timelimiter/TimeLimiterEvent> // com.davils.kontinuity.timelimiter/TimeLimiterEvent.Companion.TOPIC.<get-TOPIC>|<get-TOPIC>(){}[0]
+    }
+}
+
+sealed interface com.davils.kontinuity.timelimiter/TimeoutStrategy { // com.davils.kontinuity.timelimiter/TimeoutStrategy|null[0]
+    final class Soft : com.davils.kontinuity.timelimiter/TimeoutStrategy, com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.timelimiter/TimeoutStrategy.Soft|null[0]
+        constructor <init>(kotlin/Boolean = ..., kotlin/Int = ...) // com.davils.kontinuity.timelimiter/TimeoutStrategy.Soft.<init>|<init>(kotlin.Boolean;kotlin.Int){}[0]
+
+        final val isCancellingOnTimeout // com.davils.kontinuity.timelimiter/TimeoutStrategy.Soft.isCancellingOnTimeout|{}isCancellingOnTimeout[0]
+            final fun <get-isCancellingOnTimeout>(): kotlin/Boolean // com.davils.kontinuity.timelimiter/TimeoutStrategy.Soft.isCancellingOnTimeout.<get-isCancellingOnTimeout>|<get-isCancellingOnTimeout>(){}[0]
+        final val maxDetached // com.davils.kontinuity.timelimiter/TimeoutStrategy.Soft.maxDetached|{}maxDetached[0]
+            final fun <get-maxDetached>(): kotlin/Int // com.davils.kontinuity.timelimiter/TimeoutStrategy.Soft.maxDetached.<get-maxDetached>|<get-maxDetached>(){}[0]
+
+        final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.timelimiter/TimeoutStrategy.Soft.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.timelimiter/TimeoutStrategy.Soft.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.davils.kontinuity.timelimiter/TimeoutStrategy.Soft.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.timelimiter/TimeoutStrategy.Soft.toString|toString(){}[0]
+    }
+
+    final object Companion { // com.davils.kontinuity.timelimiter/TimeoutStrategy.Companion|null[0]
+        final const val DEFAULT_MAX_DETACHED // com.davils.kontinuity.timelimiter/TimeoutStrategy.Companion.DEFAULT_MAX_DETACHED|{}DEFAULT_MAX_DETACHED[0]
+            final fun <get-DEFAULT_MAX_DETACHED>(): kotlin/Int // com.davils.kontinuity.timelimiter/TimeoutStrategy.Companion.DEFAULT_MAX_DETACHED.<get-DEFAULT_MAX_DETACHED>|<get-DEFAULT_MAX_DETACHED>(){}[0]
+        final const val HARD_MAX_DETACHED // com.davils.kontinuity.timelimiter/TimeoutStrategy.Companion.HARD_MAX_DETACHED|{}HARD_MAX_DETACHED[0]
+            final fun <get-HARD_MAX_DETACHED>(): kotlin/Int // com.davils.kontinuity.timelimiter/TimeoutStrategy.Companion.HARD_MAX_DETACHED.<get-HARD_MAX_DETACHED>|<get-HARD_MAX_DETACHED>(){}[0]
+    }
+
+    final object Hard : com.davils.kontinuity.timelimiter/TimeoutStrategy { // com.davils.kontinuity.timelimiter/TimeoutStrategy.Hard|null[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.timelimiter/TimeoutStrategy.Hard.toString|toString(){}[0]
+    }
+}
+
+final class com.davils.kontinuity.timelimiter/DetachedLimitExceededException : com.davils.kontinuity.core/CallRejectedException { // com.davils.kontinuity.timelimiter/DetachedLimitExceededException|null[0]
+    final val maxDetached // com.davils.kontinuity.timelimiter/DetachedLimitExceededException.maxDetached|{}maxDetached[0]
+        final fun <get-maxDetached>(): kotlin/Int // com.davils.kontinuity.timelimiter/DetachedLimitExceededException.maxDetached.<get-maxDetached>|<get-maxDetached>(){}[0]
+}
+
+final class com.davils.kontinuity.timelimiter/TimeLimiter : com.davils.kontinuity.core/Stage { // com.davils.kontinuity.timelimiter/TimeLimiter|null[0]
+    final val config // com.davils.kontinuity.timelimiter/TimeLimiter.config|{}config[0]
+        final fun <get-config>(): com.davils.kontinuity.timelimiter/TimeLimiterConfig // com.davils.kontinuity.timelimiter/TimeLimiter.config.<get-config>|<get-config>(){}[0]
+    final val events // com.davils.kontinuity.timelimiter/TimeLimiter.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<com.davils.kontinuity.timelimiter/TimeLimiterEvent> // com.davils.kontinuity.timelimiter/TimeLimiter.events.<get-events>|<get-events>(){}[0]
+    final val kind // com.davils.kontinuity.timelimiter/TimeLimiter.kind|{}kind[0]
+        final fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.timelimiter/TimeLimiter.kind.<get-kind>|<get-kind>(){}[0]
+    final val name // com.davils.kontinuity.timelimiter/TimeLimiter.name|{}name[0]
+        final fun <get-name>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.timelimiter/TimeLimiter.name.<get-name>|<get-name>(){}[0]
+
+    final fun snapshot(): com.davils.kontinuity.timelimiter/TimeLimiterSnapshot // com.davils.kontinuity.timelimiter/TimeLimiter.snapshot|snapshot(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.timelimiter/TimeLimiter.toString|toString(){}[0]
+    final suspend fun <#A1: kotlin/Any?> execute(kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.timelimiter/TimeLimiter.execute|execute(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+    final suspend fun <#A1: kotlin/Any?> execute(kotlin.coroutines/SuspendFunction1<com.davils.kontinuity.core/CallTimeoutException, #A1>, kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.timelimiter/TimeLimiter.execute|execute(kotlin.coroutines.SuspendFunction1<com.davils.kontinuity.core.CallTimeoutException,0:0>;kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+}
+
+final class com.davils.kontinuity.timelimiter/TimeLimiterConfig : com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.timelimiter/TimeLimiterConfig|null[0]
+    final val strategy // com.davils.kontinuity.timelimiter/TimeLimiterConfig.strategy|{}strategy[0]
+        final fun <get-strategy>(): com.davils.kontinuity.timelimiter/TimeoutStrategy // com.davils.kontinuity.timelimiter/TimeLimiterConfig.strategy.<get-strategy>|<get-strategy>(){}[0]
+    final val timeout // com.davils.kontinuity.timelimiter/TimeLimiterConfig.timeout|{}timeout[0]
+        final fun <get-timeout>(): kotlin.time/Duration // com.davils.kontinuity.timelimiter/TimeLimiterConfig.timeout.<get-timeout>|<get-timeout>(){}[0]
+
+    final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.timelimiter/TimeLimiterConfig.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.timelimiter/TimeLimiterConfig.toString|toString(){}[0]
+
+    final object Companion { // com.davils.kontinuity.timelimiter/TimeLimiterConfig.Companion|null[0]
+        final val Default // com.davils.kontinuity.timelimiter/TimeLimiterConfig.Companion.Default|{}Default[0]
+            final fun <get-Default>(): com.davils.kontinuity.timelimiter/TimeLimiterConfig // com.davils.kontinuity.timelimiter/TimeLimiterConfig.Companion.Default.<get-Default>|<get-Default>(){}[0]
+        final val HARD_TIMEOUT // com.davils.kontinuity.timelimiter/TimeLimiterConfig.Companion.HARD_TIMEOUT|{}HARD_TIMEOUT[0]
+            final fun <get-HARD_TIMEOUT>(): kotlin.time/Duration // com.davils.kontinuity.timelimiter/TimeLimiterConfig.Companion.HARD_TIMEOUT.<get-HARD_TIMEOUT>|<get-HARD_TIMEOUT>(){}[0]
+    }
+}
+
+final class com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder : com.davils.kore.core.dsl/ValidatingBuilder<com.davils.kontinuity.timelimiter/TimeLimiterConfig> { // com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder|null[0]
+    final var strategy // com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder.strategy|{}strategy[0]
+        final fun <get-strategy>(): com.davils.kontinuity.timelimiter/TimeoutStrategy // com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder.strategy.<get-strategy>|<get-strategy>(){}[0]
+        final fun <set-strategy>(com.davils.kontinuity.timelimiter/TimeoutStrategy) // com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder.strategy.<set-strategy>|<set-strategy>(com.davils.kontinuity.timelimiter.TimeoutStrategy){}[0]
+    final var timeout // com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder.timeout|{}timeout[0]
+        final fun <get-timeout>(): kotlin.time/Duration // com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder.timeout.<get-timeout>|<get-timeout>(){}[0]
+        final fun <set-timeout>(kotlin.time/Duration) // com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder.timeout.<set-timeout>|<set-timeout>(kotlin.time.Duration){}[0]
+}
+
+final class com.davils.kontinuity.timelimiter/TimeLimiterRegistry : com.davils.kontinuity.core.registry/Registry<com.davils.kontinuity.timelimiter/TimeLimiterConfig, com.davils.kontinuity.timelimiter/TimeLimiter> { // com.davils.kontinuity.timelimiter/TimeLimiterRegistry|null[0]
+    final val all // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.all|{}all[0]
+        final fun <get-all>(): kotlin.collections/List<com.davils.kontinuity.timelimiter/TimeLimiter> // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.all.<get-all>|<get-all>(){}[0]
+    final val environment // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.environment|{}environment[0]
+        final fun <get-environment>(): com.davils.kontinuity.core/Environment // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.environment.<get-environment>|<get-environment>(){}[0]
+    final val events // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<com.davils.kontinuity.core.registry/RegistryEvent<com.davils.kontinuity.timelimiter/TimeLimiter>> // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.events.<get-events>|<get-events>(){}[0]
+    final val settings // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.settings|{}settings[0]
+        final fun <get-settings>(): com.davils.kontinuity.core.registry/RegistrySettings<com.davils.kontinuity.timelimiter/TimeLimiterConfig> // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.settings.<get-settings>|<get-settings>(){}[0]
+
+    final fun find(kotlin/String): com.davils.kontinuity.timelimiter/TimeLimiter? // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.find|find(kotlin.String){}[0]
+    final fun remove(kotlin/String): com.davils.kontinuity.timelimiter/TimeLimiter? // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.remove|remove(kotlin.String){}[0]
+    final fun replace(com.davils.kontinuity.timelimiter/TimeLimiter): com.davils.kontinuity.timelimiter/TimeLimiter? // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.replace|replace(com.davils.kontinuity.timelimiter.TimeLimiter){}[0]
+    final fun timeLimiter(kotlin/String, com.davils.kontinuity.timelimiter/TimeLimiterConfig): com.davils.kontinuity.timelimiter/TimeLimiter // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.timeLimiter|timeLimiter(kotlin.String;com.davils.kontinuity.timelimiter.TimeLimiterConfig){}[0]
+    final fun timeLimiter(kotlin/String, kotlin/String = ...): com.davils.kontinuity.timelimiter/TimeLimiter // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.timeLimiter|timeLimiter(kotlin.String;kotlin.String){}[0]
+    final fun timeLimiter(kotlin/String, kotlin/String = ..., kotlin/Function1<com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder, kotlin/Unit>): com.davils.kontinuity.timelimiter/TimeLimiter // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.timeLimiter|timeLimiter(kotlin.String;kotlin.String;kotlin.Function1<com.davils.kontinuity.timelimiter.TimeLimiterConfigBuilder,kotlin.Unit>){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.timelimiter/TimeLimiterRegistry.toString|toString(){}[0]
+}
+
+final class com.davils.kontinuity.timelimiter/TimeLimiterRegistryBuilder : com.davils.kontinuity.core.registry/RegistryBuilder<com.davils.kontinuity.timelimiter/TimeLimiterConfig, com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder> // com.davils.kontinuity.timelimiter/TimeLimiterRegistryBuilder|null[0]
+
+final class com.davils.kontinuity.timelimiter/TimeLimiterSnapshot { // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot|null[0]
+    final val cancelled // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.cancelled|{}cancelled[0]
+        final fun <get-cancelled>(): kotlin/Long // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.cancelled.<get-cancelled>|<get-cancelled>(){}[0]
+    final val detachedFailed // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.detachedFailed|{}detachedFailed[0]
+        final fun <get-detachedFailed>(): kotlin/Long // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.detachedFailed.<get-detachedFailed>|<get-detachedFailed>(){}[0]
+    final val detachedInFlight // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.detachedInFlight|{}detachedInFlight[0]
+        final fun <get-detachedInFlight>(): kotlin/Int // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.detachedInFlight.<get-detachedInFlight>|<get-detachedInFlight>(){}[0]
+    final val failed // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.failed|{}failed[0]
+        final fun <get-failed>(): kotlin/Long // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.failed.<get-failed>|<get-failed>(){}[0]
+    final val rejected // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.rejected|{}rejected[0]
+        final fun <get-rejected>(): kotlin/Long // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.rejected.<get-rejected>|<get-rejected>(){}[0]
+    final val successful // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.successful|{}successful[0]
+        final fun <get-successful>(): kotlin/Long // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.successful.<get-successful>|<get-successful>(){}[0]
+    final val timedOut // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.timedOut|{}timedOut[0]
+        final fun <get-timedOut>(): kotlin/Long // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.timedOut.<get-timedOut>|<get-timedOut>(){}[0]
+
+    final fun toString(): kotlin/String // com.davils.kontinuity.timelimiter/TimeLimiterSnapshot.toString|toString(){}[0]
+}
+
+final fun <#A: kotlin/Any?> (kotlinx.coroutines.flow/Flow<#A>).com.davils.kontinuity.timelimiter/timeLimiter(com.davils.kontinuity.timelimiter/TimeLimiter): kotlinx.coroutines.flow/Flow<#A> // com.davils.kontinuity.timelimiter/timeLimiter|timeLimiter@kotlinx.coroutines.flow.Flow<0:0>(com.davils.kontinuity.timelimiter.TimeLimiter){0§<kotlin.Any?>}[0]
+final fun com.davils.kontinuity.timelimiter/timeLimiter(kotlin/String, com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder, kotlin/Unit> = ...): com.davils.kontinuity.timelimiter/TimeLimiter // com.davils.kontinuity.timelimiter/timeLimiter|timeLimiter(kotlin.String;com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.timelimiter.TimeLimiterConfigBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.timelimiter/timeLimiter(kotlin/String, com.davils.kontinuity.timelimiter/TimeLimiterConfig, com.davils.kontinuity.core/Environment = ...): com.davils.kontinuity.timelimiter/TimeLimiter // com.davils.kontinuity.timelimiter/timeLimiter|timeLimiter(kotlin.String;com.davils.kontinuity.timelimiter.TimeLimiterConfig;com.davils.kontinuity.core.Environment){}[0]
+final fun com.davils.kontinuity.timelimiter/timeLimiterConfig(com.davils.kontinuity.timelimiter/TimeLimiterConfig = ..., kotlin/Function1<com.davils.kontinuity.timelimiter/TimeLimiterConfigBuilder, kotlin/Unit>): com.davils.kontinuity.timelimiter/TimeLimiterConfig // com.davils.kontinuity.timelimiter/timeLimiterConfig|timeLimiterConfig(com.davils.kontinuity.timelimiter.TimeLimiterConfig;kotlin.Function1<com.davils.kontinuity.timelimiter.TimeLimiterConfigBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.timelimiter/timeLimiterRegistry(com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.timelimiter/TimeLimiterRegistryBuilder, kotlin/Unit> = ...): com.davils.kontinuity.timelimiter/TimeLimiterRegistry // com.davils.kontinuity.timelimiter/timeLimiterRegistry|timeLimiterRegistry(com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.timelimiter.TimeLimiterRegistryBuilder,kotlin.Unit>){}[0]
