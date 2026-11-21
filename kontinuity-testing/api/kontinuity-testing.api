@@ -1,0 +1,72 @@
+public final class com/davils/kontinuity/testing/CountingStage : com/davils/kontinuity/core/Stage {
+	public fun <init> ()V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getCalls ()I
+	public final fun getFailures ()I
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getSuccesses ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/testing/EventLog {
+	public final fun getEvents ()Ljava/util/List;
+	public final fun stop ()V
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/testing/EventLogsKt {
+	public static final fun recordEvents (Lkotlinx/coroutines/CoroutineScope;Lkotlinx/coroutines/flow/Flow;)Lcom/davils/kontinuity/testing/EventLog;
+}
+
+public final class com/davils/kontinuity/testing/FaultInjectionKt {
+	public static final fun faults (Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/testing/Faults;
+	public static final fun injectedFailure (I)Ljava/lang/Throwable;
+}
+
+public final class com/davils/kontinuity/testing/Faults {
+	public final fun getCalls ()I
+	public final fun inject (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun invoke (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/testing/FaultsBuilder {
+	public final fun fail (ILkotlin/jvm/functions/Function1;)V
+	public static synthetic fun fail$default (Lcom/davils/kontinuity/testing/FaultsBuilder;ILkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun failCalls (Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun failCalls$default (Lcom/davils/kontinuity/testing/FaultsBuilder;Ljava/util/Collection;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun failFirst (ILkotlin/jvm/functions/Function1;)V
+	public static synthetic fun failFirst$default (Lcom/davils/kontinuity/testing/FaultsBuilder;ILkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun getLatency-UwyO8pc ()J
+	public final fun setLatency-LRDsOJo (J)V
+}
+
+public final class com/davils/kontinuity/testing/InjectedFailure : java/lang/RuntimeException {
+	public fun <init> (I)V
+	public final fun getNumber ()I
+}
+
+public final class com/davils/kontinuity/testing/RefusingStage : com/davils/kontinuity/core/Stage {
+	public fun <init> ()V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/testing/TestEnvironmentsKt {
+	public static final fun testEnvironment (Lkotlin/time/TimeSource$WithComparableMarks;Lkotlinx/coroutines/CoroutineScope;JLkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/core/Environment;
+	public static synthetic fun testEnvironment$default (Lkotlin/time/TimeSource$WithComparableMarks;Lkotlinx/coroutines/CoroutineScope;JLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/core/Environment;
+}
+
+public final class com/davils/kontinuity/testing/TestRejection : com/davils/kontinuity/core/CallRejectedException {
+	public fun <init> ()V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/davils/kontinuity/core/ResilienceKind;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/davils/kontinuity/core/ResilienceKind;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+

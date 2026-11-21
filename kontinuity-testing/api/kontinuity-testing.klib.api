@@ -1,0 +1,81 @@
+// Klib ABI Dump
+// Targets: [wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.davils:kontinuity-testing>
+final class <#A: kotlin/Any?> com.davils.kontinuity.testing/EventLog { // com.davils.kontinuity.testing/EventLog|null[0]
+    final val events // com.davils.kontinuity.testing/EventLog.events|{}events[0]
+        final fun <get-events>(): kotlin.collections/List<#A> // com.davils.kontinuity.testing/EventLog.events.<get-events>|<get-events>(){}[0]
+
+    final fun stop() // com.davils.kontinuity.testing/EventLog.stop|stop(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.testing/EventLog.toString|toString(){}[0]
+    final inline fun <#A1: reified #A> only(): kotlin.collections/List<#A1> // com.davils.kontinuity.testing/EventLog.only|only(){0§<1:0>}[0]
+}
+
+final class com.davils.kontinuity.testing/CountingStage : com.davils.kontinuity.core/Stage { // com.davils.kontinuity.testing/CountingStage|null[0]
+    constructor <init>(com.davils.kontinuity.core/InstanceName = ...) // com.davils.kontinuity.testing/CountingStage.<init>|<init>(com.davils.kontinuity.core.InstanceName){}[0]
+
+    final val calls // com.davils.kontinuity.testing/CountingStage.calls|{}calls[0]
+        final fun <get-calls>(): kotlin/Int // com.davils.kontinuity.testing/CountingStage.calls.<get-calls>|<get-calls>(){}[0]
+    final val failures // com.davils.kontinuity.testing/CountingStage.failures|{}failures[0]
+        final fun <get-failures>(): kotlin/Int // com.davils.kontinuity.testing/CountingStage.failures.<get-failures>|<get-failures>(){}[0]
+    final val kind // com.davils.kontinuity.testing/CountingStage.kind|{}kind[0]
+        final fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.testing/CountingStage.kind.<get-kind>|<get-kind>(){}[0]
+    final val name // com.davils.kontinuity.testing/CountingStage.name|{}name[0]
+        final fun <get-name>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.testing/CountingStage.name.<get-name>|<get-name>(){}[0]
+    final val successes // com.davils.kontinuity.testing/CountingStage.successes|{}successes[0]
+        final fun <get-successes>(): kotlin/Int // com.davils.kontinuity.testing/CountingStage.successes.<get-successes>|<get-successes>(){}[0]
+
+    final fun toString(): kotlin/String // com.davils.kontinuity.testing/CountingStage.toString|toString(){}[0]
+    final suspend fun <#A1: kotlin/Any?> execute(kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.testing/CountingStage.execute|execute(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+}
+
+final class com.davils.kontinuity.testing/Faults { // com.davils.kontinuity.testing/Faults|null[0]
+    final val calls // com.davils.kontinuity.testing/Faults.calls|{}calls[0]
+        final fun <get-calls>(): kotlin/Int // com.davils.kontinuity.testing/Faults.calls.<get-calls>|<get-calls>(){}[0]
+
+    final fun toString(): kotlin/String // com.davils.kontinuity.testing/Faults.toString|toString(){}[0]
+    final suspend fun <#A1: kotlin/Any?> inject(kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.testing/Faults.inject|inject(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+    final suspend fun <#A1: kotlin/Any?> invoke(kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.testing/Faults.invoke|invoke(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+}
+
+final class com.davils.kontinuity.testing/FaultsBuilder { // com.davils.kontinuity.testing/FaultsBuilder|null[0]
+    final var latency // com.davils.kontinuity.testing/FaultsBuilder.latency|{}latency[0]
+        final fun <get-latency>(): kotlin.time/Duration // com.davils.kontinuity.testing/FaultsBuilder.latency.<get-latency>|<get-latency>(){}[0]
+        final fun <set-latency>(kotlin.time/Duration) // com.davils.kontinuity.testing/FaultsBuilder.latency.<set-latency>|<set-latency>(kotlin.time.Duration){}[0]
+
+    final fun fail(kotlin/Int = ..., kotlin/Function1<kotlin/Int, kotlin/Throwable> = ...) // com.davils.kontinuity.testing/FaultsBuilder.fail|fail(kotlin.Int;kotlin.Function1<kotlin.Int,kotlin.Throwable>){}[0]
+    final fun failCalls(kotlin.collections/Collection<kotlin/Int>, kotlin/Function1<kotlin/Int, kotlin/Throwable> = ...) // com.davils.kontinuity.testing/FaultsBuilder.failCalls|failCalls(kotlin.collections.Collection<kotlin.Int>;kotlin.Function1<kotlin.Int,kotlin.Throwable>){}[0]
+    final fun failFirst(kotlin/Int, kotlin/Function1<kotlin/Int, kotlin/Throwable> = ...) // com.davils.kontinuity.testing/FaultsBuilder.failFirst|failFirst(kotlin.Int;kotlin.Function1<kotlin.Int,kotlin.Throwable>){}[0]
+}
+
+final class com.davils.kontinuity.testing/InjectedFailure : kotlin/RuntimeException { // com.davils.kontinuity.testing/InjectedFailure|null[0]
+    constructor <init>(kotlin/Int) // com.davils.kontinuity.testing/InjectedFailure.<init>|<init>(kotlin.Int){}[0]
+
+    final val number // com.davils.kontinuity.testing/InjectedFailure.number|{}number[0]
+        final fun <get-number>(): kotlin/Int // com.davils.kontinuity.testing/InjectedFailure.number.<get-number>|<get-number>(){}[0]
+}
+
+final class com.davils.kontinuity.testing/RefusingStage : com.davils.kontinuity.core/Stage { // com.davils.kontinuity.testing/RefusingStage|null[0]
+    constructor <init>(com.davils.kontinuity.core/InstanceName = ...) // com.davils.kontinuity.testing/RefusingStage.<init>|<init>(com.davils.kontinuity.core.InstanceName){}[0]
+
+    final val kind // com.davils.kontinuity.testing/RefusingStage.kind|{}kind[0]
+        final fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.testing/RefusingStage.kind.<get-kind>|<get-kind>(){}[0]
+    final val name // com.davils.kontinuity.testing/RefusingStage.name|{}name[0]
+        final fun <get-name>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.testing/RefusingStage.name.<get-name>|<get-name>(){}[0]
+
+    final fun toString(): kotlin/String // com.davils.kontinuity.testing/RefusingStage.toString|toString(){}[0]
+    final suspend fun <#A1: kotlin/Any?> execute(kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.testing/RefusingStage.execute|execute(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+}
+
+final class com.davils.kontinuity.testing/TestRejection : com.davils.kontinuity.core/CallRejectedException { // com.davils.kontinuity.testing/TestRejection|null[0]
+    constructor <init>(com.davils.kontinuity.core/InstanceName = ..., com.davils.kontinuity.core/ResilienceKind = ...) // com.davils.kontinuity.testing/TestRejection.<init>|<init>(com.davils.kontinuity.core.InstanceName;com.davils.kontinuity.core.ResilienceKind){}[0]
+}
+
+final fun <#A: kotlin/Any?> (kotlinx.coroutines/CoroutineScope).com.davils.kontinuity.testing/recordEvents(kotlinx.coroutines.flow/Flow<#A>): com.davils.kontinuity.testing/EventLog<#A> // com.davils.kontinuity.testing/recordEvents|recordEvents@kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.flow.Flow<0:0>){0§<kotlin.Any?>}[0]
+final fun com.davils.kontinuity.testing/faults(kotlin/Function1<com.davils.kontinuity.testing/FaultsBuilder, kotlin/Unit>): com.davils.kontinuity.testing/Faults // com.davils.kontinuity.testing/faults|faults(kotlin.Function1<com.davils.kontinuity.testing.FaultsBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.testing/injectedFailure(kotlin/Int): kotlin/Throwable // com.davils.kontinuity.testing/injectedFailure|injectedFailure(kotlin.Int){}[0]
+final fun com.davils.kontinuity.testing/testEnvironment(kotlin.time/TimeSource.WithComparableMarks, kotlinx.coroutines/CoroutineScope? = ..., kotlin/Long = ..., kotlin/Function1<com.davils.kontinuity.core/EnvironmentBuilder, kotlin/Unit> = ...): com.davils.kontinuity.core/Environment // com.davils.kontinuity.testing/testEnvironment|testEnvironment(kotlin.time.TimeSource.WithComparableMarks;kotlinx.coroutines.CoroutineScope?;kotlin.Long;kotlin.Function1<com.davils.kontinuity.core.EnvironmentBuilder,kotlin.Unit>){}[0]
