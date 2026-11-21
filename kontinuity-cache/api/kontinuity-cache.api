@@ -1,0 +1,176 @@
+public final class com/davils/kontinuity/cache/Cache : com/davils/kontinuity/core/Instance {
+	public final fun cleanUp ()I
+	public final fun clear ()V
+	public final fun contains (Ljava/lang/Object;)Z
+	public final fun decorate (Lkotlin/jvm/functions/Function2;)Lkotlin/jvm/functions/Function2;
+	public final fun get (Ljava/lang/Object;)Ljava/lang/Object;
+	public final fun getConfig ()Lcom/davils/kontinuity/cache/CacheConfig;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getOrLoad (Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getSize ()I
+	public final fun peek (Ljava/lang/Object;)Ljava/lang/Object;
+	public final fun put (Ljava/lang/Object;Ljava/lang/Object;)V
+	public final fun putIfAbsent (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public final fun remove (Ljava/lang/Object;)Ljava/lang/Object;
+	public final fun snapshot ()Lcom/davils/kontinuity/cache/CacheSnapshot;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/cache/CacheBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun expireAfter (Lkotlin/jvm/functions/Function2;)V
+	public final fun getEviction ()Lcom/davils/kontinuity/cache/Eviction;
+	public final fun getExpireAfterAccess-UwyO8pc ()J
+	public final fun getExpireAfterWrite-UwyO8pc ()J
+	public final fun getMaximumSize ()I
+	public final fun getMaximumWeight ()Ljava/lang/Long;
+	public final fun getReapEvery-FghU774 ()Lkotlin/time/Duration;
+	public final fun getStaleOnFailure-UwyO8pc ()J
+	public final fun isRecordingKeys ()Z
+	public final fun setEviction (Lcom/davils/kontinuity/cache/Eviction;)V
+	public final fun setExpireAfterAccess-LRDsOJo (J)V
+	public final fun setExpireAfterWrite-LRDsOJo (J)V
+	public final fun setMaximumSize (I)V
+	public final fun setMaximumWeight (Ljava/lang/Long;)V
+	public final fun setReapEvery-BwNAW2A (Lkotlin/time/Duration;)V
+	public final fun setRecordingKeys (Z)V
+	public final fun setStaleOnFailure-LRDsOJo (J)V
+	public final fun weigher (Lkotlin/jvm/functions/Function2;)V
+}
+
+public final class com/davils/kontinuity/cache/CacheConfig : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/cache/CacheConfig$Companion;
+	public static final field HARD_MAXIMUM_SIZE I
+	public static final field HARD_MAXIMUM_WEIGHT J
+	public final fun getEviction ()Lcom/davils/kontinuity/cache/Eviction;
+	public final fun getExpireAfter ()Lkotlin/jvm/functions/Function2;
+	public final fun getExpireAfterAccess-UwyO8pc ()J
+	public final fun getExpireAfterWrite-UwyO8pc ()J
+	public final fun getMaximumSize ()I
+	public final fun getMaximumWeight ()Ljava/lang/Long;
+	public final fun getReapEvery-FghU774 ()Lkotlin/time/Duration;
+	public final fun getStaleOnFailure-UwyO8pc ()J
+	public final fun getWeigher ()Lkotlin/jvm/functions/Function2;
+	public final fun isRecordingKeys ()Z
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/cache/CacheConfig$Companion {
+	public final fun getHARD_DURATION-UwyO8pc ()J
+}
+
+public abstract interface class com/davils/kontinuity/cache/CacheEvent : com/davils/kontinuity/core/ResilienceEvent {
+	public static final field Companion Lcom/davils/kontinuity/cache/CacheEvent$Companion;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+}
+
+public final class com/davils/kontinuity/cache/CacheEvent$Cleared : com/davils/kontinuity/cache/CacheEvent {
+	public final fun getEntries ()I
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/cache/CacheEvent$Companion {
+	public final fun getTOPIC ()Lcom/davils/konfetti/core/TopicKey;
+}
+
+public final class com/davils/kontinuity/cache/CacheEvent$Evicted : com/davils/kontinuity/cache/CacheEvent {
+	public final fun getCount ()I
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getKeys ()Ljava/util/List;
+	public final fun getReason ()Lcom/davils/kontinuity/cache/EvictionReason;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/cache/CacheEvent$Expired : com/davils/kontinuity/cache/CacheEvent {
+	public final fun getCount ()I
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getKeys ()Ljava/util/List;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/cache/CacheEvent$Hit : com/davils/kontinuity/cache/CacheEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getKey ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/cache/CacheEvent$LoadFailed : com/davils/kontinuity/cache/CacheEvent {
+	public final fun getFailureType ()Ljava/lang/String;
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getKey ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/cache/CacheEvent$Loaded : com/davils/kontinuity/cache/CacheEvent {
+	public final fun getDuration-UwyO8pc ()J
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getKey ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/cache/CacheEvent$Miss : com/davils/kontinuity/cache/CacheEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getKey ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/cache/CacheEvent$StaleServed : com/davils/kontinuity/cache/CacheEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getKey ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/cache/CacheInteropKt {
+	public static final fun getOrLoadBlocking (Lcom/davils/kontinuity/cache/Cache;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+}
+
+public final class com/davils/kontinuity/cache/CacheLoadException : java/lang/RuntimeException {
+	public final fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/cache/CacheSnapshot {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEvictions ()J
+	public final fun getExpirations ()J
+	public final fun getHitRatio ()D
+	public final fun getHits ()J
+	public final fun getLoadFailures ()J
+	public final fun getLoads ()J
+	public final fun getMisses ()J
+	public final fun getSize ()I
+	public final fun getStaleServed ()J
+	public final fun getWeight ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/cache/CachesKt {
+	public static final fun cache (Ljava/lang/String;Lcom/davils/kontinuity/cache/CacheConfig;Lcom/davils/kontinuity/core/Environment;)Lcom/davils/kontinuity/cache/Cache;
+	public static final fun cache (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/cache/Cache;
+	public static synthetic fun cache$default (Ljava/lang/String;Lcom/davils/kontinuity/cache/CacheConfig;Lcom/davils/kontinuity/core/Environment;ILjava/lang/Object;)Lcom/davils/kontinuity/cache/Cache;
+	public static synthetic fun cache$default (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/cache/Cache;
+	public static final fun cacheConfig (Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/cache/CacheConfig;
+}
+
+public final class com/davils/kontinuity/cache/Eviction : java/lang/Enum {
+	public static final field Fifo Lcom/davils/kontinuity/cache/Eviction;
+	public static final field Lfu Lcom/davils/kontinuity/cache/Eviction;
+	public static final field Lru Lcom/davils/kontinuity/cache/Eviction;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/davils/kontinuity/cache/Eviction;
+	public static fun values ()[Lcom/davils/kontinuity/cache/Eviction;
+}
+
+public final class com/davils/kontinuity/cache/EvictionReason : java/lang/Enum {
+	public static final field Size Lcom/davils/kontinuity/cache/EvictionReason;
+	public static final field Weight Lcom/davils/kontinuity/cache/EvictionReason;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getId ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/davils/kontinuity/cache/EvictionReason;
+	public static fun values ()[Lcom/davils/kontinuity/cache/EvictionReason;
+}
+
