@@ -1,0 +1,84 @@
+public final class com/davils/kontinuity/policy/CachedPolicy {
+	public final fun execute (Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getCache ()Lcom/davils/kontinuity/cache/Cache;
+	public final fun getPolicy ()Lcom/davils/kontinuity/policy/Policy;
+	public final fun invalidate (Ljava/lang/Object;)Ljava/lang/Object;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/policy/PoliciesKt {
+	public static final fun cached (Lcom/davils/kontinuity/policy/Policy;Lcom/davils/kontinuity/cache/Cache;)Lcom/davils/kontinuity/policy/CachedPolicy;
+	public static final fun execute (Lcom/davils/kontinuity/policy/Policy;Lcom/davils/kontinuity/core/fallback/Fallback;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun resilience (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/policy/Policy;
+	public static final fun resilience (Lkotlinx/coroutines/flow/Flow;Lcom/davils/kontinuity/policy/Policy;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun resilience$default (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/policy/Policy;
+}
+
+public final class com/davils/kontinuity/policy/Policy : com/davils/kontinuity/core/Stage, com/davils/kore/core/validation/Validatable {
+	public fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getStages ()Ljava/util/List;
+	public final fun snapshot ()Lcom/davils/kontinuity/policy/PolicySnapshot;
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/policy/PolicyBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun bulkhead (Lcom/davils/kontinuity/bulkhead/Bulkhead;)V
+	public final fun circuitBreaker (Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;)V
+	public final fun dispatcherBulkhead (Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;)V
+	public final fun hedge (Lcom/davils/kontinuity/hedge/Hedge;)V
+	public final fun rateLimiter (Lcom/davils/kontinuity/ratelimiter/RateLimiter;I)V
+	public static synthetic fun rateLimiter$default (Lcom/davils/kontinuity/policy/PolicyBuilder;Lcom/davils/kontinuity/ratelimiter/RateLimiter;IILjava/lang/Object;)V
+	public final fun retry (Lcom/davils/kontinuity/retry/Retry;)V
+	public final fun stage (Lcom/davils/kontinuity/core/Stage;)V
+	public final fun timeLimiter (Lcom/davils/kontinuity/timelimiter/TimeLimiter;)V
+}
+
+public abstract interface class com/davils/kontinuity/policy/PolicyEvent : com/davils/kontinuity/core/ResilienceEvent {
+	public static final field Companion Lcom/davils/kontinuity/policy/PolicyEvent$Companion;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+}
+
+public final class com/davils/kontinuity/policy/PolicyEvent$Cancelled : com/davils/kontinuity/policy/PolicyEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/policy/PolicyEvent$Companion {
+	public final fun getTOPIC ()Lcom/davils/konfetti/core/TopicKey;
+}
+
+public final class com/davils/kontinuity/policy/PolicyEvent$Failed : com/davils/kontinuity/policy/PolicyEvent {
+	public final fun getDuration-UwyO8pc ()J
+	public final fun getFailureType ()Ljava/lang/String;
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/policy/PolicyEvent$Rejected : com/davils/kontinuity/policy/PolicyEvent {
+	public final fun getDuration-UwyO8pc ()J
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getRefusedBy ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public final fun getRefusingInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/policy/PolicyEvent$Succeeded : com/davils/kontinuity/policy/PolicyEvent {
+	public final fun getDuration-UwyO8pc ()J
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/policy/PolicySnapshot {
+	public final fun getCalls ()J
+	public final fun getCancelled ()J
+	public final fun getFailed ()J
+	public final fun getRejected ()J
+	public final fun getSuccessful ()J
+	public fun toString ()Ljava/lang/String;
+}
+

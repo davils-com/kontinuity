@@ -1,0 +1,115 @@
+// Klib ABI Dump
+// Targets: [wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.davils:kontinuity-policy>
+sealed interface com.davils.kontinuity.policy/PolicyEvent : com.davils.kontinuity.core/ResilienceEvent { // com.davils.kontinuity.policy/PolicyEvent|null[0]
+    open val kind // com.davils.kontinuity.policy/PolicyEvent.kind|{}kind[0]
+        open fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.policy/PolicyEvent.kind.<get-kind>|<get-kind>(){}[0]
+
+    final class Cancelled : com.davils.kontinuity.policy/PolicyEvent { // com.davils.kontinuity.policy/PolicyEvent.Cancelled|null[0]
+        final val instance // com.davils.kontinuity.policy/PolicyEvent.Cancelled.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.policy/PolicyEvent.Cancelled.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.policy/PolicyEvent.Cancelled.toString|toString(){}[0]
+    }
+
+    final class Failed : com.davils.kontinuity.policy/PolicyEvent { // com.davils.kontinuity.policy/PolicyEvent.Failed|null[0]
+        final val duration // com.davils.kontinuity.policy/PolicyEvent.Failed.duration|{}duration[0]
+            final fun <get-duration>(): kotlin.time/Duration // com.davils.kontinuity.policy/PolicyEvent.Failed.duration.<get-duration>|<get-duration>(){}[0]
+        final val failureType // com.davils.kontinuity.policy/PolicyEvent.Failed.failureType|{}failureType[0]
+            final fun <get-failureType>(): kotlin/String // com.davils.kontinuity.policy/PolicyEvent.Failed.failureType.<get-failureType>|<get-failureType>(){}[0]
+        final val instance // com.davils.kontinuity.policy/PolicyEvent.Failed.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.policy/PolicyEvent.Failed.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.policy/PolicyEvent.Failed.toString|toString(){}[0]
+    }
+
+    final class Rejected : com.davils.kontinuity.policy/PolicyEvent { // com.davils.kontinuity.policy/PolicyEvent.Rejected|null[0]
+        final val duration // com.davils.kontinuity.policy/PolicyEvent.Rejected.duration|{}duration[0]
+            final fun <get-duration>(): kotlin.time/Duration // com.davils.kontinuity.policy/PolicyEvent.Rejected.duration.<get-duration>|<get-duration>(){}[0]
+        final val instance // com.davils.kontinuity.policy/PolicyEvent.Rejected.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.policy/PolicyEvent.Rejected.instance.<get-instance>|<get-instance>(){}[0]
+        final val refusedBy // com.davils.kontinuity.policy/PolicyEvent.Rejected.refusedBy|{}refusedBy[0]
+            final fun <get-refusedBy>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.policy/PolicyEvent.Rejected.refusedBy.<get-refusedBy>|<get-refusedBy>(){}[0]
+        final val refusingInstance // com.davils.kontinuity.policy/PolicyEvent.Rejected.refusingInstance|{}refusingInstance[0]
+            final fun <get-refusingInstance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.policy/PolicyEvent.Rejected.refusingInstance.<get-refusingInstance>|<get-refusingInstance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.policy/PolicyEvent.Rejected.toString|toString(){}[0]
+    }
+
+    final class Succeeded : com.davils.kontinuity.policy/PolicyEvent { // com.davils.kontinuity.policy/PolicyEvent.Succeeded|null[0]
+        final val duration // com.davils.kontinuity.policy/PolicyEvent.Succeeded.duration|{}duration[0]
+            final fun <get-duration>(): kotlin.time/Duration // com.davils.kontinuity.policy/PolicyEvent.Succeeded.duration.<get-duration>|<get-duration>(){}[0]
+        final val instance // com.davils.kontinuity.policy/PolicyEvent.Succeeded.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.policy/PolicyEvent.Succeeded.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.policy/PolicyEvent.Succeeded.toString|toString(){}[0]
+    }
+
+    final object Companion { // com.davils.kontinuity.policy/PolicyEvent.Companion|null[0]
+        final val TOPIC // com.davils.kontinuity.policy/PolicyEvent.Companion.TOPIC|{}TOPIC[0]
+            final fun <get-TOPIC>(): com.davils.konfetti.core/TopicKey<com.davils.kontinuity.policy/PolicyEvent> // com.davils.kontinuity.policy/PolicyEvent.Companion.TOPIC.<get-TOPIC>|<get-TOPIC>(){}[0]
+    }
+}
+
+final class <#A: kotlin/Any, #B: kotlin/Any> com.davils.kontinuity.policy/CachedPolicy { // com.davils.kontinuity.policy/CachedPolicy|null[0]
+    final val cache // com.davils.kontinuity.policy/CachedPolicy.cache|{}cache[0]
+        final fun <get-cache>(): com.davils.kontinuity.cache/Cache<#A, #B> // com.davils.kontinuity.policy/CachedPolicy.cache.<get-cache>|<get-cache>(){}[0]
+    final val policy // com.davils.kontinuity.policy/CachedPolicy.policy|{}policy[0]
+        final fun <get-policy>(): com.davils.kontinuity.policy/Policy // com.davils.kontinuity.policy/CachedPolicy.policy.<get-policy>|<get-policy>(){}[0]
+
+    final fun invalidate(#A): #B? // com.davils.kontinuity.policy/CachedPolicy.invalidate|invalidate(1:0){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.policy/CachedPolicy.toString|toString(){}[0]
+    final suspend fun execute(#A, kotlin.coroutines/SuspendFunction1<#A, #B>): #B // com.davils.kontinuity.policy/CachedPolicy.execute|execute(1:0;kotlin.coroutines.SuspendFunction1<1:0,1:1>){}[0]
+}
+
+final class com.davils.kontinuity.policy/Policy : com.davils.kontinuity.core/Stage, com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.policy/Policy|null[0]
+    final val events // com.davils.kontinuity.policy/Policy.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<com.davils.kontinuity.policy/PolicyEvent> // com.davils.kontinuity.policy/Policy.events.<get-events>|<get-events>(){}[0]
+    final val kind // com.davils.kontinuity.policy/Policy.kind|{}kind[0]
+        final fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.policy/Policy.kind.<get-kind>|<get-kind>(){}[0]
+    final val name // com.davils.kontinuity.policy/Policy.name|{}name[0]
+        final fun <get-name>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.policy/Policy.name.<get-name>|<get-name>(){}[0]
+    final val stages // com.davils.kontinuity.policy/Policy.stages|{}stages[0]
+        final fun <get-stages>(): kotlin.collections/List<com.davils.kontinuity.core/Instance> // com.davils.kontinuity.policy/Policy.stages.<get-stages>|<get-stages>(){}[0]
+
+    final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.policy/Policy.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+    final fun snapshot(): com.davils.kontinuity.policy/PolicySnapshot // com.davils.kontinuity.policy/Policy.snapshot|snapshot(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.policy/Policy.toString|toString(){}[0]
+    final suspend fun <#A1: kotlin/Any?> execute(kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.policy/Policy.execute|execute(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+}
+
+final class com.davils.kontinuity.policy/PolicyBuilder : com.davils.kore.core.dsl/ValidatingBuilder<com.davils.kontinuity.policy/Policy> { // com.davils.kontinuity.policy/PolicyBuilder|null[0]
+    final fun bulkhead(com.davils.kontinuity.bulkhead/Bulkhead) // com.davils.kontinuity.policy/PolicyBuilder.bulkhead|bulkhead(com.davils.kontinuity.bulkhead.Bulkhead){}[0]
+    final fun circuitBreaker(com.davils.kontinuity.circuitbreaker/CircuitBreaker) // com.davils.kontinuity.policy/PolicyBuilder.circuitBreaker|circuitBreaker(com.davils.kontinuity.circuitbreaker.CircuitBreaker){}[0]
+    final fun dispatcherBulkhead(com.davils.kontinuity.bulkhead/DispatcherBulkhead) // com.davils.kontinuity.policy/PolicyBuilder.dispatcherBulkhead|dispatcherBulkhead(com.davils.kontinuity.bulkhead.DispatcherBulkhead){}[0]
+    final fun hedge(com.davils.kontinuity.hedge/Hedge) // com.davils.kontinuity.policy/PolicyBuilder.hedge|hedge(com.davils.kontinuity.hedge.Hedge){}[0]
+    final fun rateLimiter(com.davils.kontinuity.ratelimiter/RateLimiter, kotlin/Int = ...) // com.davils.kontinuity.policy/PolicyBuilder.rateLimiter|rateLimiter(com.davils.kontinuity.ratelimiter.RateLimiter;kotlin.Int){}[0]
+    final fun retry(com.davils.kontinuity.retry/Retry) // com.davils.kontinuity.policy/PolicyBuilder.retry|retry(com.davils.kontinuity.retry.Retry){}[0]
+    final fun stage(com.davils.kontinuity.core/Stage) // com.davils.kontinuity.policy/PolicyBuilder.stage|stage(com.davils.kontinuity.core.Stage){}[0]
+    final fun timeLimiter(com.davils.kontinuity.timelimiter/TimeLimiter) // com.davils.kontinuity.policy/PolicyBuilder.timeLimiter|timeLimiter(com.davils.kontinuity.timelimiter.TimeLimiter){}[0]
+}
+
+final class com.davils.kontinuity.policy/PolicySnapshot { // com.davils.kontinuity.policy/PolicySnapshot|null[0]
+    final val calls // com.davils.kontinuity.policy/PolicySnapshot.calls|{}calls[0]
+        final fun <get-calls>(): kotlin/Long // com.davils.kontinuity.policy/PolicySnapshot.calls.<get-calls>|<get-calls>(){}[0]
+    final val cancelled // com.davils.kontinuity.policy/PolicySnapshot.cancelled|{}cancelled[0]
+        final fun <get-cancelled>(): kotlin/Long // com.davils.kontinuity.policy/PolicySnapshot.cancelled.<get-cancelled>|<get-cancelled>(){}[0]
+    final val failed // com.davils.kontinuity.policy/PolicySnapshot.failed|{}failed[0]
+        final fun <get-failed>(): kotlin/Long // com.davils.kontinuity.policy/PolicySnapshot.failed.<get-failed>|<get-failed>(){}[0]
+    final val rejected // com.davils.kontinuity.policy/PolicySnapshot.rejected|{}rejected[0]
+        final fun <get-rejected>(): kotlin/Long // com.davils.kontinuity.policy/PolicySnapshot.rejected.<get-rejected>|<get-rejected>(){}[0]
+    final val successful // com.davils.kontinuity.policy/PolicySnapshot.successful|{}successful[0]
+        final fun <get-successful>(): kotlin/Long // com.davils.kontinuity.policy/PolicySnapshot.successful.<get-successful>|<get-successful>(){}[0]
+
+    final fun toString(): kotlin/String // com.davils.kontinuity.policy/PolicySnapshot.toString|toString(){}[0]
+}
+
+final fun <#A: kotlin/Any, #B: kotlin/Any> (com.davils.kontinuity.policy/Policy).com.davils.kontinuity.policy/cached(com.davils.kontinuity.cache/Cache<#A, #B>): com.davils.kontinuity.policy/CachedPolicy<#A, #B> // com.davils.kontinuity.policy/cached|cached@com.davils.kontinuity.policy.Policy(com.davils.kontinuity.cache.Cache<0:0,0:1>){0§<kotlin.Any>;1§<kotlin.Any>}[0]
+final fun <#A: kotlin/Any?> (kotlinx.coroutines.flow/Flow<#A>).com.davils.kontinuity.policy/resilience(com.davils.kontinuity.policy/Policy): kotlinx.coroutines.flow/Flow<#A> // com.davils.kontinuity.policy/resilience|resilience@kotlinx.coroutines.flow.Flow<0:0>(com.davils.kontinuity.policy.Policy){0§<kotlin.Any?>}[0]
+final fun com.davils.kontinuity.policy/resilience(kotlin/String, com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.policy/PolicyBuilder, kotlin/Unit>): com.davils.kontinuity.policy/Policy // com.davils.kontinuity.policy/resilience|resilience(kotlin.String;com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.policy.PolicyBuilder,kotlin.Unit>){}[0]
+final suspend fun <#A: kotlin/Any?> (com.davils.kontinuity.policy/Policy).com.davils.kontinuity.policy/execute(com.davils.kontinuity.core.fallback/Fallback<#A>, kotlin.coroutines/SuspendFunction0<#A>): #A // com.davils.kontinuity.policy/execute|execute@com.davils.kontinuity.policy.Policy(com.davils.kontinuity.core.fallback.Fallback<0:0>;kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
