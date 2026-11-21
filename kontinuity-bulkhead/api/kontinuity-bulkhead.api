@@ -1,0 +1,240 @@
+public final class com/davils/kontinuity/bulkhead/Bulkhead : com/davils/kontinuity/core/Stage {
+	public final fun acquirePermission-VtjQ1oo (JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun acquirePermission-VtjQ1oo$default (Lcom/davils/kontinuity/bulkhead/Bulkhead;JLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun changeConfig (Lcom/davils/kontinuity/bulkhead/BulkheadConfig;)V
+	public fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getConfig ()Lcom/davils/kontinuity/bulkhead/BulkheadConfig;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public final fun snapshot ()Lcom/davils/kontinuity/bulkhead/BulkheadSnapshot;
+	public fun toString ()Ljava/lang/String;
+	public final fun tryAcquirePermission ()Lcom/davils/kontinuity/bulkhead/BulkheadPermit;
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadConfig : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/bulkhead/BulkheadConfig$Companion;
+	public static final field HARD_CONCURRENT_CALLS I
+	public static final field HARD_WAITING_CALLS I
+	public final fun getMaxConcurrentCalls ()I
+	public final fun getMaxWaitDuration-UwyO8pc ()J
+	public final fun getMaxWaitingCalls ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadConfig$Companion {
+	public final fun getDefault ()Lcom/davils/kontinuity/bulkhead/BulkheadConfig;
+	public final fun getHARD_WAIT-UwyO8pc ()J
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadConfigBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun getMaxConcurrentCalls ()I
+	public final fun getMaxWaitDuration-UwyO8pc ()J
+	public final fun getMaxWaitingCalls ()I
+	public final fun setMaxConcurrentCalls (I)V
+	public final fun setMaxWaitDuration-LRDsOJo (J)V
+	public final fun setMaxWaitingCalls (I)V
+}
+
+public abstract interface class com/davils/kontinuity/bulkhead/BulkheadEvent : com/davils/kontinuity/core/ResilienceEvent {
+	public static final field Companion Lcom/davils/kontinuity/bulkhead/BulkheadEvent$Companion;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadEvent$Companion {
+	public final fun getTOPIC ()Lcom/davils/konfetti/core/TopicKey;
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadEvent$Finished : com/davils/kontinuity/bulkhead/BulkheadEvent {
+	public final fun getHeld-UwyO8pc ()J
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadEvent$Permitted : com/davils/kontinuity/bulkhead/BulkheadEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getWaited-UwyO8pc ()J
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadEvent$Rejected : com/davils/kontinuity/bulkhead/BulkheadEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun isQueueFull ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadFullException : com/davils/kontinuity/core/CallRejectedException {
+	public final fun isQueueFull ()Z
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadInteropKt {
+	public static final fun executeBlocking (Lcom/davils/kontinuity/bulkhead/Bulkhead;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+	public static final fun executeCompletionStage (Lcom/davils/kontinuity/bulkhead/Bulkhead;Lkotlin/jvm/functions/Function0;)Ljava/util/concurrent/CompletionStage;
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadPermit {
+	public final fun getHeld-UwyO8pc ()J
+	public final fun isReleased ()Z
+	public final fun release ()V
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadRegistry : com/davils/kontinuity/core/registry/Registry {
+	public final fun bulkhead (Ljava/lang/String;Lcom/davils/kontinuity/bulkhead/BulkheadConfig;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public final fun bulkhead (Ljava/lang/String;Ljava/lang/String;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public final fun bulkhead (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public static synthetic fun bulkhead$default (Lcom/davils/kontinuity/bulkhead/BulkheadRegistry;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public static synthetic fun bulkhead$default (Lcom/davils/kontinuity/bulkhead/BulkheadRegistry;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public fun find (Ljava/lang/String;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public synthetic fun find (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun getAll ()Ljava/util/List;
+	public final fun getEnvironment ()Lcom/davils/kontinuity/core/Environment;
+	public fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getSettings ()Lcom/davils/kontinuity/core/registry/RegistrySettings;
+	public fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public synthetic fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun replace (Lcom/davils/kontinuity/bulkhead/Bulkhead;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public synthetic fun replace (Lcom/davils/kontinuity/core/Instance;)Lcom/davils/kontinuity/core/Instance;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadRegistryBuilder : com/davils/kontinuity/core/registry/RegistryBuilder {
+	public synthetic fun configBuilder (Lcom/davils/kore/core/validation/Validatable;)Lcom/davils/kore/core/dsl/ValidatingBuilder;
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadSnapshot {
+	public final fun getAvailableConcurrentCalls ()I
+	public final fun getCancelled ()J
+	public final fun getConcurrentCalls ()I
+	public final fun getFinished ()J
+	public final fun getMaxAllowedConcurrentCalls ()I
+	public final fun getPermitted ()J
+	public final fun getRejected ()J
+	public final fun getWaitingCalls ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/BulkheadsKt {
+	public static final fun bulkhead (Ljava/lang/String;Lcom/davils/kontinuity/bulkhead/BulkheadConfig;Lcom/davils/kontinuity/core/Environment;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public static final fun bulkhead (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public static final fun bulkhead (Lkotlinx/coroutines/flow/Flow;Lcom/davils/kontinuity/bulkhead/Bulkhead;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun bulkhead$default (Ljava/lang/String;Lcom/davils/kontinuity/bulkhead/BulkheadConfig;Lcom/davils/kontinuity/core/Environment;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public static synthetic fun bulkhead$default (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/Bulkhead;
+	public static final fun bulkheadConfig (Lcom/davils/kontinuity/bulkhead/BulkheadConfig;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/bulkhead/BulkheadConfig;
+	public static synthetic fun bulkheadConfig$default (Lcom/davils/kontinuity/bulkhead/BulkheadConfig;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/BulkheadConfig;
+	public static final fun bulkheadRegistry (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/bulkhead/BulkheadRegistry;
+	public static synthetic fun bulkheadRegistry$default (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/BulkheadRegistry;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkhead : com/davils/kontinuity/core/Stage {
+	public fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getConfig ()Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadConfig;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public final fun snapshot ()Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadSnapshot;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadConfig : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadConfig$Companion;
+	public static final field HARD_CONCURRENT_CALLS I
+	public static final field HARD_QUEUE_CAPACITY I
+	public final fun getMaxConcurrentCalls ()I
+	public final fun getQueueCapacity ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadConfig$Companion {
+	public final fun getDefault ()Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadConfig;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadConfigBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun getMaxConcurrentCalls ()I
+	public final fun getQueueCapacity ()I
+	public final fun setMaxConcurrentCalls (I)V
+	public final fun setQueueCapacity (I)V
+}
+
+public abstract interface class com/davils/kontinuity/bulkhead/DispatcherBulkheadEvent : com/davils/kontinuity/core/ResilienceEvent {
+	public static final field Companion Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadEvent$Companion;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadEvent$Companion {
+	public final fun getTOPIC ()Lcom/davils/konfetti/core/TopicKey;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadEvent$Finished : com/davils/kontinuity/bulkhead/DispatcherBulkheadEvent {
+	public final fun getHeld-UwyO8pc ()J
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadEvent$Permitted : com/davils/kontinuity/bulkhead/DispatcherBulkheadEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getWaited-UwyO8pc ()J
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadEvent$Rejected : com/davils/kontinuity/bulkhead/DispatcherBulkheadEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun isQueueFull ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadInteropKt {
+	public static final fun submit (Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function0;)Ljava/util/concurrent/CompletionStage;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadRegistry : com/davils/kontinuity/core/registry/Registry {
+	public final fun dispatcherBulkhead (Ljava/lang/String;Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadConfig;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public final fun dispatcherBulkhead (Ljava/lang/String;Ljava/lang/String;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public final fun dispatcherBulkhead (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public static synthetic fun dispatcherBulkhead$default (Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadRegistry;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public static synthetic fun dispatcherBulkhead$default (Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadRegistry;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public fun find (Ljava/lang/String;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public synthetic fun find (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun getAll ()Ljava/util/List;
+	public final fun getDispatcher ()Lkotlinx/coroutines/CoroutineDispatcher;
+	public final fun getEnvironment ()Lcom/davils/kontinuity/core/Environment;
+	public fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getSettings ()Lcom/davils/kontinuity/core/registry/RegistrySettings;
+	public fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public synthetic fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun replace (Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public synthetic fun replace (Lcom/davils/kontinuity/core/Instance;)Lcom/davils/kontinuity/core/Instance;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadRegistryBuilder : com/davils/kontinuity/core/registry/RegistryBuilder {
+	public synthetic fun configBuilder (Lcom/davils/kore/core/validation/Validatable;)Lcom/davils/kore/core/dsl/ValidatingBuilder;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadSnapshot {
+	public final fun getCancelled ()J
+	public final fun getFinished ()J
+	public final fun getPermitted ()J
+	public final fun getQueued ()I
+	public final fun getRejected ()J
+	public final fun getRemainingCapacity ()I
+	public final fun getRunning ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/bulkhead/DispatcherBulkheadsKt {
+	public static final fun dispatcherBulkhead (Ljava/lang/String;Lkotlinx/coroutines/CoroutineDispatcher;Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadConfig;Lcom/davils/kontinuity/core/Environment;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public static final fun dispatcherBulkhead (Ljava/lang/String;Lkotlinx/coroutines/CoroutineDispatcher;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public static final fun dispatcherBulkhead (Lkotlinx/coroutines/flow/Flow;Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun dispatcherBulkhead$default (Ljava/lang/String;Lkotlinx/coroutines/CoroutineDispatcher;Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadConfig;Lcom/davils/kontinuity/core/Environment;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public static synthetic fun dispatcherBulkhead$default (Ljava/lang/String;Lkotlinx/coroutines/CoroutineDispatcher;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkhead;
+	public static final fun dispatcherBulkheadConfig (Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadConfig;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadConfig;
+	public static synthetic fun dispatcherBulkheadConfig$default (Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadConfig;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadConfig;
+	public static final fun dispatcherBulkheadRegistry (Lkotlinx/coroutines/CoroutineDispatcher;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadRegistry;
+	public static synthetic fun dispatcherBulkheadRegistry$default (Lkotlinx/coroutines/CoroutineDispatcher;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/bulkhead/DispatcherBulkheadRegistry;
+}
+

@@ -1,0 +1,289 @@
+// Klib ABI Dump
+// Targets: [wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.davils:kontinuity-bulkhead>
+sealed interface com.davils.kontinuity.bulkhead/BulkheadEvent : com.davils.kontinuity.core/ResilienceEvent { // com.davils.kontinuity.bulkhead/BulkheadEvent|null[0]
+    open val kind // com.davils.kontinuity.bulkhead/BulkheadEvent.kind|{}kind[0]
+        open fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.bulkhead/BulkheadEvent.kind.<get-kind>|<get-kind>(){}[0]
+
+    final class Finished : com.davils.kontinuity.bulkhead/BulkheadEvent { // com.davils.kontinuity.bulkhead/BulkheadEvent.Finished|null[0]
+        final val held // com.davils.kontinuity.bulkhead/BulkheadEvent.Finished.held|{}held[0]
+            final fun <get-held>(): kotlin.time/Duration // com.davils.kontinuity.bulkhead/BulkheadEvent.Finished.held.<get-held>|<get-held>(){}[0]
+        final val instance // com.davils.kontinuity.bulkhead/BulkheadEvent.Finished.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.bulkhead/BulkheadEvent.Finished.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/BulkheadEvent.Finished.toString|toString(){}[0]
+    }
+
+    final class Permitted : com.davils.kontinuity.bulkhead/BulkheadEvent { // com.davils.kontinuity.bulkhead/BulkheadEvent.Permitted|null[0]
+        final val instance // com.davils.kontinuity.bulkhead/BulkheadEvent.Permitted.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.bulkhead/BulkheadEvent.Permitted.instance.<get-instance>|<get-instance>(){}[0]
+        final val waited // com.davils.kontinuity.bulkhead/BulkheadEvent.Permitted.waited|{}waited[0]
+            final fun <get-waited>(): kotlin.time/Duration // com.davils.kontinuity.bulkhead/BulkheadEvent.Permitted.waited.<get-waited>|<get-waited>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/BulkheadEvent.Permitted.toString|toString(){}[0]
+    }
+
+    final class Rejected : com.davils.kontinuity.bulkhead/BulkheadEvent { // com.davils.kontinuity.bulkhead/BulkheadEvent.Rejected|null[0]
+        final val instance // com.davils.kontinuity.bulkhead/BulkheadEvent.Rejected.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.bulkhead/BulkheadEvent.Rejected.instance.<get-instance>|<get-instance>(){}[0]
+        final val isQueueFull // com.davils.kontinuity.bulkhead/BulkheadEvent.Rejected.isQueueFull|{}isQueueFull[0]
+            final fun <get-isQueueFull>(): kotlin/Boolean // com.davils.kontinuity.bulkhead/BulkheadEvent.Rejected.isQueueFull.<get-isQueueFull>|<get-isQueueFull>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/BulkheadEvent.Rejected.toString|toString(){}[0]
+    }
+
+    final object Companion { // com.davils.kontinuity.bulkhead/BulkheadEvent.Companion|null[0]
+        final val TOPIC // com.davils.kontinuity.bulkhead/BulkheadEvent.Companion.TOPIC|{}TOPIC[0]
+            final fun <get-TOPIC>(): com.davils.konfetti.core/TopicKey<com.davils.kontinuity.bulkhead/BulkheadEvent> // com.davils.kontinuity.bulkhead/BulkheadEvent.Companion.TOPIC.<get-TOPIC>|<get-TOPIC>(){}[0]
+    }
+}
+
+sealed interface com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent : com.davils.kontinuity.core/ResilienceEvent { // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent|null[0]
+    open val kind // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.kind|{}kind[0]
+        open fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.kind.<get-kind>|<get-kind>(){}[0]
+
+    final class Finished : com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent { // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Finished|null[0]
+        final val held // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Finished.held|{}held[0]
+            final fun <get-held>(): kotlin.time/Duration // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Finished.held.<get-held>|<get-held>(){}[0]
+        final val instance // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Finished.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Finished.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Finished.toString|toString(){}[0]
+    }
+
+    final class Permitted : com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent { // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Permitted|null[0]
+        final val instance // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Permitted.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Permitted.instance.<get-instance>|<get-instance>(){}[0]
+        final val waited // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Permitted.waited|{}waited[0]
+            final fun <get-waited>(): kotlin.time/Duration // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Permitted.waited.<get-waited>|<get-waited>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Permitted.toString|toString(){}[0]
+    }
+
+    final class Rejected : com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent { // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Rejected|null[0]
+        final val instance // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Rejected.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Rejected.instance.<get-instance>|<get-instance>(){}[0]
+        final val isQueueFull // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Rejected.isQueueFull|{}isQueueFull[0]
+            final fun <get-isQueueFull>(): kotlin/Boolean // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Rejected.isQueueFull.<get-isQueueFull>|<get-isQueueFull>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Rejected.toString|toString(){}[0]
+    }
+
+    final object Companion { // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Companion|null[0]
+        final val TOPIC // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Companion.TOPIC|{}TOPIC[0]
+            final fun <get-TOPIC>(): com.davils.konfetti.core/TopicKey<com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent> // com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent.Companion.TOPIC.<get-TOPIC>|<get-TOPIC>(){}[0]
+    }
+}
+
+final class com.davils.kontinuity.bulkhead/Bulkhead : com.davils.kontinuity.core/Stage { // com.davils.kontinuity.bulkhead/Bulkhead|null[0]
+    final val config // com.davils.kontinuity.bulkhead/Bulkhead.config|{}config[0]
+        final fun <get-config>(): com.davils.kontinuity.bulkhead/BulkheadConfig // com.davils.kontinuity.bulkhead/Bulkhead.config.<get-config>|<get-config>(){}[0]
+    final val events // com.davils.kontinuity.bulkhead/Bulkhead.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<com.davils.kontinuity.bulkhead/BulkheadEvent> // com.davils.kontinuity.bulkhead/Bulkhead.events.<get-events>|<get-events>(){}[0]
+    final val kind // com.davils.kontinuity.bulkhead/Bulkhead.kind|{}kind[0]
+        final fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.bulkhead/Bulkhead.kind.<get-kind>|<get-kind>(){}[0]
+    final val name // com.davils.kontinuity.bulkhead/Bulkhead.name|{}name[0]
+        final fun <get-name>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.bulkhead/Bulkhead.name.<get-name>|<get-name>(){}[0]
+
+    final fun changeConfig(com.davils.kontinuity.bulkhead/BulkheadConfig) // com.davils.kontinuity.bulkhead/Bulkhead.changeConfig|changeConfig(com.davils.kontinuity.bulkhead.BulkheadConfig){}[0]
+    final fun snapshot(): com.davils.kontinuity.bulkhead/BulkheadSnapshot // com.davils.kontinuity.bulkhead/Bulkhead.snapshot|snapshot(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/Bulkhead.toString|toString(){}[0]
+    final fun tryAcquirePermission(): com.davils.kontinuity.bulkhead/BulkheadPermit? // com.davils.kontinuity.bulkhead/Bulkhead.tryAcquirePermission|tryAcquirePermission(){}[0]
+    final suspend fun <#A1: kotlin/Any?> execute(kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.bulkhead/Bulkhead.execute|execute(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+    final suspend fun acquirePermission(kotlin.time/Duration = ...): com.davils.kontinuity.bulkhead/BulkheadPermit // com.davils.kontinuity.bulkhead/Bulkhead.acquirePermission|acquirePermission(kotlin.time.Duration){}[0]
+}
+
+final class com.davils.kontinuity.bulkhead/BulkheadConfig : com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.bulkhead/BulkheadConfig|null[0]
+    final val maxConcurrentCalls // com.davils.kontinuity.bulkhead/BulkheadConfig.maxConcurrentCalls|{}maxConcurrentCalls[0]
+        final fun <get-maxConcurrentCalls>(): kotlin/Int // com.davils.kontinuity.bulkhead/BulkheadConfig.maxConcurrentCalls.<get-maxConcurrentCalls>|<get-maxConcurrentCalls>(){}[0]
+    final val maxWaitDuration // com.davils.kontinuity.bulkhead/BulkheadConfig.maxWaitDuration|{}maxWaitDuration[0]
+        final fun <get-maxWaitDuration>(): kotlin.time/Duration // com.davils.kontinuity.bulkhead/BulkheadConfig.maxWaitDuration.<get-maxWaitDuration>|<get-maxWaitDuration>(){}[0]
+    final val maxWaitingCalls // com.davils.kontinuity.bulkhead/BulkheadConfig.maxWaitingCalls|{}maxWaitingCalls[0]
+        final fun <get-maxWaitingCalls>(): kotlin/Int // com.davils.kontinuity.bulkhead/BulkheadConfig.maxWaitingCalls.<get-maxWaitingCalls>|<get-maxWaitingCalls>(){}[0]
+
+    final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.bulkhead/BulkheadConfig.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/BulkheadConfig.toString|toString(){}[0]
+
+    final object Companion { // com.davils.kontinuity.bulkhead/BulkheadConfig.Companion|null[0]
+        final const val HARD_CONCURRENT_CALLS // com.davils.kontinuity.bulkhead/BulkheadConfig.Companion.HARD_CONCURRENT_CALLS|{}HARD_CONCURRENT_CALLS[0]
+            final fun <get-HARD_CONCURRENT_CALLS>(): kotlin/Int // com.davils.kontinuity.bulkhead/BulkheadConfig.Companion.HARD_CONCURRENT_CALLS.<get-HARD_CONCURRENT_CALLS>|<get-HARD_CONCURRENT_CALLS>(){}[0]
+        final const val HARD_WAITING_CALLS // com.davils.kontinuity.bulkhead/BulkheadConfig.Companion.HARD_WAITING_CALLS|{}HARD_WAITING_CALLS[0]
+            final fun <get-HARD_WAITING_CALLS>(): kotlin/Int // com.davils.kontinuity.bulkhead/BulkheadConfig.Companion.HARD_WAITING_CALLS.<get-HARD_WAITING_CALLS>|<get-HARD_WAITING_CALLS>(){}[0]
+
+        final val Default // com.davils.kontinuity.bulkhead/BulkheadConfig.Companion.Default|{}Default[0]
+            final fun <get-Default>(): com.davils.kontinuity.bulkhead/BulkheadConfig // com.davils.kontinuity.bulkhead/BulkheadConfig.Companion.Default.<get-Default>|<get-Default>(){}[0]
+        final val HARD_WAIT // com.davils.kontinuity.bulkhead/BulkheadConfig.Companion.HARD_WAIT|{}HARD_WAIT[0]
+            final fun <get-HARD_WAIT>(): kotlin.time/Duration // com.davils.kontinuity.bulkhead/BulkheadConfig.Companion.HARD_WAIT.<get-HARD_WAIT>|<get-HARD_WAIT>(){}[0]
+    }
+}
+
+final class com.davils.kontinuity.bulkhead/BulkheadConfigBuilder : com.davils.kore.core.dsl/ValidatingBuilder<com.davils.kontinuity.bulkhead/BulkheadConfig> { // com.davils.kontinuity.bulkhead/BulkheadConfigBuilder|null[0]
+    final var maxConcurrentCalls // com.davils.kontinuity.bulkhead/BulkheadConfigBuilder.maxConcurrentCalls|{}maxConcurrentCalls[0]
+        final fun <get-maxConcurrentCalls>(): kotlin/Int // com.davils.kontinuity.bulkhead/BulkheadConfigBuilder.maxConcurrentCalls.<get-maxConcurrentCalls>|<get-maxConcurrentCalls>(){}[0]
+        final fun <set-maxConcurrentCalls>(kotlin/Int) // com.davils.kontinuity.bulkhead/BulkheadConfigBuilder.maxConcurrentCalls.<set-maxConcurrentCalls>|<set-maxConcurrentCalls>(kotlin.Int){}[0]
+    final var maxWaitDuration // com.davils.kontinuity.bulkhead/BulkheadConfigBuilder.maxWaitDuration|{}maxWaitDuration[0]
+        final fun <get-maxWaitDuration>(): kotlin.time/Duration // com.davils.kontinuity.bulkhead/BulkheadConfigBuilder.maxWaitDuration.<get-maxWaitDuration>|<get-maxWaitDuration>(){}[0]
+        final fun <set-maxWaitDuration>(kotlin.time/Duration) // com.davils.kontinuity.bulkhead/BulkheadConfigBuilder.maxWaitDuration.<set-maxWaitDuration>|<set-maxWaitDuration>(kotlin.time.Duration){}[0]
+    final var maxWaitingCalls // com.davils.kontinuity.bulkhead/BulkheadConfigBuilder.maxWaitingCalls|{}maxWaitingCalls[0]
+        final fun <get-maxWaitingCalls>(): kotlin/Int // com.davils.kontinuity.bulkhead/BulkheadConfigBuilder.maxWaitingCalls.<get-maxWaitingCalls>|<get-maxWaitingCalls>(){}[0]
+        final fun <set-maxWaitingCalls>(kotlin/Int) // com.davils.kontinuity.bulkhead/BulkheadConfigBuilder.maxWaitingCalls.<set-maxWaitingCalls>|<set-maxWaitingCalls>(kotlin.Int){}[0]
+}
+
+final class com.davils.kontinuity.bulkhead/BulkheadFullException : com.davils.kontinuity.core/CallRejectedException { // com.davils.kontinuity.bulkhead/BulkheadFullException|null[0]
+    final val isQueueFull // com.davils.kontinuity.bulkhead/BulkheadFullException.isQueueFull|{}isQueueFull[0]
+        final fun <get-isQueueFull>(): kotlin/Boolean // com.davils.kontinuity.bulkhead/BulkheadFullException.isQueueFull.<get-isQueueFull>|<get-isQueueFull>(){}[0]
+}
+
+final class com.davils.kontinuity.bulkhead/BulkheadPermit { // com.davils.kontinuity.bulkhead/BulkheadPermit|null[0]
+    final val held // com.davils.kontinuity.bulkhead/BulkheadPermit.held|{}held[0]
+        final fun <get-held>(): kotlin.time/Duration // com.davils.kontinuity.bulkhead/BulkheadPermit.held.<get-held>|<get-held>(){}[0]
+    final val isReleased // com.davils.kontinuity.bulkhead/BulkheadPermit.isReleased|{}isReleased[0]
+        final fun <get-isReleased>(): kotlin/Boolean // com.davils.kontinuity.bulkhead/BulkheadPermit.isReleased.<get-isReleased>|<get-isReleased>(){}[0]
+
+    final fun release() // com.davils.kontinuity.bulkhead/BulkheadPermit.release|release(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/BulkheadPermit.toString|toString(){}[0]
+}
+
+final class com.davils.kontinuity.bulkhead/BulkheadRegistry : com.davils.kontinuity.core.registry/Registry<com.davils.kontinuity.bulkhead/BulkheadConfig, com.davils.kontinuity.bulkhead/Bulkhead> { // com.davils.kontinuity.bulkhead/BulkheadRegistry|null[0]
+    final val all // com.davils.kontinuity.bulkhead/BulkheadRegistry.all|{}all[0]
+        final fun <get-all>(): kotlin.collections/List<com.davils.kontinuity.bulkhead/Bulkhead> // com.davils.kontinuity.bulkhead/BulkheadRegistry.all.<get-all>|<get-all>(){}[0]
+    final val environment // com.davils.kontinuity.bulkhead/BulkheadRegistry.environment|{}environment[0]
+        final fun <get-environment>(): com.davils.kontinuity.core/Environment // com.davils.kontinuity.bulkhead/BulkheadRegistry.environment.<get-environment>|<get-environment>(){}[0]
+    final val events // com.davils.kontinuity.bulkhead/BulkheadRegistry.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<com.davils.kontinuity.core.registry/RegistryEvent<com.davils.kontinuity.bulkhead/Bulkhead>> // com.davils.kontinuity.bulkhead/BulkheadRegistry.events.<get-events>|<get-events>(){}[0]
+    final val settings // com.davils.kontinuity.bulkhead/BulkheadRegistry.settings|{}settings[0]
+        final fun <get-settings>(): com.davils.kontinuity.core.registry/RegistrySettings<com.davils.kontinuity.bulkhead/BulkheadConfig> // com.davils.kontinuity.bulkhead/BulkheadRegistry.settings.<get-settings>|<get-settings>(){}[0]
+
+    final fun bulkhead(kotlin/String, com.davils.kontinuity.bulkhead/BulkheadConfig): com.davils.kontinuity.bulkhead/Bulkhead // com.davils.kontinuity.bulkhead/BulkheadRegistry.bulkhead|bulkhead(kotlin.String;com.davils.kontinuity.bulkhead.BulkheadConfig){}[0]
+    final fun bulkhead(kotlin/String, kotlin/String = ...): com.davils.kontinuity.bulkhead/Bulkhead // com.davils.kontinuity.bulkhead/BulkheadRegistry.bulkhead|bulkhead(kotlin.String;kotlin.String){}[0]
+    final fun bulkhead(kotlin/String, kotlin/String = ..., kotlin/Function1<com.davils.kontinuity.bulkhead/BulkheadConfigBuilder, kotlin/Unit>): com.davils.kontinuity.bulkhead/Bulkhead // com.davils.kontinuity.bulkhead/BulkheadRegistry.bulkhead|bulkhead(kotlin.String;kotlin.String;kotlin.Function1<com.davils.kontinuity.bulkhead.BulkheadConfigBuilder,kotlin.Unit>){}[0]
+    final fun find(kotlin/String): com.davils.kontinuity.bulkhead/Bulkhead? // com.davils.kontinuity.bulkhead/BulkheadRegistry.find|find(kotlin.String){}[0]
+    final fun remove(kotlin/String): com.davils.kontinuity.bulkhead/Bulkhead? // com.davils.kontinuity.bulkhead/BulkheadRegistry.remove|remove(kotlin.String){}[0]
+    final fun replace(com.davils.kontinuity.bulkhead/Bulkhead): com.davils.kontinuity.bulkhead/Bulkhead? // com.davils.kontinuity.bulkhead/BulkheadRegistry.replace|replace(com.davils.kontinuity.bulkhead.Bulkhead){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/BulkheadRegistry.toString|toString(){}[0]
+}
+
+final class com.davils.kontinuity.bulkhead/BulkheadRegistryBuilder : com.davils.kontinuity.core.registry/RegistryBuilder<com.davils.kontinuity.bulkhead/BulkheadConfig, com.davils.kontinuity.bulkhead/BulkheadConfigBuilder> // com.davils.kontinuity.bulkhead/BulkheadRegistryBuilder|null[0]
+
+final class com.davils.kontinuity.bulkhead/BulkheadSnapshot { // com.davils.kontinuity.bulkhead/BulkheadSnapshot|null[0]
+    final val availableConcurrentCalls // com.davils.kontinuity.bulkhead/BulkheadSnapshot.availableConcurrentCalls|{}availableConcurrentCalls[0]
+        final fun <get-availableConcurrentCalls>(): kotlin/Int // com.davils.kontinuity.bulkhead/BulkheadSnapshot.availableConcurrentCalls.<get-availableConcurrentCalls>|<get-availableConcurrentCalls>(){}[0]
+    final val cancelled // com.davils.kontinuity.bulkhead/BulkheadSnapshot.cancelled|{}cancelled[0]
+        final fun <get-cancelled>(): kotlin/Long // com.davils.kontinuity.bulkhead/BulkheadSnapshot.cancelled.<get-cancelled>|<get-cancelled>(){}[0]
+    final val concurrentCalls // com.davils.kontinuity.bulkhead/BulkheadSnapshot.concurrentCalls|{}concurrentCalls[0]
+        final fun <get-concurrentCalls>(): kotlin/Int // com.davils.kontinuity.bulkhead/BulkheadSnapshot.concurrentCalls.<get-concurrentCalls>|<get-concurrentCalls>(){}[0]
+    final val finished // com.davils.kontinuity.bulkhead/BulkheadSnapshot.finished|{}finished[0]
+        final fun <get-finished>(): kotlin/Long // com.davils.kontinuity.bulkhead/BulkheadSnapshot.finished.<get-finished>|<get-finished>(){}[0]
+    final val maxAllowedConcurrentCalls // com.davils.kontinuity.bulkhead/BulkheadSnapshot.maxAllowedConcurrentCalls|{}maxAllowedConcurrentCalls[0]
+        final fun <get-maxAllowedConcurrentCalls>(): kotlin/Int // com.davils.kontinuity.bulkhead/BulkheadSnapshot.maxAllowedConcurrentCalls.<get-maxAllowedConcurrentCalls>|<get-maxAllowedConcurrentCalls>(){}[0]
+    final val permitted // com.davils.kontinuity.bulkhead/BulkheadSnapshot.permitted|{}permitted[0]
+        final fun <get-permitted>(): kotlin/Long // com.davils.kontinuity.bulkhead/BulkheadSnapshot.permitted.<get-permitted>|<get-permitted>(){}[0]
+    final val rejected // com.davils.kontinuity.bulkhead/BulkheadSnapshot.rejected|{}rejected[0]
+        final fun <get-rejected>(): kotlin/Long // com.davils.kontinuity.bulkhead/BulkheadSnapshot.rejected.<get-rejected>|<get-rejected>(){}[0]
+    final val waitingCalls // com.davils.kontinuity.bulkhead/BulkheadSnapshot.waitingCalls|{}waitingCalls[0]
+        final fun <get-waitingCalls>(): kotlin/Int // com.davils.kontinuity.bulkhead/BulkheadSnapshot.waitingCalls.<get-waitingCalls>|<get-waitingCalls>(){}[0]
+
+    final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/BulkheadSnapshot.toString|toString(){}[0]
+}
+
+final class com.davils.kontinuity.bulkhead/DispatcherBulkhead : com.davils.kontinuity.core/Stage { // com.davils.kontinuity.bulkhead/DispatcherBulkhead|null[0]
+    final val config // com.davils.kontinuity.bulkhead/DispatcherBulkhead.config|{}config[0]
+        final fun <get-config>(): com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig // com.davils.kontinuity.bulkhead/DispatcherBulkhead.config.<get-config>|<get-config>(){}[0]
+    final val events // com.davils.kontinuity.bulkhead/DispatcherBulkhead.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<com.davils.kontinuity.bulkhead/DispatcherBulkheadEvent> // com.davils.kontinuity.bulkhead/DispatcherBulkhead.events.<get-events>|<get-events>(){}[0]
+    final val kind // com.davils.kontinuity.bulkhead/DispatcherBulkhead.kind|{}kind[0]
+        final fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.bulkhead/DispatcherBulkhead.kind.<get-kind>|<get-kind>(){}[0]
+    final val name // com.davils.kontinuity.bulkhead/DispatcherBulkhead.name|{}name[0]
+        final fun <get-name>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.bulkhead/DispatcherBulkhead.name.<get-name>|<get-name>(){}[0]
+
+    final fun snapshot(): com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot // com.davils.kontinuity.bulkhead/DispatcherBulkhead.snapshot|snapshot(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/DispatcherBulkhead.toString|toString(){}[0]
+    final suspend fun <#A1: kotlin/Any?> execute(kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.bulkhead/DispatcherBulkhead.execute|execute(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+}
+
+final class com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig : com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig|null[0]
+    final val maxConcurrentCalls // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.maxConcurrentCalls|{}maxConcurrentCalls[0]
+        final fun <get-maxConcurrentCalls>(): kotlin/Int // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.maxConcurrentCalls.<get-maxConcurrentCalls>|<get-maxConcurrentCalls>(){}[0]
+    final val queueCapacity // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.queueCapacity|{}queueCapacity[0]
+        final fun <get-queueCapacity>(): kotlin/Int // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.queueCapacity.<get-queueCapacity>|<get-queueCapacity>(){}[0]
+
+    final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.toString|toString(){}[0]
+
+    final object Companion { // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.Companion|null[0]
+        final const val HARD_CONCURRENT_CALLS // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.Companion.HARD_CONCURRENT_CALLS|{}HARD_CONCURRENT_CALLS[0]
+            final fun <get-HARD_CONCURRENT_CALLS>(): kotlin/Int // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.Companion.HARD_CONCURRENT_CALLS.<get-HARD_CONCURRENT_CALLS>|<get-HARD_CONCURRENT_CALLS>(){}[0]
+        final const val HARD_QUEUE_CAPACITY // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.Companion.HARD_QUEUE_CAPACITY|{}HARD_QUEUE_CAPACITY[0]
+            final fun <get-HARD_QUEUE_CAPACITY>(): kotlin/Int // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.Companion.HARD_QUEUE_CAPACITY.<get-HARD_QUEUE_CAPACITY>|<get-HARD_QUEUE_CAPACITY>(){}[0]
+
+        final val Default // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.Companion.Default|{}Default[0]
+            final fun <get-Default>(): com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig.Companion.Default.<get-Default>|<get-Default>(){}[0]
+    }
+}
+
+final class com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder : com.davils.kore.core.dsl/ValidatingBuilder<com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig> { // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder|null[0]
+    final var maxConcurrentCalls // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder.maxConcurrentCalls|{}maxConcurrentCalls[0]
+        final fun <get-maxConcurrentCalls>(): kotlin/Int // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder.maxConcurrentCalls.<get-maxConcurrentCalls>|<get-maxConcurrentCalls>(){}[0]
+        final fun <set-maxConcurrentCalls>(kotlin/Int) // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder.maxConcurrentCalls.<set-maxConcurrentCalls>|<set-maxConcurrentCalls>(kotlin.Int){}[0]
+    final var queueCapacity // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder.queueCapacity|{}queueCapacity[0]
+        final fun <get-queueCapacity>(): kotlin/Int // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder.queueCapacity.<get-queueCapacity>|<get-queueCapacity>(){}[0]
+        final fun <set-queueCapacity>(kotlin/Int) // com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder.queueCapacity.<set-queueCapacity>|<set-queueCapacity>(kotlin.Int){}[0]
+}
+
+final class com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry : com.davils.kontinuity.core.registry/Registry<com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig, com.davils.kontinuity.bulkhead/DispatcherBulkhead> { // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry|null[0]
+    final val all // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.all|{}all[0]
+        final fun <get-all>(): kotlin.collections/List<com.davils.kontinuity.bulkhead/DispatcherBulkhead> // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.all.<get-all>|<get-all>(){}[0]
+    final val dispatcher // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.dispatcher|{}dispatcher[0]
+        final fun <get-dispatcher>(): kotlinx.coroutines/CoroutineDispatcher // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.dispatcher.<get-dispatcher>|<get-dispatcher>(){}[0]
+    final val environment // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.environment|{}environment[0]
+        final fun <get-environment>(): com.davils.kontinuity.core/Environment // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.environment.<get-environment>|<get-environment>(){}[0]
+    final val events // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<com.davils.kontinuity.core.registry/RegistryEvent<com.davils.kontinuity.bulkhead/DispatcherBulkhead>> // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.events.<get-events>|<get-events>(){}[0]
+    final val settings // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.settings|{}settings[0]
+        final fun <get-settings>(): com.davils.kontinuity.core.registry/RegistrySettings<com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig> // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.settings.<get-settings>|<get-settings>(){}[0]
+
+    final fun dispatcherBulkhead(kotlin/String, com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig): com.davils.kontinuity.bulkhead/DispatcherBulkhead // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.dispatcherBulkhead|dispatcherBulkhead(kotlin.String;com.davils.kontinuity.bulkhead.DispatcherBulkheadConfig){}[0]
+    final fun dispatcherBulkhead(kotlin/String, kotlin/String = ...): com.davils.kontinuity.bulkhead/DispatcherBulkhead // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.dispatcherBulkhead|dispatcherBulkhead(kotlin.String;kotlin.String){}[0]
+    final fun dispatcherBulkhead(kotlin/String, kotlin/String = ..., kotlin/Function1<com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder, kotlin/Unit>): com.davils.kontinuity.bulkhead/DispatcherBulkhead // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.dispatcherBulkhead|dispatcherBulkhead(kotlin.String;kotlin.String;kotlin.Function1<com.davils.kontinuity.bulkhead.DispatcherBulkheadConfigBuilder,kotlin.Unit>){}[0]
+    final fun find(kotlin/String): com.davils.kontinuity.bulkhead/DispatcherBulkhead? // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.find|find(kotlin.String){}[0]
+    final fun remove(kotlin/String): com.davils.kontinuity.bulkhead/DispatcherBulkhead? // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.remove|remove(kotlin.String){}[0]
+    final fun replace(com.davils.kontinuity.bulkhead/DispatcherBulkhead): com.davils.kontinuity.bulkhead/DispatcherBulkhead? // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.replace|replace(com.davils.kontinuity.bulkhead.DispatcherBulkhead){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry.toString|toString(){}[0]
+}
+
+final class com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistryBuilder : com.davils.kontinuity.core.registry/RegistryBuilder<com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig, com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder> // com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistryBuilder|null[0]
+
+final class com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot { // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot|null[0]
+    final val cancelled // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.cancelled|{}cancelled[0]
+        final fun <get-cancelled>(): kotlin/Long // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.cancelled.<get-cancelled>|<get-cancelled>(){}[0]
+    final val finished // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.finished|{}finished[0]
+        final fun <get-finished>(): kotlin/Long // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.finished.<get-finished>|<get-finished>(){}[0]
+    final val permitted // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.permitted|{}permitted[0]
+        final fun <get-permitted>(): kotlin/Long // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.permitted.<get-permitted>|<get-permitted>(){}[0]
+    final val queued // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.queued|{}queued[0]
+        final fun <get-queued>(): kotlin/Int // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.queued.<get-queued>|<get-queued>(){}[0]
+    final val rejected // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.rejected|{}rejected[0]
+        final fun <get-rejected>(): kotlin/Long // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.rejected.<get-rejected>|<get-rejected>(){}[0]
+    final val remainingCapacity // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.remainingCapacity|{}remainingCapacity[0]
+        final fun <get-remainingCapacity>(): kotlin/Int // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.remainingCapacity.<get-remainingCapacity>|<get-remainingCapacity>(){}[0]
+    final val running // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.running|{}running[0]
+        final fun <get-running>(): kotlin/Int // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.running.<get-running>|<get-running>(){}[0]
+
+    final fun toString(): kotlin/String // com.davils.kontinuity.bulkhead/DispatcherBulkheadSnapshot.toString|toString(){}[0]
+}
+
+final fun <#A: kotlin/Any?> (kotlinx.coroutines.flow/Flow<#A>).com.davils.kontinuity.bulkhead/bulkhead(com.davils.kontinuity.bulkhead/Bulkhead): kotlinx.coroutines.flow/Flow<#A> // com.davils.kontinuity.bulkhead/bulkhead|bulkhead@kotlinx.coroutines.flow.Flow<0:0>(com.davils.kontinuity.bulkhead.Bulkhead){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (kotlinx.coroutines.flow/Flow<#A>).com.davils.kontinuity.bulkhead/dispatcherBulkhead(com.davils.kontinuity.bulkhead/DispatcherBulkhead): kotlinx.coroutines.flow/Flow<#A> // com.davils.kontinuity.bulkhead/dispatcherBulkhead|dispatcherBulkhead@kotlinx.coroutines.flow.Flow<0:0>(com.davils.kontinuity.bulkhead.DispatcherBulkhead){0§<kotlin.Any?>}[0]
+final fun com.davils.kontinuity.bulkhead/bulkhead(kotlin/String, com.davils.kontinuity.bulkhead/BulkheadConfig, com.davils.kontinuity.core/Environment = ...): com.davils.kontinuity.bulkhead/Bulkhead // com.davils.kontinuity.bulkhead/bulkhead|bulkhead(kotlin.String;com.davils.kontinuity.bulkhead.BulkheadConfig;com.davils.kontinuity.core.Environment){}[0]
+final fun com.davils.kontinuity.bulkhead/bulkhead(kotlin/String, com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.bulkhead/BulkheadConfigBuilder, kotlin/Unit> = ...): com.davils.kontinuity.bulkhead/Bulkhead // com.davils.kontinuity.bulkhead/bulkhead|bulkhead(kotlin.String;com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.bulkhead.BulkheadConfigBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.bulkhead/bulkheadConfig(com.davils.kontinuity.bulkhead/BulkheadConfig = ..., kotlin/Function1<com.davils.kontinuity.bulkhead/BulkheadConfigBuilder, kotlin/Unit>): com.davils.kontinuity.bulkhead/BulkheadConfig // com.davils.kontinuity.bulkhead/bulkheadConfig|bulkheadConfig(com.davils.kontinuity.bulkhead.BulkheadConfig;kotlin.Function1<com.davils.kontinuity.bulkhead.BulkheadConfigBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.bulkhead/bulkheadRegistry(com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.bulkhead/BulkheadRegistryBuilder, kotlin/Unit> = ...): com.davils.kontinuity.bulkhead/BulkheadRegistry // com.davils.kontinuity.bulkhead/bulkheadRegistry|bulkheadRegistry(com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.bulkhead.BulkheadRegistryBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.bulkhead/dispatcherBulkhead(kotlin/String, kotlinx.coroutines/CoroutineDispatcher, com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig, com.davils.kontinuity.core/Environment = ...): com.davils.kontinuity.bulkhead/DispatcherBulkhead // com.davils.kontinuity.bulkhead/dispatcherBulkhead|dispatcherBulkhead(kotlin.String;kotlinx.coroutines.CoroutineDispatcher;com.davils.kontinuity.bulkhead.DispatcherBulkheadConfig;com.davils.kontinuity.core.Environment){}[0]
+final fun com.davils.kontinuity.bulkhead/dispatcherBulkhead(kotlin/String, kotlinx.coroutines/CoroutineDispatcher, com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder, kotlin/Unit> = ...): com.davils.kontinuity.bulkhead/DispatcherBulkhead // com.davils.kontinuity.bulkhead/dispatcherBulkhead|dispatcherBulkhead(kotlin.String;kotlinx.coroutines.CoroutineDispatcher;com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.bulkhead.DispatcherBulkheadConfigBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.bulkhead/dispatcherBulkheadConfig(com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig = ..., kotlin/Function1<com.davils.kontinuity.bulkhead/DispatcherBulkheadConfigBuilder, kotlin/Unit>): com.davils.kontinuity.bulkhead/DispatcherBulkheadConfig // com.davils.kontinuity.bulkhead/dispatcherBulkheadConfig|dispatcherBulkheadConfig(com.davils.kontinuity.bulkhead.DispatcherBulkheadConfig;kotlin.Function1<com.davils.kontinuity.bulkhead.DispatcherBulkheadConfigBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.bulkhead/dispatcherBulkheadRegistry(kotlinx.coroutines/CoroutineDispatcher, com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistryBuilder, kotlin/Unit> = ...): com.davils.kontinuity.bulkhead/DispatcherBulkheadRegistry // com.davils.kontinuity.bulkhead/dispatcherBulkheadRegistry|dispatcherBulkheadRegistry(kotlinx.coroutines.CoroutineDispatcher;com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.bulkhead.DispatcherBulkheadRegistryBuilder,kotlin.Unit>){}[0]
