@@ -1,0 +1,274 @@
+public final class com/davils/kontinuity/circuitbreaker/CallNotPermittedException : com/davils/kontinuity/core/CallRejectedException {
+	public final fun getState ()Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreaker : com/davils/kontinuity/core/Stage {
+	public final fun acquirePermission ()Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerPermit;
+	public fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun executeTimed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getConfig ()Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerConfig;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+	public fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getState ()Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public final fun reset ()V
+	public final fun snapshot ()Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerSnapshot;
+	public fun toString ()Ljava/lang/String;
+	public final fun transitionTo (Lcom/davils/kontinuity/circuitbreaker/CircuitState;)Z
+	public final fun tryAcquirePermission ()Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerPermit;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerConfig : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerConfig$Companion;
+	public static final field HARD_TRIAL_CALLS I
+	public final fun getFailureRateThreshold ()D
+	public final fun getFailures ()Lcom/davils/kontinuity/core/filter/FailureFilter;
+	public final fun getMaxWaitInHalfOpenState-UwyO8pc ()J
+	public final fun getMinimumNumberOfCalls ()I
+	public final fun getOpeningFailures ()Lcom/davils/kontinuity/core/filter/FailureFilter;
+	public final fun getOpeningResults ()Lcom/davils/kontinuity/core/filter/ResultFilter;
+	public final fun getPermittedCallsInHalfOpenState ()I
+	public final fun getResults ()Lcom/davils/kontinuity/core/filter/ResultFilter;
+	public final fun getSlidingWindow ()Lcom/davils/kontinuity/circuitbreaker/SlidingWindow;
+	public final fun getSlowCallDurationThreshold-UwyO8pc ()J
+	public final fun getSlowCallRateThreshold ()D
+	public final fun getStateAfterHalfOpenTimeout ()Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public final fun getWaitInOpenState ()Lcom/davils/kontinuity/core/backoff/Backoff;
+	public final fun isAutomaticTransitionEnabled ()Z
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerConfig$Companion {
+	public final fun getDefault ()Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerConfig;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerConfigBuilder : com/davils/kore/core/dsl/ValidatingBuilder {
+	public synthetic fun assemble ()Lcom/davils/kore/core/validation/Validatable;
+	public final fun failures (Lkotlin/jvm/functions/Function1;)V
+	public final fun getFailureRateThreshold ()D
+	public final fun getFailures ()Lcom/davils/kontinuity/core/filter/FailureFilter;
+	public final fun getMaxWaitInHalfOpenState-UwyO8pc ()J
+	public final fun getMinimumNumberOfCalls ()I
+	public final fun getOpeningFailures ()Lcom/davils/kontinuity/core/filter/FailureFilter;
+	public final fun getOpeningResults ()Lcom/davils/kontinuity/core/filter/ResultFilter;
+	public final fun getPermittedCallsInHalfOpenState ()I
+	public final fun getResults ()Lcom/davils/kontinuity/core/filter/ResultFilter;
+	public final fun getSlidingWindow ()Lcom/davils/kontinuity/circuitbreaker/SlidingWindow;
+	public final fun getSlowCallDurationThreshold-UwyO8pc ()J
+	public final fun getSlowCallRateThreshold ()D
+	public final fun getStateAfterHalfOpenTimeout ()Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public final fun getWaitInOpenState ()Lcom/davils/kontinuity/core/backoff/Backoff;
+	public final fun isAutomaticTransitionEnabled ()Z
+	public final fun openOnFailures (Lkotlin/jvm/functions/Function1;)V
+	public final fun openOnResults (Lkotlin/jvm/functions/Function1;)V
+	public final fun results (Lkotlin/jvm/functions/Function1;)V
+	public final fun setAutomaticTransitionEnabled (Z)V
+	public final fun setFailureRateThreshold (D)V
+	public final fun setFailures (Lcom/davils/kontinuity/core/filter/FailureFilter;)V
+	public final fun setMaxWaitInHalfOpenState-LRDsOJo (J)V
+	public final fun setMinimumNumberOfCalls (I)V
+	public final fun setOpeningFailures (Lcom/davils/kontinuity/core/filter/FailureFilter;)V
+	public final fun setOpeningResults (Lcom/davils/kontinuity/core/filter/ResultFilter;)V
+	public final fun setPermittedCallsInHalfOpenState (I)V
+	public final fun setResults (Lcom/davils/kontinuity/core/filter/ResultFilter;)V
+	public final fun setSlidingWindow (Lcom/davils/kontinuity/circuitbreaker/SlidingWindow;)V
+	public final fun setSlowCallDurationThreshold-LRDsOJo (J)V
+	public final fun setSlowCallRateThreshold (D)V
+	public final fun setStateAfterHalfOpenTimeout (Lcom/davils/kontinuity/circuitbreaker/CircuitState;)V
+	public final fun setWaitInOpenState (Lcom/davils/kontinuity/core/backoff/Backoff;)V
+}
+
+public abstract interface class com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent : com/davils/kontinuity/core/ResilienceEvent {
+	public static final field Companion Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerEvent$Companion;
+	public fun getKind ()Lcom/davils/kontinuity/core/ResilienceKind;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent$Companion {
+	public final fun getTOPIC ()Lcom/davils/konfetti/core/TopicKey;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent$Failed : com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent {
+	public final fun getDuration-UwyO8pc ()J
+	public final fun getFailureType ()Ljava/lang/String;
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun isSlow ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent$FailureRateExceeded : com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getRate ()D
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent$Ignored : com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent {
+	public final fun getDuration-UwyO8pc ()J
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent$NotPermitted : com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getState ()Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent$Released : com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent$Reset : com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent$SlowCallRateExceeded : com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent {
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getRate ()D
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent$StateChanged : com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent {
+	public final fun getFrom ()Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun getTo ()Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent$Succeeded : com/davils/kontinuity/circuitbreaker/CircuitBreakerEvent {
+	public final fun getDuration-UwyO8pc ()J
+	public fun getInstance-KZg1Yg0 ()Ljava/lang/String;
+	public final fun isSlow ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerHealthKt {
+	public static final fun healthIndicator (Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;)Lcom/davils/kollect/core/health/HealthIndicator;
+	public static final fun healthIndicator (Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerRegistry;)Lcom/davils/kollect/core/health/HealthIndicator;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerInteropKt {
+	public static final fun executeBlocking (Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+	public static final fun executeCompletionStage (Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;Lkotlin/jvm/functions/Function0;)Ljava/util/concurrent/CompletionStage;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerPermit {
+	public final fun getElapsed-UwyO8pc ()J
+	public final fun getState ()Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public final fun isSettled ()Z
+	public final fun onFailure (Ljava/lang/Throwable;)V
+	public final fun onResult (Ljava/lang/Object;)V
+	public final fun onSuccess ()V
+	public final fun release ()V
+	public final fun restartClock ()V
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerRegistry : com/davils/kontinuity/core/registry/Registry {
+	public final fun circuitBreaker (Ljava/lang/String;Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerConfig;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public final fun circuitBreaker (Ljava/lang/String;Ljava/lang/String;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public final fun circuitBreaker (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public static synthetic fun circuitBreaker$default (Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerRegistry;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public static synthetic fun circuitBreaker$default (Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerRegistry;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public fun find (Ljava/lang/String;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public synthetic fun find (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun getAll ()Ljava/util/List;
+	public final fun getEnvironment ()Lcom/davils/kontinuity/core/Environment;
+	public fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun getSettings ()Lcom/davils/kontinuity/core/registry/RegistrySettings;
+	public fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public synthetic fun remove (Ljava/lang/String;)Lcom/davils/kontinuity/core/Instance;
+	public fun replace (Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public synthetic fun replace (Lcom/davils/kontinuity/core/Instance;)Lcom/davils/kontinuity/core/Instance;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerRegistryBuilder : com/davils/kontinuity/core/registry/RegistryBuilder {
+	public synthetic fun configBuilder (Lcom/davils/kore/core/validation/Validatable;)Lcom/davils/kore/core/dsl/ValidatingBuilder;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakerSnapshot {
+	public final fun getState ()Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public final fun getTotals ()Lcom/davils/kontinuity/circuitbreaker/TotalsSnapshot;
+	public final fun getWindow ()Lcom/davils/kontinuity/circuitbreaker/WindowSnapshot;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitBreakersKt {
+	public static final fun circuitBreaker (Ljava/lang/String;Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerConfig;Lcom/davils/kontinuity/core/Environment;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public static final fun circuitBreaker (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public static final fun circuitBreaker (Lkotlinx/coroutines/flow/Flow;Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun circuitBreaker$default (Ljava/lang/String;Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerConfig;Lcom/davils/kontinuity/core/Environment;ILjava/lang/Object;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public static synthetic fun circuitBreaker$default (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreaker;
+	public static final fun circuitBreakerConfig (Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerConfig;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerConfig;
+	public static synthetic fun circuitBreakerConfig$default (Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerConfig;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerConfig;
+	public static final fun circuitBreakerRegistry (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerRegistry;
+	public static synthetic fun circuitBreakerRegistry$default (Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/circuitbreaker/CircuitBreakerRegistry;
+	public static final fun countBased (I)Lcom/davils/kontinuity/circuitbreaker/SlidingWindow;
+	public static final fun timeBased-VtjQ1oo (JI)Lcom/davils/kontinuity/circuitbreaker/SlidingWindow;
+	public static synthetic fun timeBased-VtjQ1oo$default (JIILjava/lang/Object;)Lcom/davils/kontinuity/circuitbreaker/SlidingWindow;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/CircuitState : java/lang/Enum {
+	public static final field Closed Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public static final field Disabled Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public static final field ForcedOpen Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public static final field HalfOpen Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public static final field MetricsOnly Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public static final field Open Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun isPermitting ()Z
+	public static fun valueOf (Ljava/lang/String;)Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+	public static fun values ()[Lcom/davils/kontinuity/circuitbreaker/CircuitState;
+}
+
+public abstract interface class com/davils/kontinuity/circuitbreaker/SlidingWindow : com/davils/kore/core/validation/Validatable {
+	public static final field Companion Lcom/davils/kontinuity/circuitbreaker/SlidingWindow$Companion;
+	public static final field HARD_BUCKETS I
+	public static final field HARD_SIZE I
+}
+
+public final class com/davils/kontinuity/circuitbreaker/SlidingWindow$Companion {
+	public static final field HARD_BUCKETS I
+	public static final field HARD_SIZE I
+	public final fun getHARD_LENGTH-UwyO8pc ()J
+}
+
+public final class com/davils/kontinuity/circuitbreaker/SlidingWindow$CountBased : com/davils/kontinuity/circuitbreaker/SlidingWindow {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSize ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/circuitbreaker/SlidingWindow$TimeBased : com/davils/kontinuity/circuitbreaker/SlidingWindow {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBuckets ()I
+	public final fun getLength-UwyO8pc ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun validate (Lcom/davils/kore/core/validation/ValidationScope;)V
+}
+
+public final class com/davils/kontinuity/circuitbreaker/TotalsSnapshot {
+	public final fun getFailed ()J
+	public final fun getIgnored ()J
+	public final fun getNotPermitted ()J
+	public final fun getReleased ()J
+	public final fun getSuccessful ()J
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/davils/kontinuity/circuitbreaker/WindowSnapshot {
+	public final fun getBufferedCalls ()I
+	public final fun getFailedCalls ()I
+	public final fun getFailureRate ()D
+	public final fun getSlowCallRate ()D
+	public final fun getSlowCalls ()I
+	public final fun getSlowFailedCalls ()I
+	public fun toString ()Ljava/lang/String;
+}
+

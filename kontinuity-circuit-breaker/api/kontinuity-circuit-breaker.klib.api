@@ -1,0 +1,362 @@
+// Klib ABI Dump
+// Targets: [wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.davils:kontinuity-circuit-breaker>
+final enum class com.davils.kontinuity.circuitbreaker/CircuitState : kotlin/Enum<com.davils.kontinuity.circuitbreaker/CircuitState> { // com.davils.kontinuity.circuitbreaker/CircuitState|null[0]
+    enum entry Closed // com.davils.kontinuity.circuitbreaker/CircuitState.Closed|null[0]
+    enum entry Disabled // com.davils.kontinuity.circuitbreaker/CircuitState.Disabled|null[0]
+    enum entry ForcedOpen // com.davils.kontinuity.circuitbreaker/CircuitState.ForcedOpen|null[0]
+    enum entry HalfOpen // com.davils.kontinuity.circuitbreaker/CircuitState.HalfOpen|null[0]
+    enum entry MetricsOnly // com.davils.kontinuity.circuitbreaker/CircuitState.MetricsOnly|null[0]
+    enum entry Open // com.davils.kontinuity.circuitbreaker/CircuitState.Open|null[0]
+
+    final val entries // com.davils.kontinuity.circuitbreaker/CircuitState.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.davils.kontinuity.circuitbreaker/CircuitState> // com.davils.kontinuity.circuitbreaker/CircuitState.entries.<get-entries>|<get-entries>#static(){}[0]
+    final val isPermitting // com.davils.kontinuity.circuitbreaker/CircuitState.isPermitting|{}isPermitting[0]
+        final fun <get-isPermitting>(): kotlin/Boolean // com.davils.kontinuity.circuitbreaker/CircuitState.isPermitting.<get-isPermitting>|<get-isPermitting>(){}[0]
+
+    final fun valueOf(kotlin/String): com.davils.kontinuity.circuitbreaker/CircuitState // com.davils.kontinuity.circuitbreaker/CircuitState.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.davils.kontinuity.circuitbreaker/CircuitState> // com.davils.kontinuity.circuitbreaker/CircuitState.values|values#static(){}[0]
+}
+
+sealed interface com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent : com.davils.kontinuity.core/ResilienceEvent { // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent|null[0]
+    open val kind // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.kind|{}kind[0]
+        open fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.kind.<get-kind>|<get-kind>(){}[0]
+
+    final class Failed : com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent { // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Failed|null[0]
+        final val duration // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Failed.duration|{}duration[0]
+            final fun <get-duration>(): kotlin.time/Duration // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Failed.duration.<get-duration>|<get-duration>(){}[0]
+        final val failureType // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Failed.failureType|{}failureType[0]
+            final fun <get-failureType>(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Failed.failureType.<get-failureType>|<get-failureType>(){}[0]
+        final val instance // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Failed.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Failed.instance.<get-instance>|<get-instance>(){}[0]
+        final val isSlow // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Failed.isSlow|{}isSlow[0]
+            final fun <get-isSlow>(): kotlin/Boolean // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Failed.isSlow.<get-isSlow>|<get-isSlow>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Failed.toString|toString(){}[0]
+    }
+
+    final class FailureRateExceeded : com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent { // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.FailureRateExceeded|null[0]
+        final val instance // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.FailureRateExceeded.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.FailureRateExceeded.instance.<get-instance>|<get-instance>(){}[0]
+        final val rate // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.FailureRateExceeded.rate|{}rate[0]
+            final fun <get-rate>(): kotlin/Double // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.FailureRateExceeded.rate.<get-rate>|<get-rate>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.FailureRateExceeded.toString|toString(){}[0]
+    }
+
+    final class Ignored : com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent { // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Ignored|null[0]
+        final val duration // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Ignored.duration|{}duration[0]
+            final fun <get-duration>(): kotlin.time/Duration // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Ignored.duration.<get-duration>|<get-duration>(){}[0]
+        final val instance // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Ignored.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Ignored.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Ignored.toString|toString(){}[0]
+    }
+
+    final class NotPermitted : com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent { // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.NotPermitted|null[0]
+        final val instance // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.NotPermitted.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.NotPermitted.instance.<get-instance>|<get-instance>(){}[0]
+        final val state // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.NotPermitted.state|{}state[0]
+            final fun <get-state>(): com.davils.kontinuity.circuitbreaker/CircuitState // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.NotPermitted.state.<get-state>|<get-state>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.NotPermitted.toString|toString(){}[0]
+    }
+
+    final class Released : com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent { // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Released|null[0]
+        final val instance // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Released.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Released.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Released.toString|toString(){}[0]
+    }
+
+    final class Reset : com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent { // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Reset|null[0]
+        final val instance // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Reset.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Reset.instance.<get-instance>|<get-instance>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Reset.toString|toString(){}[0]
+    }
+
+    final class SlowCallRateExceeded : com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent { // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.SlowCallRateExceeded|null[0]
+        final val instance // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.SlowCallRateExceeded.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.SlowCallRateExceeded.instance.<get-instance>|<get-instance>(){}[0]
+        final val rate // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.SlowCallRateExceeded.rate|{}rate[0]
+            final fun <get-rate>(): kotlin/Double // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.SlowCallRateExceeded.rate.<get-rate>|<get-rate>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.SlowCallRateExceeded.toString|toString(){}[0]
+    }
+
+    final class StateChanged : com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent { // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.StateChanged|null[0]
+        final val from // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.StateChanged.from|{}from[0]
+            final fun <get-from>(): com.davils.kontinuity.circuitbreaker/CircuitState // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.StateChanged.from.<get-from>|<get-from>(){}[0]
+        final val instance // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.StateChanged.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.StateChanged.instance.<get-instance>|<get-instance>(){}[0]
+        final val to // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.StateChanged.to|{}to[0]
+            final fun <get-to>(): com.davils.kontinuity.circuitbreaker/CircuitState // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.StateChanged.to.<get-to>|<get-to>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.StateChanged.toString|toString(){}[0]
+    }
+
+    final class Succeeded : com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent { // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Succeeded|null[0]
+        final val duration // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Succeeded.duration|{}duration[0]
+            final fun <get-duration>(): kotlin.time/Duration // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Succeeded.duration.<get-duration>|<get-duration>(){}[0]
+        final val instance // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Succeeded.instance|{}instance[0]
+            final fun <get-instance>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Succeeded.instance.<get-instance>|<get-instance>(){}[0]
+        final val isSlow // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Succeeded.isSlow|{}isSlow[0]
+            final fun <get-isSlow>(): kotlin/Boolean // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Succeeded.isSlow.<get-isSlow>|<get-isSlow>(){}[0]
+
+        final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Succeeded.toString|toString(){}[0]
+    }
+
+    final object Companion { // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Companion|null[0]
+        final val TOPIC // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Companion.TOPIC|{}TOPIC[0]
+            final fun <get-TOPIC>(): com.davils.konfetti.core/TopicKey<com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent> // com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent.Companion.TOPIC.<get-TOPIC>|<get-TOPIC>(){}[0]
+    }
+}
+
+sealed interface com.davils.kontinuity.circuitbreaker/SlidingWindow : com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.circuitbreaker/SlidingWindow|null[0]
+    final class CountBased : com.davils.kontinuity.circuitbreaker/SlidingWindow { // com.davils.kontinuity.circuitbreaker/SlidingWindow.CountBased|null[0]
+        final val size // com.davils.kontinuity.circuitbreaker/SlidingWindow.CountBased.size|{}size[0]
+            final fun <get-size>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/SlidingWindow.CountBased.size.<get-size>|<get-size>(){}[0]
+
+        final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.circuitbreaker/SlidingWindow.CountBased.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.circuitbreaker/SlidingWindow.CountBased.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.davils.kontinuity.circuitbreaker/SlidingWindow.CountBased.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/SlidingWindow.CountBased.toString|toString(){}[0]
+    }
+
+    final class TimeBased : com.davils.kontinuity.circuitbreaker/SlidingWindow { // com.davils.kontinuity.circuitbreaker/SlidingWindow.TimeBased|null[0]
+        final val buckets // com.davils.kontinuity.circuitbreaker/SlidingWindow.TimeBased.buckets|{}buckets[0]
+            final fun <get-buckets>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/SlidingWindow.TimeBased.buckets.<get-buckets>|<get-buckets>(){}[0]
+        final val length // com.davils.kontinuity.circuitbreaker/SlidingWindow.TimeBased.length|{}length[0]
+            final fun <get-length>(): kotlin.time/Duration // com.davils.kontinuity.circuitbreaker/SlidingWindow.TimeBased.length.<get-length>|<get-length>(){}[0]
+
+        final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.circuitbreaker/SlidingWindow.TimeBased.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.davils.kontinuity.circuitbreaker/SlidingWindow.TimeBased.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.davils.kontinuity.circuitbreaker/SlidingWindow.TimeBased.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/SlidingWindow.TimeBased.toString|toString(){}[0]
+    }
+
+    final object Companion { // com.davils.kontinuity.circuitbreaker/SlidingWindow.Companion|null[0]
+        final const val HARD_BUCKETS // com.davils.kontinuity.circuitbreaker/SlidingWindow.Companion.HARD_BUCKETS|{}HARD_BUCKETS[0]
+            final fun <get-HARD_BUCKETS>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/SlidingWindow.Companion.HARD_BUCKETS.<get-HARD_BUCKETS>|<get-HARD_BUCKETS>(){}[0]
+        final const val HARD_SIZE // com.davils.kontinuity.circuitbreaker/SlidingWindow.Companion.HARD_SIZE|{}HARD_SIZE[0]
+            final fun <get-HARD_SIZE>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/SlidingWindow.Companion.HARD_SIZE.<get-HARD_SIZE>|<get-HARD_SIZE>(){}[0]
+
+        final val HARD_LENGTH // com.davils.kontinuity.circuitbreaker/SlidingWindow.Companion.HARD_LENGTH|{}HARD_LENGTH[0]
+            final fun <get-HARD_LENGTH>(): kotlin.time/Duration // com.davils.kontinuity.circuitbreaker/SlidingWindow.Companion.HARD_LENGTH.<get-HARD_LENGTH>|<get-HARD_LENGTH>(){}[0]
+    }
+}
+
+final class com.davils.kontinuity.circuitbreaker/CallNotPermittedException : com.davils.kontinuity.core/CallRejectedException { // com.davils.kontinuity.circuitbreaker/CallNotPermittedException|null[0]
+    final val state // com.davils.kontinuity.circuitbreaker/CallNotPermittedException.state|{}state[0]
+        final fun <get-state>(): com.davils.kontinuity.circuitbreaker/CircuitState // com.davils.kontinuity.circuitbreaker/CallNotPermittedException.state.<get-state>|<get-state>(){}[0]
+}
+
+final class com.davils.kontinuity.circuitbreaker/CircuitBreaker : com.davils.kontinuity.core/Stage { // com.davils.kontinuity.circuitbreaker/CircuitBreaker|null[0]
+    final val config // com.davils.kontinuity.circuitbreaker/CircuitBreaker.config|{}config[0]
+        final fun <get-config>(): com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig // com.davils.kontinuity.circuitbreaker/CircuitBreaker.config.<get-config>|<get-config>(){}[0]
+    final val events // com.davils.kontinuity.circuitbreaker/CircuitBreaker.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<com.davils.kontinuity.circuitbreaker/CircuitBreakerEvent> // com.davils.kontinuity.circuitbreaker/CircuitBreaker.events.<get-events>|<get-events>(){}[0]
+    final val kind // com.davils.kontinuity.circuitbreaker/CircuitBreaker.kind|{}kind[0]
+        final fun <get-kind>(): com.davils.kontinuity.core/ResilienceKind // com.davils.kontinuity.circuitbreaker/CircuitBreaker.kind.<get-kind>|<get-kind>(){}[0]
+    final val name // com.davils.kontinuity.circuitbreaker/CircuitBreaker.name|{}name[0]
+        final fun <get-name>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.circuitbreaker/CircuitBreaker.name.<get-name>|<get-name>(){}[0]
+    final val state // com.davils.kontinuity.circuitbreaker/CircuitBreaker.state|{}state[0]
+        final fun <get-state>(): com.davils.kontinuity.circuitbreaker/CircuitState // com.davils.kontinuity.circuitbreaker/CircuitBreaker.state.<get-state>|<get-state>(){}[0]
+
+    final fun acquirePermission(): com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit // com.davils.kontinuity.circuitbreaker/CircuitBreaker.acquirePermission|acquirePermission(){}[0]
+    final fun reset() // com.davils.kontinuity.circuitbreaker/CircuitBreaker.reset|reset(){}[0]
+    final fun snapshot(): com.davils.kontinuity.circuitbreaker/CircuitBreakerSnapshot // com.davils.kontinuity.circuitbreaker/CircuitBreaker.snapshot|snapshot(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreaker.toString|toString(){}[0]
+    final fun transitionTo(com.davils.kontinuity.circuitbreaker/CircuitState): kotlin/Boolean // com.davils.kontinuity.circuitbreaker/CircuitBreaker.transitionTo|transitionTo(com.davils.kontinuity.circuitbreaker.CircuitState){}[0]
+    final fun tryAcquirePermission(): com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit? // com.davils.kontinuity.circuitbreaker/CircuitBreaker.tryAcquirePermission|tryAcquirePermission(){}[0]
+    final suspend fun <#A1: kotlin/Any?> execute(kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.circuitbreaker/CircuitBreaker.execute|execute(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+    final suspend fun <#A1: kotlin/Any?> executeTimed(kotlin.coroutines/SuspendFunction1<kotlin/Function0<kotlin/Unit>, #A1>): #A1 // com.davils.kontinuity.circuitbreaker/CircuitBreaker.executeTimed|executeTimed(kotlin.coroutines.SuspendFunction1<kotlin.Function0<kotlin.Unit>,0:0>){0§<kotlin.Any?>}[0]
+}
+
+final class com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig : com.davils.kore.core.validation/Validatable { // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig|null[0]
+    final val failureRateThreshold // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.failureRateThreshold|{}failureRateThreshold[0]
+        final fun <get-failureRateThreshold>(): kotlin/Double // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.failureRateThreshold.<get-failureRateThreshold>|<get-failureRateThreshold>(){}[0]
+    final val failures // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.failures|{}failures[0]
+        final fun <get-failures>(): com.davils.kontinuity.core.filter/FailureFilter // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.failures.<get-failures>|<get-failures>(){}[0]
+    final val isAutomaticTransitionEnabled // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.isAutomaticTransitionEnabled|{}isAutomaticTransitionEnabled[0]
+        final fun <get-isAutomaticTransitionEnabled>(): kotlin/Boolean // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.isAutomaticTransitionEnabled.<get-isAutomaticTransitionEnabled>|<get-isAutomaticTransitionEnabled>(){}[0]
+    final val maxWaitInHalfOpenState // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.maxWaitInHalfOpenState|{}maxWaitInHalfOpenState[0]
+        final fun <get-maxWaitInHalfOpenState>(): kotlin.time/Duration // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.maxWaitInHalfOpenState.<get-maxWaitInHalfOpenState>|<get-maxWaitInHalfOpenState>(){}[0]
+    final val minimumNumberOfCalls // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.minimumNumberOfCalls|{}minimumNumberOfCalls[0]
+        final fun <get-minimumNumberOfCalls>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.minimumNumberOfCalls.<get-minimumNumberOfCalls>|<get-minimumNumberOfCalls>(){}[0]
+    final val openingFailures // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.openingFailures|{}openingFailures[0]
+        final fun <get-openingFailures>(): com.davils.kontinuity.core.filter/FailureFilter? // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.openingFailures.<get-openingFailures>|<get-openingFailures>(){}[0]
+    final val openingResults // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.openingResults|{}openingResults[0]
+        final fun <get-openingResults>(): com.davils.kontinuity.core.filter/ResultFilter // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.openingResults.<get-openingResults>|<get-openingResults>(){}[0]
+    final val permittedCallsInHalfOpenState // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.permittedCallsInHalfOpenState|{}permittedCallsInHalfOpenState[0]
+        final fun <get-permittedCallsInHalfOpenState>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.permittedCallsInHalfOpenState.<get-permittedCallsInHalfOpenState>|<get-permittedCallsInHalfOpenState>(){}[0]
+    final val results // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.results|{}results[0]
+        final fun <get-results>(): com.davils.kontinuity.core.filter/ResultFilter // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.results.<get-results>|<get-results>(){}[0]
+    final val slidingWindow // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.slidingWindow|{}slidingWindow[0]
+        final fun <get-slidingWindow>(): com.davils.kontinuity.circuitbreaker/SlidingWindow // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.slidingWindow.<get-slidingWindow>|<get-slidingWindow>(){}[0]
+    final val slowCallDurationThreshold // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.slowCallDurationThreshold|{}slowCallDurationThreshold[0]
+        final fun <get-slowCallDurationThreshold>(): kotlin.time/Duration // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.slowCallDurationThreshold.<get-slowCallDurationThreshold>|<get-slowCallDurationThreshold>(){}[0]
+    final val slowCallRateThreshold // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.slowCallRateThreshold|{}slowCallRateThreshold[0]
+        final fun <get-slowCallRateThreshold>(): kotlin/Double // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.slowCallRateThreshold.<get-slowCallRateThreshold>|<get-slowCallRateThreshold>(){}[0]
+    final val stateAfterHalfOpenTimeout // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.stateAfterHalfOpenTimeout|{}stateAfterHalfOpenTimeout[0]
+        final fun <get-stateAfterHalfOpenTimeout>(): com.davils.kontinuity.circuitbreaker/CircuitState // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.stateAfterHalfOpenTimeout.<get-stateAfterHalfOpenTimeout>|<get-stateAfterHalfOpenTimeout>(){}[0]
+    final val waitInOpenState // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.waitInOpenState|{}waitInOpenState[0]
+        final fun <get-waitInOpenState>(): com.davils.kontinuity.core.backoff/Backoff // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.waitInOpenState.<get-waitInOpenState>|<get-waitInOpenState>(){}[0]
+
+    final fun (com.davils.kore.core.validation/ValidationScope).validate() // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.validate|validate@com.davils.kore.core.validation.ValidationScope(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.toString|toString(){}[0]
+
+    final object Companion { // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.Companion|null[0]
+        final const val HARD_TRIAL_CALLS // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.Companion.HARD_TRIAL_CALLS|{}HARD_TRIAL_CALLS[0]
+            final fun <get-HARD_TRIAL_CALLS>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.Companion.HARD_TRIAL_CALLS.<get-HARD_TRIAL_CALLS>|<get-HARD_TRIAL_CALLS>(){}[0]
+
+        final val Default // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.Companion.Default|{}Default[0]
+            final fun <get-Default>(): com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig.Companion.Default.<get-Default>|<get-Default>(){}[0]
+    }
+}
+
+final class com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder : com.davils.kore.core.dsl/ValidatingBuilder<com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig> { // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder|null[0]
+    final var failureRateThreshold // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.failureRateThreshold|{}failureRateThreshold[0]
+        final fun <get-failureRateThreshold>(): kotlin/Double // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.failureRateThreshold.<get-failureRateThreshold>|<get-failureRateThreshold>(){}[0]
+        final fun <set-failureRateThreshold>(kotlin/Double) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.failureRateThreshold.<set-failureRateThreshold>|<set-failureRateThreshold>(kotlin.Double){}[0]
+    final var failures // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.failures|{}failures[0]
+        final fun <get-failures>(): com.davils.kontinuity.core.filter/FailureFilter // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.failures.<get-failures>|<get-failures>(){}[0]
+        final fun <set-failures>(com.davils.kontinuity.core.filter/FailureFilter) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.failures.<set-failures>|<set-failures>(com.davils.kontinuity.core.filter.FailureFilter){}[0]
+    final var isAutomaticTransitionEnabled // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.isAutomaticTransitionEnabled|{}isAutomaticTransitionEnabled[0]
+        final fun <get-isAutomaticTransitionEnabled>(): kotlin/Boolean // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.isAutomaticTransitionEnabled.<get-isAutomaticTransitionEnabled>|<get-isAutomaticTransitionEnabled>(){}[0]
+        final fun <set-isAutomaticTransitionEnabled>(kotlin/Boolean) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.isAutomaticTransitionEnabled.<set-isAutomaticTransitionEnabled>|<set-isAutomaticTransitionEnabled>(kotlin.Boolean){}[0]
+    final var maxWaitInHalfOpenState // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.maxWaitInHalfOpenState|{}maxWaitInHalfOpenState[0]
+        final fun <get-maxWaitInHalfOpenState>(): kotlin.time/Duration // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.maxWaitInHalfOpenState.<get-maxWaitInHalfOpenState>|<get-maxWaitInHalfOpenState>(){}[0]
+        final fun <set-maxWaitInHalfOpenState>(kotlin.time/Duration) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.maxWaitInHalfOpenState.<set-maxWaitInHalfOpenState>|<set-maxWaitInHalfOpenState>(kotlin.time.Duration){}[0]
+    final var minimumNumberOfCalls // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.minimumNumberOfCalls|{}minimumNumberOfCalls[0]
+        final fun <get-minimumNumberOfCalls>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.minimumNumberOfCalls.<get-minimumNumberOfCalls>|<get-minimumNumberOfCalls>(){}[0]
+        final fun <set-minimumNumberOfCalls>(kotlin/Int) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.minimumNumberOfCalls.<set-minimumNumberOfCalls>|<set-minimumNumberOfCalls>(kotlin.Int){}[0]
+    final var openingFailures // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.openingFailures|{}openingFailures[0]
+        final fun <get-openingFailures>(): com.davils.kontinuity.core.filter/FailureFilter? // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.openingFailures.<get-openingFailures>|<get-openingFailures>(){}[0]
+        final fun <set-openingFailures>(com.davils.kontinuity.core.filter/FailureFilter?) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.openingFailures.<set-openingFailures>|<set-openingFailures>(com.davils.kontinuity.core.filter.FailureFilter?){}[0]
+    final var openingResults // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.openingResults|{}openingResults[0]
+        final fun <get-openingResults>(): com.davils.kontinuity.core.filter/ResultFilter // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.openingResults.<get-openingResults>|<get-openingResults>(){}[0]
+        final fun <set-openingResults>(com.davils.kontinuity.core.filter/ResultFilter) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.openingResults.<set-openingResults>|<set-openingResults>(com.davils.kontinuity.core.filter.ResultFilter){}[0]
+    final var permittedCallsInHalfOpenState // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.permittedCallsInHalfOpenState|{}permittedCallsInHalfOpenState[0]
+        final fun <get-permittedCallsInHalfOpenState>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.permittedCallsInHalfOpenState.<get-permittedCallsInHalfOpenState>|<get-permittedCallsInHalfOpenState>(){}[0]
+        final fun <set-permittedCallsInHalfOpenState>(kotlin/Int) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.permittedCallsInHalfOpenState.<set-permittedCallsInHalfOpenState>|<set-permittedCallsInHalfOpenState>(kotlin.Int){}[0]
+    final var results // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.results|{}results[0]
+        final fun <get-results>(): com.davils.kontinuity.core.filter/ResultFilter // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.results.<get-results>|<get-results>(){}[0]
+        final fun <set-results>(com.davils.kontinuity.core.filter/ResultFilter) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.results.<set-results>|<set-results>(com.davils.kontinuity.core.filter.ResultFilter){}[0]
+    final var slidingWindow // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.slidingWindow|{}slidingWindow[0]
+        final fun <get-slidingWindow>(): com.davils.kontinuity.circuitbreaker/SlidingWindow // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.slidingWindow.<get-slidingWindow>|<get-slidingWindow>(){}[0]
+        final fun <set-slidingWindow>(com.davils.kontinuity.circuitbreaker/SlidingWindow) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.slidingWindow.<set-slidingWindow>|<set-slidingWindow>(com.davils.kontinuity.circuitbreaker.SlidingWindow){}[0]
+    final var slowCallDurationThreshold // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.slowCallDurationThreshold|{}slowCallDurationThreshold[0]
+        final fun <get-slowCallDurationThreshold>(): kotlin.time/Duration // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.slowCallDurationThreshold.<get-slowCallDurationThreshold>|<get-slowCallDurationThreshold>(){}[0]
+        final fun <set-slowCallDurationThreshold>(kotlin.time/Duration) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.slowCallDurationThreshold.<set-slowCallDurationThreshold>|<set-slowCallDurationThreshold>(kotlin.time.Duration){}[0]
+    final var slowCallRateThreshold // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.slowCallRateThreshold|{}slowCallRateThreshold[0]
+        final fun <get-slowCallRateThreshold>(): kotlin/Double // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.slowCallRateThreshold.<get-slowCallRateThreshold>|<get-slowCallRateThreshold>(){}[0]
+        final fun <set-slowCallRateThreshold>(kotlin/Double) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.slowCallRateThreshold.<set-slowCallRateThreshold>|<set-slowCallRateThreshold>(kotlin.Double){}[0]
+    final var stateAfterHalfOpenTimeout // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.stateAfterHalfOpenTimeout|{}stateAfterHalfOpenTimeout[0]
+        final fun <get-stateAfterHalfOpenTimeout>(): com.davils.kontinuity.circuitbreaker/CircuitState // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.stateAfterHalfOpenTimeout.<get-stateAfterHalfOpenTimeout>|<get-stateAfterHalfOpenTimeout>(){}[0]
+        final fun <set-stateAfterHalfOpenTimeout>(com.davils.kontinuity.circuitbreaker/CircuitState) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.stateAfterHalfOpenTimeout.<set-stateAfterHalfOpenTimeout>|<set-stateAfterHalfOpenTimeout>(com.davils.kontinuity.circuitbreaker.CircuitState){}[0]
+    final var waitInOpenState // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.waitInOpenState|{}waitInOpenState[0]
+        final fun <get-waitInOpenState>(): com.davils.kontinuity.core.backoff/Backoff // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.waitInOpenState.<get-waitInOpenState>|<get-waitInOpenState>(){}[0]
+        final fun <set-waitInOpenState>(com.davils.kontinuity.core.backoff/Backoff) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.waitInOpenState.<set-waitInOpenState>|<set-waitInOpenState>(com.davils.kontinuity.core.backoff.Backoff){}[0]
+
+    final fun failures(kotlin/Function1<com.davils.kontinuity.core.filter/FailureFilterBuilder, kotlin/Unit>) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.failures|failures(kotlin.Function1<com.davils.kontinuity.core.filter.FailureFilterBuilder,kotlin.Unit>){}[0]
+    final fun openOnFailures(kotlin/Function1<com.davils.kontinuity.core.filter/FailureFilterBuilder, kotlin/Unit>) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.openOnFailures|openOnFailures(kotlin.Function1<com.davils.kontinuity.core.filter.FailureFilterBuilder,kotlin.Unit>){}[0]
+    final fun openOnResults(kotlin/Function1<com.davils.kontinuity.core.filter/ResultFilterBuilder, kotlin/Unit>) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.openOnResults|openOnResults(kotlin.Function1<com.davils.kontinuity.core.filter.ResultFilterBuilder,kotlin.Unit>){}[0]
+    final fun results(kotlin/Function1<com.davils.kontinuity.core.filter/ResultFilterBuilder, kotlin/Unit>) // com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder.results|results(kotlin.Function1<com.davils.kontinuity.core.filter.ResultFilterBuilder,kotlin.Unit>){}[0]
+}
+
+final class com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit { // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit|null[0]
+    final val elapsed // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.elapsed|{}elapsed[0]
+        final fun <get-elapsed>(): kotlin.time/Duration // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.elapsed.<get-elapsed>|<get-elapsed>(){}[0]
+    final val isSettled // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.isSettled|{}isSettled[0]
+        final fun <get-isSettled>(): kotlin/Boolean // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.isSettled.<get-isSettled>|<get-isSettled>(){}[0]
+    final val state // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.state|{}state[0]
+        final fun <get-state>(): com.davils.kontinuity.circuitbreaker/CircuitState // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.state.<get-state>|<get-state>(){}[0]
+
+    final fun onFailure(kotlin/Throwable) // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.onFailure|onFailure(kotlin.Throwable){}[0]
+    final fun onResult(kotlin/Any?) // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.onResult|onResult(kotlin.Any?){}[0]
+    final fun onSuccess() // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.onSuccess|onSuccess(){}[0]
+    final fun release() // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.release|release(){}[0]
+    final fun restartClock() // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.restartClock|restartClock(){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerPermit.toString|toString(){}[0]
+}
+
+final class com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry : com.davils.kontinuity.core.registry/Registry<com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig, com.davils.kontinuity.circuitbreaker/CircuitBreaker> { // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry|null[0]
+    final val all // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.all|{}all[0]
+        final fun <get-all>(): kotlin.collections/List<com.davils.kontinuity.circuitbreaker/CircuitBreaker> // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.all.<get-all>|<get-all>(){}[0]
+    final val environment // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.environment|{}environment[0]
+        final fun <get-environment>(): com.davils.kontinuity.core/Environment // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.environment.<get-environment>|<get-environment>(){}[0]
+    final val events // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<com.davils.kontinuity.core.registry/RegistryEvent<com.davils.kontinuity.circuitbreaker/CircuitBreaker>> // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.events.<get-events>|<get-events>(){}[0]
+    final val settings // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.settings|{}settings[0]
+        final fun <get-settings>(): com.davils.kontinuity.core.registry/RegistrySettings<com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig> // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.settings.<get-settings>|<get-settings>(){}[0]
+
+    final fun circuitBreaker(kotlin/String, com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig): com.davils.kontinuity.circuitbreaker/CircuitBreaker // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.circuitBreaker|circuitBreaker(kotlin.String;com.davils.kontinuity.circuitbreaker.CircuitBreakerConfig){}[0]
+    final fun circuitBreaker(kotlin/String, kotlin/String = ...): com.davils.kontinuity.circuitbreaker/CircuitBreaker // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.circuitBreaker|circuitBreaker(kotlin.String;kotlin.String){}[0]
+    final fun circuitBreaker(kotlin/String, kotlin/String = ..., kotlin/Function1<com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder, kotlin/Unit>): com.davils.kontinuity.circuitbreaker/CircuitBreaker // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.circuitBreaker|circuitBreaker(kotlin.String;kotlin.String;kotlin.Function1<com.davils.kontinuity.circuitbreaker.CircuitBreakerConfigBuilder,kotlin.Unit>){}[0]
+    final fun find(kotlin/String): com.davils.kontinuity.circuitbreaker/CircuitBreaker? // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.find|find(kotlin.String){}[0]
+    final fun remove(kotlin/String): com.davils.kontinuity.circuitbreaker/CircuitBreaker? // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.remove|remove(kotlin.String){}[0]
+    final fun replace(com.davils.kontinuity.circuitbreaker/CircuitBreaker): com.davils.kontinuity.circuitbreaker/CircuitBreaker? // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.replace|replace(com.davils.kontinuity.circuitbreaker.CircuitBreaker){}[0]
+    final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry.toString|toString(){}[0]
+}
+
+final class com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistryBuilder : com.davils.kontinuity.core.registry/RegistryBuilder<com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig, com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder> // com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistryBuilder|null[0]
+
+final class com.davils.kontinuity.circuitbreaker/CircuitBreakerSnapshot { // com.davils.kontinuity.circuitbreaker/CircuitBreakerSnapshot|null[0]
+    final val state // com.davils.kontinuity.circuitbreaker/CircuitBreakerSnapshot.state|{}state[0]
+        final fun <get-state>(): com.davils.kontinuity.circuitbreaker/CircuitState // com.davils.kontinuity.circuitbreaker/CircuitBreakerSnapshot.state.<get-state>|<get-state>(){}[0]
+    final val totals // com.davils.kontinuity.circuitbreaker/CircuitBreakerSnapshot.totals|{}totals[0]
+        final fun <get-totals>(): com.davils.kontinuity.circuitbreaker/TotalsSnapshot // com.davils.kontinuity.circuitbreaker/CircuitBreakerSnapshot.totals.<get-totals>|<get-totals>(){}[0]
+    final val window // com.davils.kontinuity.circuitbreaker/CircuitBreakerSnapshot.window|{}window[0]
+        final fun <get-window>(): com.davils.kontinuity.circuitbreaker/WindowSnapshot // com.davils.kontinuity.circuitbreaker/CircuitBreakerSnapshot.window.<get-window>|<get-window>(){}[0]
+
+    final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/CircuitBreakerSnapshot.toString|toString(){}[0]
+}
+
+final class com.davils.kontinuity.circuitbreaker/TotalsSnapshot { // com.davils.kontinuity.circuitbreaker/TotalsSnapshot|null[0]
+    final val failed // com.davils.kontinuity.circuitbreaker/TotalsSnapshot.failed|{}failed[0]
+        final fun <get-failed>(): kotlin/Long // com.davils.kontinuity.circuitbreaker/TotalsSnapshot.failed.<get-failed>|<get-failed>(){}[0]
+    final val ignored // com.davils.kontinuity.circuitbreaker/TotalsSnapshot.ignored|{}ignored[0]
+        final fun <get-ignored>(): kotlin/Long // com.davils.kontinuity.circuitbreaker/TotalsSnapshot.ignored.<get-ignored>|<get-ignored>(){}[0]
+    final val notPermitted // com.davils.kontinuity.circuitbreaker/TotalsSnapshot.notPermitted|{}notPermitted[0]
+        final fun <get-notPermitted>(): kotlin/Long // com.davils.kontinuity.circuitbreaker/TotalsSnapshot.notPermitted.<get-notPermitted>|<get-notPermitted>(){}[0]
+    final val released // com.davils.kontinuity.circuitbreaker/TotalsSnapshot.released|{}released[0]
+        final fun <get-released>(): kotlin/Long // com.davils.kontinuity.circuitbreaker/TotalsSnapshot.released.<get-released>|<get-released>(){}[0]
+    final val successful // com.davils.kontinuity.circuitbreaker/TotalsSnapshot.successful|{}successful[0]
+        final fun <get-successful>(): kotlin/Long // com.davils.kontinuity.circuitbreaker/TotalsSnapshot.successful.<get-successful>|<get-successful>(){}[0]
+
+    final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/TotalsSnapshot.toString|toString(){}[0]
+}
+
+final class com.davils.kontinuity.circuitbreaker/WindowSnapshot { // com.davils.kontinuity.circuitbreaker/WindowSnapshot|null[0]
+    final val bufferedCalls // com.davils.kontinuity.circuitbreaker/WindowSnapshot.bufferedCalls|{}bufferedCalls[0]
+        final fun <get-bufferedCalls>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/WindowSnapshot.bufferedCalls.<get-bufferedCalls>|<get-bufferedCalls>(){}[0]
+    final val failedCalls // com.davils.kontinuity.circuitbreaker/WindowSnapshot.failedCalls|{}failedCalls[0]
+        final fun <get-failedCalls>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/WindowSnapshot.failedCalls.<get-failedCalls>|<get-failedCalls>(){}[0]
+    final val failureRate // com.davils.kontinuity.circuitbreaker/WindowSnapshot.failureRate|{}failureRate[0]
+        final fun <get-failureRate>(): kotlin/Double // com.davils.kontinuity.circuitbreaker/WindowSnapshot.failureRate.<get-failureRate>|<get-failureRate>(){}[0]
+    final val slowCallRate // com.davils.kontinuity.circuitbreaker/WindowSnapshot.slowCallRate|{}slowCallRate[0]
+        final fun <get-slowCallRate>(): kotlin/Double // com.davils.kontinuity.circuitbreaker/WindowSnapshot.slowCallRate.<get-slowCallRate>|<get-slowCallRate>(){}[0]
+    final val slowCalls // com.davils.kontinuity.circuitbreaker/WindowSnapshot.slowCalls|{}slowCalls[0]
+        final fun <get-slowCalls>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/WindowSnapshot.slowCalls.<get-slowCalls>|<get-slowCalls>(){}[0]
+    final val slowFailedCalls // com.davils.kontinuity.circuitbreaker/WindowSnapshot.slowFailedCalls|{}slowFailedCalls[0]
+        final fun <get-slowFailedCalls>(): kotlin/Int // com.davils.kontinuity.circuitbreaker/WindowSnapshot.slowFailedCalls.<get-slowFailedCalls>|<get-slowFailedCalls>(){}[0]
+
+    final fun toString(): kotlin/String // com.davils.kontinuity.circuitbreaker/WindowSnapshot.toString|toString(){}[0]
+}
+
+final fun (com.davils.kontinuity.circuitbreaker/CircuitBreaker).com.davils.kontinuity.circuitbreaker/healthIndicator(): com.davils.kollect.core.health/HealthIndicator // com.davils.kontinuity.circuitbreaker/healthIndicator|healthIndicator@com.davils.kontinuity.circuitbreaker.CircuitBreaker(){}[0]
+final fun (com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry).com.davils.kontinuity.circuitbreaker/healthIndicator(): com.davils.kollect.core.health/HealthIndicator // com.davils.kontinuity.circuitbreaker/healthIndicator|healthIndicator@com.davils.kontinuity.circuitbreaker.CircuitBreakerRegistry(){}[0]
+final fun <#A: kotlin/Any?> (kotlinx.coroutines.flow/Flow<#A>).com.davils.kontinuity.circuitbreaker/circuitBreaker(com.davils.kontinuity.circuitbreaker/CircuitBreaker): kotlinx.coroutines.flow/Flow<#A> // com.davils.kontinuity.circuitbreaker/circuitBreaker|circuitBreaker@kotlinx.coroutines.flow.Flow<0:0>(com.davils.kontinuity.circuitbreaker.CircuitBreaker){0§<kotlin.Any?>}[0]
+final fun com.davils.kontinuity.circuitbreaker/circuitBreaker(kotlin/String, com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig, com.davils.kontinuity.core/Environment = ...): com.davils.kontinuity.circuitbreaker/CircuitBreaker // com.davils.kontinuity.circuitbreaker/circuitBreaker|circuitBreaker(kotlin.String;com.davils.kontinuity.circuitbreaker.CircuitBreakerConfig;com.davils.kontinuity.core.Environment){}[0]
+final fun com.davils.kontinuity.circuitbreaker/circuitBreaker(kotlin/String, com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder, kotlin/Unit> = ...): com.davils.kontinuity.circuitbreaker/CircuitBreaker // com.davils.kontinuity.circuitbreaker/circuitBreaker|circuitBreaker(kotlin.String;com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.circuitbreaker.CircuitBreakerConfigBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.circuitbreaker/circuitBreakerConfig(com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig = ..., kotlin/Function1<com.davils.kontinuity.circuitbreaker/CircuitBreakerConfigBuilder, kotlin/Unit>): com.davils.kontinuity.circuitbreaker/CircuitBreakerConfig // com.davils.kontinuity.circuitbreaker/circuitBreakerConfig|circuitBreakerConfig(com.davils.kontinuity.circuitbreaker.CircuitBreakerConfig;kotlin.Function1<com.davils.kontinuity.circuitbreaker.CircuitBreakerConfigBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.circuitbreaker/circuitBreakerRegistry(com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistryBuilder, kotlin/Unit> = ...): com.davils.kontinuity.circuitbreaker/CircuitBreakerRegistry // com.davils.kontinuity.circuitbreaker/circuitBreakerRegistry|circuitBreakerRegistry(com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.circuitbreaker.CircuitBreakerRegistryBuilder,kotlin.Unit>){}[0]
+final fun com.davils.kontinuity.circuitbreaker/countBased(kotlin/Int): com.davils.kontinuity.circuitbreaker/SlidingWindow // com.davils.kontinuity.circuitbreaker/countBased|countBased(kotlin.Int){}[0]
+final fun com.davils.kontinuity.circuitbreaker/timeBased(kotlin.time/Duration, kotlin/Int = ...): com.davils.kontinuity.circuitbreaker/SlidingWindow // com.davils.kontinuity.circuitbreaker/timeBased|timeBased(kotlin.time.Duration;kotlin.Int){}[0]
