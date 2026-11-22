@@ -16,6 +16,16 @@
 
 version: 2
 
+# Dependabot reaches only the registries named here. The Davils artifacts (Kreate, Kore, Konfetti, Kollect) live on
+# repo.davils.com, which is publicly readable and needs no credentials.
+registries:
+  davils-releases:
+    type: maven-repository
+    url: https://repo.davils.com/releases
+  davils-snapshots:
+    type: maven-repository
+    url: https://repo.davils.com/snapshots
+
 # Dependabot changes versions only: the dependencies stage of the pipeline regenerates the lock files and the
 # verification metadata and commits them to the pull request, see CONTRIBUTING.md.
 #
@@ -25,6 +35,9 @@ version: 2
 updates:
   - package-ecosystem: "gradle"
     directory: "/"
+    registries:
+      - davils-releases
+      - davils-snapshots
     schedule:
       interval: "weekly"
     target-branch: "develop"
