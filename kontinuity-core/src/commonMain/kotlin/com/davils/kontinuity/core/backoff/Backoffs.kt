@@ -21,14 +21,15 @@ package com.davils.kontinuity.core.backoff
 import com.davils.konfetti.core.bus.Entropy
 import com.davils.kontinuity.core.telemetry.nextFraction
 import com.davils.kore.core.annotation.DavilsInternal
-import kotlin.math.pow
+import com.davils.kore.core.backoff.decorrelatedJitter
+import com.davils.kore.core.backoff.equalJitter
+import com.davils.kore.core.backoff.fullJitter
+import com.davils.kore.core.backoff.grownDelay
+import com.davils.kore.core.backoff.proportionalJitter
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.seconds
-import kotlin.time.DurationUnit
 
 private const val DEFAULT_MULTIPLIER: Double = 2.0
 private const val DEFAULT_GROWTH: Int = 32
-private const val DECORRELATION: Int = 3
 private const val DEFAULT_FACTOR: Double = 0.5
 
 /**
@@ -102,26 +103,21 @@ private fun Backoff.rawDelay(attempt: Int, previous: Duration, entropy: Entropy)
     is Backoff.Jittered -> jitteredDelay(attempt = attempt, previous = previous, entropy = entropy)
 }
 
-private fun Backoff.Exponential.exponentialDelay(attempt: Int): Duration {
-    val factor = multiplier.pow(attempt - 2)
-    val seconds = initial.toDouble(DurationUnit.SECONDS) * factor
-    return seconds.seconds.coerceAtMost(maximum)
-}
+private fun Backoff.Exponential.exponentialDelay(attempt: Int): Duration =
+    grownDelay(initial = initial, multiplier = multiplier, step = attempt - 2, maximum = maximum)
 
 private fun Backoff.Jittered.jitteredDelay(attempt: Int, previous: Duration, entropy: Entropy): Duration {
     val delay = base.delayBefore(attempt = attempt, previous = previous, entropy = entropy)
     val fraction = entropy.nextFraction()
     return when (val spread = jitter) {
-        is Jitter.Proportional -> delay * (1.0 - spread.factor + 2.0 * spread.factor * fraction)
-        Jitter.Full -> delay * fraction
-        Jitter.Equal -> delay / 2 + delay / 2 * fraction
+        is Jitter.Proportional -> proportionalJitter(delay = delay, factor = spread.factor, fraction = fraction)
+        Jitter.Full -> fullJitter(delay = delay, fraction = fraction)
+        Jitter.Equal -> equalJitter(delay = delay, fraction = fraction)
         Jitter.Decorrelated -> decorrelated(previous = previous, fraction = fraction, entropy = entropy)
     }
 }
 
 private fun Backoff.Jittered.decorrelated(previous: Duration, fraction: Double, entropy: Entropy): Duration {
-    val low = base.delayBefore(attempt = 2, previous = Duration.ZERO, entropy = entropy)
-    val high = (previous * DECORRELATION).coerceAtLeast(low)
-    val delay = low + (high - low) * fraction
-    return delay.coerceAtMost(base.maximum)
+    val initial = base.delayBefore(attempt = 2, previous = Duration.ZERO, entropy = entropy)
+    return decorrelatedJitter(initial = initial, previous = previous, maximum = base.maximum, fraction = fraction)
 }
