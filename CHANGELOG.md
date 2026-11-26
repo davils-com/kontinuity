@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.1.0 - 2026-11-26
+
+kontinuity is a direct dependency of the libraries that need resilience: the connect retry of Konnect, the response
+cache of krypt-ocsp and the reconnections of kapi build on it.
+
+### Changed
+
+- **`SecureEntropy` draws from `SecureEntropy` of Kore.** The default entropy reads `SecureRandom` on the JVM and
+  `crypto.getRandomValues` on Wasm instead of the random bits of version 4 UUIDs.
+- **The backoffs compute their delays with Kore 2.5.0.** The exponential growth and the full, equal, proportional and
+  decorrelated jitter are the shared arithmetic of Kore; the delays are unchanged.
+- **Events reach the bus through the `Emitter` of konfetti 1.1.0.** A bus that declares the topic of an instance for
+  another event type no longer fails the instance; its events then reach the flow of the instance only.
+- **Built with Kreate 5.5.2 and Gradle 9.9.2 on Kore 2.5.0, konfetti 1.1.0 and kollect 1.1.0**, with the version
+  floors of the build tools raised.
+
+### Deprecated
+
+- **`Guard` and `guard()` of `com.davils.kontinuity.core.telemetry`.** Every module uses the guard of Kore,
+  `com.davils.kore.core.concurrency.guard`; the deprecated declarations delegate to it and go away in 2.0.0.
+
 ## 1.0.0 - 2026-11-21
 
 The first version of kontinuity: the resilience library of Davils as an open source library under the Apache License
