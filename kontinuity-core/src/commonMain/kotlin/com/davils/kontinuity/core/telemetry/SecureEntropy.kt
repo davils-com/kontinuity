@@ -13,18 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.davils.kontinuity.core.telemetry
 
 import com.davils.konfetti.core.bus.Entropy
 import com.davils.kore.core.annotation.DavilsInternal
-import com.davils.kore.core.identity.generator.UuidV4Generator
-
-private const val RANDOM_LOW_BITS: Long = 0x3FFF_FFFF_FFFF_FFFF
-private const val HIGH_SHIFT: Int = 62
+import com.davils.kore.core.random.SecureEntropy as PlatformEntropy
 
 /**
- * Secure randomness from the random bits of the version 4 UUIDs of Kore, the default entropy of kontinuity.
+ * The secure random generator of the platform as an entropy of konfetti, the default entropy of kontinuity.
+ *
+ * Since 1.1.0 it draws from the `SecureEntropy` of Kore, `SecureRandom` on the JVM and `crypto.getRandomValues` on
+ * Wasm, instead of from the random bits of version 4 UUIDs.
  *
  * @since 1.0.0
  */
@@ -36,9 +35,5 @@ public object SecureEntropy : Entropy {
      * @return the bits.
      * @since 1.0.0
      */
-    override fun nextLong(): Long {
-        val uuid = UuidV4Generator.next()
-        val high = uuid.mostSignificantBits ushr HIGH_SHIFT shl HIGH_SHIFT
-        return high or (uuid.leastSignificantBits and RANDOM_LOW_BITS)
-    }
+    override fun nextLong(): Long = PlatformEntropy.nextLong()
 }

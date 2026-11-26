@@ -13,15 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.davils.kontinuity.core.telemetry
 
 import com.davils.konfetti.core.bus.Entropy
 import com.davils.kore.core.annotation.DavilsInternal
 import com.davils.kore.core.failure.contained
-
-private const val FRACTION_SHIFT: Int = 11
-private const val FRACTION_SCALE: Double = 1.0 / (1L shl 53)
+import com.davils.kore.core.random.SecureEntropy as PlatformEntropy
+import com.davils.kore.core.random.nextFraction as fractionOf
 
 /**
  * Returns a uniform random fraction in `[0, 1)` from 53 bits of this entropy.
@@ -35,6 +33,5 @@ private const val FRACTION_SCALE: Double = 1.0 / (1L shl 53)
 @DavilsInternal
 public fun Entropy.nextFraction(): Double {
     val entropy = this
-    val bits = contained { entropy.nextLong() }.getOrElse { SecureEntropy.nextLong() }
-    return (bits ushr FRACTION_SHIFT) * FRACTION_SCALE
+    return contained { entropy.fractionOf() }.getOrElse { PlatformEntropy.fractionOf() }
 }
