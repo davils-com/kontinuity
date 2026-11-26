@@ -1,13 +1,13 @@
 [versions]
 kotlin = "2.4.21"
-kreate = "5.4.1"
-kore = "2.3.2"
-konfetti = "1.0.0"
-kollect = "1.0.0"
+kreate = "5.5.2"
+kore = "2.5.0"
+konfetti = "1.1.0"
+kollect = "1.1.0"
 coroutines = "1.11.0"
 # Floors for the classpaths of build tools, raised past known vulnerabilities.
-tooling-jackson = "2.22.3"
-tooling-bouncycastle = "1.85"
+tooling-jackson = "2.23.0"
+tooling-bouncycastle = "1.87"
 
 [libraries]
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
