@@ -129,8 +129,9 @@ values, the failures and results of the protected calls and the keys of a cache.
 - **Foreign code is contained.** Predicates, fallbacks, interval functions, loaders, weighers and the entropy run
   inside `contained` or `attempted` of Kore. Their failure becomes a counted failure of the call, never a broken
   component.
-- **Randomness is secure by default.** The jitter of retries and waits comes from the `Entropy` of konfetti, which
-  defaults to secure randomness.
+- **Randomness is secure by default.** The jitter of retries and waits comes from the `Entropy` of konfetti, an
+  entropy of Kore since konfetti 1.1.0, which defaults to `SecureEntropy` of Kore; the arithmetic of the backoffs and
+  their jitter is the one of Kore, never a copy of its own.
 - **Hide what Java must not reach.** The runtime lives in `internal` packages that `module-info.java` never exports.
 - **Every sink has an injection test** with hostile text, and every limit has a test at the limit and one past it.
 
@@ -191,8 +192,9 @@ values, the failures and results of the protected calls and the keys of a cache.
 ## Kore internals
 
 kontinuity opts into these `@DavilsInternal` declarations of Kore; Kore changes them only in a major version:
-`SafeText.text`, `SafeText.quoted`, `immutableList`, `immutableMap` and, on the JVM, `blocking` of
-`com.davils.kore.core.concurrency`. A new use is added here and to the table of Kore's `AGENTS.md`.
+`SafeText.text`, `SafeText.quoted`, `immutableList`, `immutableMap`, on the JVM `blocking` of
+`com.davils.kore.core.concurrency`, and since 1.1.0 `guard`, `grownDelay`, `fullJitter`, `equalJitter`,
+`proportionalJitter` and `decorrelatedJitter`. A new use is added here and to the table of Kore's `AGENTS.md`.
 
 ## Public API
 
