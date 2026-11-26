@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("DEPRECATION")
 
 package com.davils.kontinuity.core.telemetry
 
-import com.davils.kontinuity.core.internal.platform.platformGuard
 import com.davils.kore.core.annotation.DavilsInternal
+import com.davils.kore.core.concurrency.guard as sharedGuard
 
 /**
  * Returns a new lock of the platform.
@@ -26,4 +27,13 @@ import com.davils.kore.core.annotation.DavilsInternal
  * @since 1.0.0
  */
 @DavilsInternal
-public fun guard(): Guard = platformGuard()
+@Deprecated(
+    message = "Kore shares one guard with every Davils library",
+    replaceWith = ReplaceWith(expression = "guard()", imports = ["com.davils.kore.core.concurrency.guard"]),
+)
+public fun guard(): Guard {
+    val shared = sharedGuard()
+    return object : Guard {
+        override fun <T> locked(block: () -> T): T = shared.locked(block)
+    }
+}

@@ -20,9 +20,9 @@ package com.davils.kontinuity.cache.internal
 
 import com.davils.kontinuity.cache.CacheConfig
 import com.davils.kontinuity.cache.CacheSnapshot
-import com.davils.kontinuity.core.telemetry.Guard
-import com.davils.kontinuity.core.telemetry.guard
 import com.davils.kore.core.annotation.DavilsInternal
+import com.davils.kore.core.concurrency.Guard
+import com.davils.kore.core.concurrency.guard
 import kotlin.time.TimeSource
 
 internal class Store<K : Any, V : Any>(

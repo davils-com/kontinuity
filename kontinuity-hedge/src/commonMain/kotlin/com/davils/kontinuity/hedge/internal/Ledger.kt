@@ -18,11 +18,11 @@
 
 package com.davils.kontinuity.hedge.internal
 
-import com.davils.kontinuity.core.telemetry.Guard
-import com.davils.kontinuity.core.telemetry.guard
 import com.davils.kontinuity.hedge.HedgeDelay
 import com.davils.kontinuity.hedge.HedgeSnapshot
 import com.davils.kore.core.annotation.DavilsInternal
+import com.davils.kore.core.concurrency.Guard
+import com.davils.kore.core.concurrency.guard
 import kotlin.time.Duration
 
 internal class Ledger(delay: HedgeDelay) {

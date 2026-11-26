@@ -22,10 +22,10 @@ import com.davils.kontinuity.core.Environment
 import com.davils.kontinuity.core.Instance
 import com.davils.kontinuity.core.InstanceName
 import com.davils.kontinuity.core.ResilienceKind
-import com.davils.kontinuity.core.telemetry.Guard
-import com.davils.kontinuity.core.telemetry.guard
 import com.davils.kore.core.annotation.DavilsInternal
 import com.davils.kore.core.collection.immutableList
+import com.davils.kore.core.concurrency.Guard
+import com.davils.kore.core.concurrency.guard
 import com.davils.kore.core.text.SafeText
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow

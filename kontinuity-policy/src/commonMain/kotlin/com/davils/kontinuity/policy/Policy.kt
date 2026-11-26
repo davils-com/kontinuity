@@ -26,8 +26,6 @@ import com.davils.kontinuity.core.ResilienceKind
 import com.davils.kontinuity.core.Stage
 import com.davils.kontinuity.core.rejectionOrNull
 import com.davils.kontinuity.core.telemetry.EventSink
-import com.davils.kontinuity.core.telemetry.Guard
-import com.davils.kontinuity.core.telemetry.guard
 import com.davils.kontinuity.policy.internal.Layer
 import com.davils.kontinuity.policy.internal.PolicyCall
 import com.davils.kontinuity.policy.internal.PolicyCounts
@@ -35,6 +33,8 @@ import com.davils.kontinuity.policy.internal.PolicyMeters
 import com.davils.kontinuity.policy.internal.PolicyOutcome
 import com.davils.kore.core.annotation.DavilsInternal
 import com.davils.kore.core.collection.immutableList
+import com.davils.kore.core.concurrency.Guard
+import com.davils.kore.core.concurrency.guard
 import com.davils.kore.core.failure.attempted
 import com.davils.kore.core.validation.Validatable
 import com.davils.kore.core.validation.ValidationScope

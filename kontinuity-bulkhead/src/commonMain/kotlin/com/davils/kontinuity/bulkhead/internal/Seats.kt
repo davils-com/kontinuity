@@ -20,9 +20,9 @@ package com.davils.kontinuity.bulkhead.internal
 
 import com.davils.kontinuity.bulkhead.BulkheadConfig
 import com.davils.kontinuity.bulkhead.BulkheadSnapshot
-import com.davils.kontinuity.core.telemetry.Guard
-import com.davils.kontinuity.core.telemetry.guard
 import com.davils.kore.core.annotation.DavilsInternal
+import com.davils.kore.core.concurrency.Guard
+import com.davils.kore.core.concurrency.guard
 
 internal class Seats(config: BulkheadConfig) : LevelSource {
     private val guard: Guard = guard()

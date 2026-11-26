@@ -18,9 +18,9 @@
 
 package com.davils.kontinuity.ratelimiter.internal
 
-import com.davils.kontinuity.core.telemetry.Guard
-import com.davils.kontinuity.core.telemetry.guard
 import com.davils.kore.core.annotation.DavilsInternal
+import com.davils.kore.core.concurrency.Guard
+import com.davils.kore.core.concurrency.guard
 
 internal class SlidingLog(private val windowNanos: Long, private val maxWaitingCallers: Int) : PermitWindow {
     private val guard: Guard = guard()

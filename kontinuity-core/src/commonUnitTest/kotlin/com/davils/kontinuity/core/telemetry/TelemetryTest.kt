@@ -15,6 +15,7 @@
  */
 
 @file:OptIn(DavilsInternal::class)
+@file:Suppress("DEPRECATION")
 
 package com.davils.kontinuity.core.telemetry
 
@@ -31,11 +32,11 @@ private const val SAMPLES: Int = 1_000
 private const val ANSWER: Int = 42
 
 class TelemetryTest : FunSpec({
-    test("a guard runs its block and returns its result") {
+    test("the deprecated guard runs its block on the guard of Kore and returns its result") {
         guard().locked { ANSWER } shouldBe ANSWER
     }
 
-    test("a guard can be taken again by its holder") {
+    test("the deprecated guard can be taken again by its holder") {
         val lock = guard()
         lock.locked { lock.locked { ANSWER } } shouldBe ANSWER
     }

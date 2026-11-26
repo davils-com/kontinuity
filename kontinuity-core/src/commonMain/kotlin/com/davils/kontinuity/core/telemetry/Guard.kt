@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.davils.kontinuity.core.telemetry
 
 import com.davils.kore.core.annotation.DavilsInternal
@@ -25,6 +24,10 @@ import com.davils.kore.core.annotation.DavilsInternal
  * @since 1.0.0
  */
 @DavilsInternal
+@Deprecated(
+    message = "Kore shares one guard with every Davils library",
+    replaceWith = ReplaceWith(expression = "Guard", imports = ["com.davils.kore.core.concurrency.Guard"]),
+)
 public interface Guard {
     /**
      * Runs [block] while holding the lock.

@@ -18,10 +18,10 @@
 
 package com.davils.kontinuity.retry.internal
 
-import com.davils.kontinuity.core.telemetry.Guard
-import com.davils.kontinuity.core.telemetry.guard
 import com.davils.kontinuity.retry.RetrySnapshot
 import com.davils.kore.core.annotation.DavilsInternal
+import com.davils.kore.core.concurrency.Guard
+import com.davils.kore.core.concurrency.guard
 
 internal class Counts {
     private val guard: Guard = guard()

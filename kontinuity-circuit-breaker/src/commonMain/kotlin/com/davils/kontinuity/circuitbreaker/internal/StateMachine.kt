@@ -24,9 +24,9 @@ import com.davils.kontinuity.circuitbreaker.CircuitState
 import com.davils.kontinuity.circuitbreaker.TotalsSnapshot
 import com.davils.kontinuity.circuitbreaker.WindowSnapshot
 import com.davils.kontinuity.core.Environment
-import com.davils.kontinuity.core.telemetry.Guard
-import com.davils.kontinuity.core.telemetry.guard
 import com.davils.kore.core.annotation.DavilsInternal
+import com.davils.kore.core.concurrency.Guard
+import com.davils.kore.core.concurrency.guard
 import kotlin.time.Duration
 import kotlin.time.TimeSource
 
