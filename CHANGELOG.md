@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.2.0 - 2026-11-27
+
+### Added
+
+- **`KeyedRateLimiter`, a rate limiter per key.** `keyedRateLimiter<K>(name, maxKeys, idleTimeout, environment)`
+  gives every key, such as a principal or the address of a client, a rate limiter of its own. Keys live in an
+  `OrderedMap` of Kore, found by comparison and never by hash code; a key idle for `idleTimeout`, which is never
+  shorter than the refresh period of the limit, is forgotten once the limiter is full, and a new key that finds it
+  full of keys in use is refused with `RequestNotPermittedException`, so a flood of keys fails closed. Its telemetry
+  is the counter `kontinuity.keyed_rate_limiter.calls` and the gauge `kontinuity.keyed_rate_limiter.keys`, without a
+  time series per key.
+- **A guarded transport for the metric exporter of kollect.** `Transport.guarded(policy)` sends every OTLP request
+  through a policy, such as a circuit breaker and a rate limiter; a request a stage refuses becomes
+  `Delivery.Throttled`, so the exporter keeps it and no point is lost.
+
 ## 1.1.0 - 2026-11-26
 
 kontinuity is a direct dependency of the libraries that need resilience: the connect retry of Konnect, the response

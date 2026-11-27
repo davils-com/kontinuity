@@ -45,7 +45,7 @@ dependencyResolutionManagement {
 ```kotlin
 // build.gradle.kts
 dependencies {
-    implementation(platform("com.davils:kontinuity-bom:1.1.0"))
+    implementation(platform("com.davils:kontinuity-bom:1.2.0"))
     implementation("com.davils:kontinuity-policy")
     testImplementation("com.davils:kontinuity-testing")
 }
