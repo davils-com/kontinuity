@@ -97,6 +97,35 @@ sealed interface com.davils.kontinuity.ratelimiter/RateLimiterEvent : com.davils
     }
 }
 
+final class <#A: kotlin/Comparable<#A>> com.davils.kontinuity.ratelimiter/KeyedRateLimiter { // com.davils.kontinuity.ratelimiter/KeyedRateLimiter|null[0]
+    final val config // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.config|{}config[0]
+        final fun <get-config>(): com.davils.kontinuity.ratelimiter/RateLimiterConfig // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.config.<get-config>|<get-config>(){}[0]
+    final val idleTimeout // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.idleTimeout|{}idleTimeout[0]
+        final fun <get-idleTimeout>(): kotlin.time/Duration // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.idleTimeout.<get-idleTimeout>|<get-idleTimeout>(){}[0]
+    final val keys // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.keys|{}keys[0]
+        final fun <get-keys>(): kotlin/Int // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.keys.<get-keys>|<get-keys>(){}[0]
+    final val maxKeys // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.maxKeys|{}maxKeys[0]
+        final fun <get-maxKeys>(): kotlin/Int // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.maxKeys.<get-maxKeys>|<get-maxKeys>(){}[0]
+    final val name // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.name|{}name[0]
+        final fun <get-name>(): com.davils.kontinuity.core/InstanceName // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.name.<get-name>|<get-name>(){}[0]
+
+    final fun toString(): kotlin/String // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.toString|toString(){}[0]
+    final fun tryAcquire(#A, kotlin/Int = ...): kotlin/Boolean // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.tryAcquire|tryAcquire(1:0;kotlin.Int){}[0]
+    final suspend fun <#A1: kotlin/Any?> execute(#A, kotlin/Int = ..., kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.execute|execute(1:0;kotlin.Int;kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+
+    final object Companion { // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.Companion|null[0]
+        final const val DEFAULT_MAX_KEYS // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.Companion.DEFAULT_MAX_KEYS|{}DEFAULT_MAX_KEYS[0]
+            final fun <get-DEFAULT_MAX_KEYS>(): kotlin/Int // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.Companion.DEFAULT_MAX_KEYS.<get-DEFAULT_MAX_KEYS>|<get-DEFAULT_MAX_KEYS>(){}[0]
+        final const val HARD_MAX_KEYS // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.Companion.HARD_MAX_KEYS|{}HARD_MAX_KEYS[0]
+            final fun <get-HARD_MAX_KEYS>(): kotlin/Int // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.Companion.HARD_MAX_KEYS.<get-HARD_MAX_KEYS>|<get-HARD_MAX_KEYS>(){}[0]
+
+        final val DEFAULT_IDLE_TIMEOUT // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.Companion.DEFAULT_IDLE_TIMEOUT|{}DEFAULT_IDLE_TIMEOUT[0]
+            final fun <get-DEFAULT_IDLE_TIMEOUT>(): kotlin.time/Duration // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.Companion.DEFAULT_IDLE_TIMEOUT.<get-DEFAULT_IDLE_TIMEOUT>|<get-DEFAULT_IDLE_TIMEOUT>(){}[0]
+        final val HARD_IDLE_TIMEOUT // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.Companion.HARD_IDLE_TIMEOUT|{}HARD_IDLE_TIMEOUT[0]
+            final fun <get-HARD_IDLE_TIMEOUT>(): kotlin.time/Duration // com.davils.kontinuity.ratelimiter/KeyedRateLimiter.Companion.HARD_IDLE_TIMEOUT.<get-HARD_IDLE_TIMEOUT>|<get-HARD_IDLE_TIMEOUT>(){}[0]
+    }
+}
+
 final class com.davils.kontinuity.ratelimiter/RateLimiter : com.davils.kontinuity.core/Stage { // com.davils.kontinuity.ratelimiter/RateLimiter|null[0]
     final val availablePermissions // com.davils.kontinuity.ratelimiter/RateLimiter.availablePermissions|{}availablePermissions[0]
         final fun <get-availablePermissions>(): kotlin/Int // com.davils.kontinuity.ratelimiter/RateLimiter.availablePermissions.<get-availablePermissions>|<get-availablePermissions>(){}[0]
@@ -238,6 +267,7 @@ final class com.davils.kontinuity.ratelimiter/RequestNotPermittedException : com
 }
 
 final fun <#A: kotlin/Any?> (kotlinx.coroutines.flow/Flow<#A>).com.davils.kontinuity.ratelimiter/rateLimiter(com.davils.kontinuity.ratelimiter/RateLimiter, kotlin/Int = ...): kotlinx.coroutines.flow/Flow<#A> // com.davils.kontinuity.ratelimiter/rateLimiter|rateLimiter@kotlinx.coroutines.flow.Flow<0:0>(com.davils.kontinuity.ratelimiter.RateLimiter;kotlin.Int){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Comparable<#A>> com.davils.kontinuity.ratelimiter/keyedRateLimiter(kotlin/String, kotlin/Int = ..., kotlin.time/Duration = ..., com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.ratelimiter/RateLimiterConfigBuilder, kotlin/Unit> = ...): com.davils.kontinuity.ratelimiter/KeyedRateLimiter<#A> // com.davils.kontinuity.ratelimiter/keyedRateLimiter|keyedRateLimiter(kotlin.String;kotlin.Int;kotlin.time.Duration;com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.ratelimiter.RateLimiterConfigBuilder,kotlin.Unit>){0§<kotlin.Comparable<0:0>>}[0]
 final fun com.davils.kontinuity.ratelimiter/rateLimiter(kotlin/String, com.davils.kontinuity.core/Environment = ..., kotlin/Function1<com.davils.kontinuity.ratelimiter/RateLimiterConfigBuilder, kotlin/Unit> = ...): com.davils.kontinuity.ratelimiter/RateLimiter // com.davils.kontinuity.ratelimiter/rateLimiter|rateLimiter(kotlin.String;com.davils.kontinuity.core.Environment;kotlin.Function1<com.davils.kontinuity.ratelimiter.RateLimiterConfigBuilder,kotlin.Unit>){}[0]
 final fun com.davils.kontinuity.ratelimiter/rateLimiter(kotlin/String, com.davils.kontinuity.ratelimiter/RateLimiterConfig, com.davils.kontinuity.core/Environment = ...): com.davils.kontinuity.ratelimiter/RateLimiter // com.davils.kontinuity.ratelimiter/rateLimiter|rateLimiter(kotlin.String;com.davils.kontinuity.ratelimiter.RateLimiterConfig;com.davils.kontinuity.core.Environment){}[0]
 final fun com.davils.kontinuity.ratelimiter/rateLimiterConfig(com.davils.kontinuity.ratelimiter/RateLimiterConfig = ..., kotlin/Function1<com.davils.kontinuity.ratelimiter/RateLimiterConfigBuilder, kotlin/Unit>): com.davils.kontinuity.ratelimiter/RateLimiterConfig // com.davils.kontinuity.ratelimiter/rateLimiterConfig|rateLimiterConfig(com.davils.kontinuity.ratelimiter.RateLimiterConfig;kotlin.Function1<com.davils.kontinuity.ratelimiter.RateLimiterConfigBuilder,kotlin.Unit>){}[0]

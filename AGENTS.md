@@ -122,7 +122,8 @@ values, the failures and results of the protected calls and the keys of a cache.
   work, hedged attempts and cache entries are bounded by limits with hard ceilings that no configuration exceeds.
   Nothing is truncated silently.
 - **No input decides the complexity.** Grammars are `NameRule`s, never regular expressions. Maps keyed by input hold
-  only checked names or the keys of a bounded cache, and every one is bounded by a limit. Cause chains are walked at
+  only checked names, the keys of a bounded cache or the keys of a `KeyedRateLimiter`, which lives in an `OrderedMap` of
+  Kore and is found by comparison, and every one is bounded by a limit. Cause chains are walked at
   most 32 deep and are safe against cycles.
 - **Escape untrusted text exactly once, at the sink.** Every `toString` and exception message that shows text from a
   caller writes it through `SafeText` of Kore. Cache keys appear in events only when the cache opts in.

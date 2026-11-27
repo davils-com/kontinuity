@@ -1,3 +1,24 @@
+public final class com/davils/kontinuity/ratelimiter/KeyedRateLimiter {
+	public static final field Companion Lcom/davils/kontinuity/ratelimiter/KeyedRateLimiter$Companion;
+	public static final field DEFAULT_MAX_KEYS I
+	public static final field HARD_MAX_KEYS I
+	public final fun execute (Ljava/lang/Comparable;ILkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun execute$default (Lcom/davils/kontinuity/ratelimiter/KeyedRateLimiter;Ljava/lang/Comparable;ILkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getConfig ()Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig;
+	public final fun getIdleTimeout-UwyO8pc ()J
+	public final fun getKeys ()I
+	public final fun getMaxKeys ()I
+	public final fun getName-KZg1Yg0 ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+	public final fun tryAcquire (Ljava/lang/Comparable;I)Z
+	public static synthetic fun tryAcquire$default (Lcom/davils/kontinuity/ratelimiter/KeyedRateLimiter;Ljava/lang/Comparable;IILjava/lang/Object;)Z
+}
+
+public final class com/davils/kontinuity/ratelimiter/KeyedRateLimiter$Companion {
+	public final fun getDEFAULT_IDLE_TIMEOUT-UwyO8pc ()J
+	public final fun getHARD_IDLE_TIMEOUT-UwyO8pc ()J
+}
+
 public final class com/davils/kontinuity/ratelimiter/RateLimiter : com/davils/kontinuity/core/Stage {
 	public final fun acquire-8Mi8wO0 (IJLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun acquire-8Mi8wO0$default (Lcom/davils/kontinuity/ratelimiter/RateLimiter;IJLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
@@ -177,6 +198,8 @@ public final class com/davils/kontinuity/ratelimiter/RateLimiterSnapshot {
 }
 
 public final class com/davils/kontinuity/ratelimiter/RateLimitersKt {
+	public static final fun keyedRateLimiter-1Y68eR8 (Ljava/lang/String;IJLcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/ratelimiter/KeyedRateLimiter;
+	public static synthetic fun keyedRateLimiter-1Y68eR8$default (Ljava/lang/String;IJLcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/davils/kontinuity/ratelimiter/KeyedRateLimiter;
 	public static final fun rateLimiter (Ljava/lang/String;Lcom/davils/kontinuity/core/Environment;Lkotlin/jvm/functions/Function1;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
 	public static final fun rateLimiter (Ljava/lang/String;Lcom/davils/kontinuity/ratelimiter/RateLimiterConfig;Lcom/davils/kontinuity/core/Environment;)Lcom/davils/kontinuity/ratelimiter/RateLimiter;
 	public static final fun rateLimiter (Lkotlinx/coroutines/flow/Flow;Lcom/davils/kontinuity/ratelimiter/RateLimiter;I)Lkotlinx/coroutines/flow/Flow;
