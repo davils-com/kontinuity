@@ -6,6 +6,10 @@ public final class com/davils/kontinuity/policy/CachedPolicy {
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class com/davils/kontinuity/policy/GuardedTransportsKt {
+	public static final fun guarded (Lcom/davils/kollect/core/export/Transport;Lcom/davils/kontinuity/policy/Policy;)Lcom/davils/kollect/core/export/Transport;
+}
+
 public final class com/davils/kontinuity/policy/PoliciesKt {
 	public static final fun cached (Lcom/davils/kontinuity/policy/Policy;Lcom/davils/kontinuity/cache/Cache;)Lcom/davils/kontinuity/policy/CachedPolicy;
 	public static final fun execute (Lcom/davils/kontinuity/policy/Policy;Lcom/davils/kontinuity/core/fallback/Fallback;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
