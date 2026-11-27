@@ -25,6 +25,7 @@ import com.davils.kontinuity.core.registry.Instances
 import com.davils.kore.core.annotation.DavilsInternal
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onEach
+import kotlin.time.Duration
 
 /**
  * Builds a validated rate limiter configuration that starts from [base] and changes what [configure] sets.
@@ -78,6 +79,37 @@ public fun rateLimiter(
     config: RateLimiterConfig,
     environment: Environment = Environment.Default,
 ): RateLimiter = RateLimiter(InstanceName.of(name), config, environment)
+
+/**
+ * Creates a rate limiter per key: `keyedRateLimiter<String>("per-principal") { limitForPeriod = 100 }`.
+ *
+ * @param K the type of the keys; its order must be total and consistent.
+ * @param name the name of the limiter, as [InstanceName] checks it.
+ * @param maxKeys the most keys the limiter holds at once, from 1 to [KeyedRateLimiter.HARD_MAX_KEYS];
+ *   [KeyedRateLimiter.DEFAULT_MAX_KEYS] by default.
+ * @param idleTimeout how long a key may stay unused before it may be forgotten, from the refresh period of the limit
+ *   to [KeyedRateLimiter.HARD_IDLE_TIMEOUT]; [KeyedRateLimiter.DEFAULT_IDLE_TIMEOUT] by default.
+ * @param environment the environment of the limiter; [Environment.Default] by default.
+ * @param configure changes what differs from [RateLimiterConfig.Default] for the limiter of every key.
+ * @return the limiter.
+ * @throws IllegalArgumentException if [name] is no valid instance name, or [maxKeys] or [idleTimeout] is out of its
+ *   bounds.
+ * @throws com.davils.kore.core.validation.report.ValidationException if the configuration is invalid.
+ * @since 1.1.0
+ */
+public fun <K : Comparable<K>> keyedRateLimiter(
+    name: String,
+    maxKeys: Int = KeyedRateLimiter.DEFAULT_MAX_KEYS,
+    idleTimeout: Duration = KeyedRateLimiter.DEFAULT_IDLE_TIMEOUT,
+    environment: Environment = Environment.Default,
+    configure: RateLimiterConfigBuilder.() -> Unit = {},
+): KeyedRateLimiter<K> = KeyedRateLimiter(
+    name = InstanceName.of(name),
+    config = rateLimiterConfig(configure = configure),
+    maxKeys = maxKeys,
+    idleTimeout = idleTimeout,
+    environment = environment,
+)
 
 /**
  * Creates a registry of rate limiters: `rateLimiterRegistry { defaults { ... }; config("strict") { ... } }`.
